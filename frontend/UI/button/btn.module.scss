@@ -1,0 +1,97 @@
+@import "../../styles/variables";
+.btn{
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.factor{
+  &__ghost{
+    background: transparent;
+    border: 2px solid $base-green;
+    color: $base-green;
+    &:hover{
+      background: rgba(16, 150, 72, 0.15);
+    }
+    &:active{
+      background: rgba(16, 150, 72, 0.39);
+    }
+    &:focus{
+      box-shadow: 0 0 1px 2px $base-green ;
+    }
+    &:disabled{
+      border:2px solid #787E87;
+      background: #9A9EA5;
+      color:#787E87;
+    }
+  }
+  &__green{
+    background: $base-green;
+    border:none;
+    color:white;
+    &:hover{
+      background: rgba(16, 150, 72, 0.8);
+    }
+    &:active{
+      background: #006E2D;
+    }
+    &:focus{
+      box-shadow: 0 0 1px 2px $base-green ;
+    }
+    &:disabled{
+      border:2px solid #787E87;
+      background: #9A9EA5;
+      color:#787E87;
+    }
+  }
+  &__yellow{
+    background: #F3DB00;
+    border:none;
+    color:#414141;
+    &:hover{
+      background: rgba(243, 219, 0, 0.8);
+    }
+    &:active{
+      background: #DCC600;
+    }
+    &:focus{
+      box-shadow: 0 0 1px 2px rgba(65, 65, 65, 0.33); ;
+    }
+    &:disabled{
+      border:2px solid #787E87;
+      background: #9A9EA5;
+      color:#787E87;
+    }
+  }
+}
+.size{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__xs{
+    @extend %small_text_bold;
+    min-width: 110px;
+    height: 40px;
+    padding: 12px 10px;
+    gap: 12px;
+  }
+  &__s{
+    @extend %text_bold;
+    min-width: 152px;
+    height: 48px;
+    padding: 12px 16px;
+    gap: 16px;
+  }
+  &__m{
+    @extend %text_bold;
+    min-width: 152;
+    height: 56px;
+    padding: 12px 16px;
+    gap: 16px;
+  }
+  &__l{
+    @extend %text_bold;
+    min-width: 172px;
+    height: 64px;
+    padding: 12px 16px;
+    gap: 16px;
+  }
+}

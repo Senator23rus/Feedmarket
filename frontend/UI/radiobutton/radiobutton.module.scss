@@ -1,0 +1,80 @@
+@import "styles/variables";
+
+.form_radio {
+  margin: 10px;
+
+  & label {
+    display: flex;
+    align-items: center;
+
+    & .child {
+      margin-left: 12px;
+    }
+  }
+
+  & input[type=radio] {
+    display: none;
+  }
+
+  & .radioButtonView {
+    cursor: pointer;
+    position: relative;
+    line-height: 18px;
+    user-select: none;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .radioButtonView:before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: $RadioAndCheckboxLightGrey 0 0 no-repeat;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    transition: all 0.2s linear;
+  }
+
+  & .radioButtonView:after {
+    content: "";
+    display: inline-block;
+    width: 100% - 12.5%;
+    height: 100% - 12.5%;
+    margin: 0 auto;
+    position: absolute;
+    background: $RadioAndCheckboxWhite 0 0 no-repeat;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    transition: all 0.2s linear;
+  }
+
+  & input[type=radio]:checked + .radioButtonView:after {
+    width: 8px;
+    height: 8px;
+  }
+
+  & input[type=radio]:checked + .radioButtonView:before {
+    background: $RadioAndCheckboxGreen;
+  }
+
+  & .radioButtonView:hover:before {
+    background: $RadioAndCheckboxGreen;
+  }
+
+  & input[type=radio]:disabled + .radioButtonView:before {
+    background: $RadioAndCheckboxLightGrey 0 0 no-repeat;
+  }
+
+  & input[type=radio]:disabled + .radioButtonView:after {
+    background: $RadioAndCheckboxGrey 0 0 no-repeat;
+  }
+}

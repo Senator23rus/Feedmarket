@@ -1,0 +1,76 @@
+@import "styles/variables";
+
+.customCheckbox {
+  display: none;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.child {
+  margin-left: 12px;
+}
+
+/* для элемента label, связанного с .custom-checkbox */
+.view {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  position: relative;
+}
+
+/* создание в label псевдоэлемента before со следующими стилями */
+.view::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid $RadioAndCheckboxLightGrey;
+  border-radius: 4px;
+  //margin-right: 0.5em;
+  background: $RadioAndCheckboxWhite no-repeat center center;
+  background-size: 50% 50%;
+  transition: all 0.2s linear;
+}
+
+/* стили при наведении курсора на checkbox */
+.wrapper:hover .customCheckbox:not(:disabled) + .view:before {
+  border-color: $RadioAndCheckboxGreen;
+}
+
+/* стили для чекбокса, находящегося в состоянии checked */
+.customCheckbox:checked + .view:not(.groupChecked):before {
+  background-color: $RadioAndCheckboxGreen;
+  background-image: url('/checkbox/checked.svg');
+}
+
+/* стили для чекбокса, находящегося в состоянии disabled */
+.customCheckbox:disabled + .view:before {
+  background-color: $RadioAndCheckboxGrey;
+}
+
+.groupChecked:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 2px;
+  background: $RadioAndCheckboxGreen no-repeat center center;
+  background-size: 50% 50%;
+}
+
+.groupChecked:before {
+  border-color: $RadioAndCheckboxGreen;
+}
+
+.groupChecked:checked:before {
+  background-color: $RadioAndCheckboxWhite;
+}

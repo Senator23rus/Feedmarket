@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  backend:
+    restart: always
+    container_name: code
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - "./backend/catalog:./catalog"
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app/backend
+    ports:
+      - 8000:8000
+    env_file:
+      - ./backend/.env.dev
+    networks:
+      - db_net
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14.0-alpine
+    ports:
+      - "5431:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=admin_vitomek
+      - POSTGRES_PASSWORD=236450
+      - POSTGRES_DB=feedmarket
+    networks:
+      - db_net
+
+  frontend:
+    restart: always
+    container_name: front
+    command: sh -c "yarn install && yarn dev"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app/frontend
+    ports: 
+      - "3001:3000"
+    stdin_open: true
+    depends_on: 
+        - backend
+    networks:
+        - db_net
+
+volumes:
+  postgres_data:
+
+networks:
+  db_net:
+    driver: bridge

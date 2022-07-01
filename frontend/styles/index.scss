@@ -1,0 +1,41 @@
+@import "./globals";
+@import "variables";
+@import "./components/navbar";
+.app {
+  display: grid;
+  margin: 0 auto;
+  max-width: $max-width;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 88px 1fr;
+  position: relative;
+  &__navbar{
+    box-shadow: $box-shadow;
+    position: sticky;
+    background: white;
+    top: 0;
+    height: 88px;
+    max-width: $max-width;
+    display: grid;
+    grid-template-columns: minmax(0,$container-width);
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    margin: 0 auto;
+    &-hide{
+      //opacity: 0;
+      transform: translateY(-89px);
+      transition: all 0.2s linear;
+    }
+    &-open{
+      //opacity: 1;
+      transform: translateY(0);
+      transition: all 0.2s linear;
+    }
+  }
+  &__content{
+    max-width: $container-width;
+    margin: auto;
+  }
+}
