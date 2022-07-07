@@ -1,0 +1,20 @@
+@import "../../../../styles/variables";
+
+.recomend{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 28px 0;
+    &__title{
+        @extend %h1;
+        color: $black2;
+        margin: 0;
+    }
+    
+    &__btn{
+        @extend %h3;
+        background-color: $base-yellow;
+        cursor: pointer;
+    }
+}

@@ -1,5 +1,4 @@
 import CustomLink from 'UI/custom-link';
-import classNames from 'classnames';
 import Image from 'next/image';
 import Input from 'UI/Input/input';
 
@@ -10,15 +9,15 @@ import Input from 'UI/Input/input';
  * @returns {JSX.Element}
  * @constructor
  */
-const NavBar = ({ show }) => {
+const NavBar = () => {
 	return (
-		<nav
-			className={classNames(
-				'app__navbar ',
-				{ ['app__navbar-open']: show },
-				{ ['app__navbar-hide']: !show }
-			)}>
-			<div className={'nav-wrapper'}>
+		// <nav
+		// 	className={classNames(
+		// 		'app__navbar ',
+		// 		{ ['app__navbar-open']: show },
+		// 		{ ['app__navbar-hide']: !show }
+		// 	)}>
+			<>
 				<CustomLink href={'/'} className="nav-wrapper__logo">
 					<Image src={'/Logo.svg'} width={148} height={64} alt={'logo'} />
 				</CustomLink>
@@ -96,8 +95,8 @@ const NavBar = ({ show }) => {
 						</CustomLink>
 					</div>
 				</div>
-			</div>
-		</nav>
+			</>
+		// </nav>
 	);
 };
 

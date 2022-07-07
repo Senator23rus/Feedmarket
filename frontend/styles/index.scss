@@ -1,5 +1,6 @@
 @import "./globals";
 @import "variables";
+@import "./pages/index";
 @import "./components/navbar";
 .app {
   display: grid;
@@ -23,6 +24,7 @@
     align-items: stretch;
     width: 100%;
     margin: 0 auto;
+    z-index: 999;
     &-hide{
       //opacity: 0;
       transform: translateY(-89px);

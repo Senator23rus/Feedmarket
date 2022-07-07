@@ -1,0 +1,70 @@
+@import "../../../styles/variables";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 16px;
+  width: 348px;
+  height: 468px;
+  padding: 20px 24px 24px 24px;
+  box-sizing: border-box;
+
+  &__item {
+    color: $black2;
+    list-style: none;
+    margin-bottom: 8px;
+    @extend %text;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+
+  &__price {
+    @extend %h3;
+    color: $black2;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: 52px;
+    background: $green-btn;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    border: none;
+    padding: 0;
+  }
+  &__wrapper {
+    margin-bottom: 11px;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__img_wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__weight {
+    @extend %caption;
+    color: $mute;
+  }
+}
