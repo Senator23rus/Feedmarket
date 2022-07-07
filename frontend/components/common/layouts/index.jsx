@@ -5,8 +5,15 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 
+/**
+ * @description Компонент обертка для скрытия навигационной панели
+ *
+ * @param children - Шапка сайта
+ * @param target - Прокручиваемый элемент DOM дерева
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function HideOnScroll({children,target}) {
-	console.log(target)
 	const trigger = useScrollTrigger({target});
 
 	return (
@@ -42,20 +49,19 @@ const Layout = ({ children }) => {
 	useEffect(() => {
 		if (typeof document === 'object') {
 			const node = document?.querySelector('#__next');
-
 			if (node) {
 				setTarget(node)
 			}
 		}
-
 	},[]);
+
 	return (
 		<div className={'app'} >
 			<HideOnScroll target={target}>
 				<AppBar className={'app__navbar'}>
-				<Toolbar className={'nav-wrapper'}>
-					<NavBar />
-				</Toolbar>
+					<Toolbar className={'nav-wrapper'}>
+						<NavBar />
+					</Toolbar>
 				</AppBar>
 			</HideOnScroll>
 			<main className='app__content' >{children}</main>
