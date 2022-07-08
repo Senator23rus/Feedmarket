@@ -8,18 +8,18 @@
   max-width: $max-width;
   justify-content: center;
   grid-template-columns: 1fr;
-  grid-template-rows: 88px 1fr;
+  grid-template-rows: 204px 1fr;
   position: relative;
   &__navbar{
     box-shadow: $box-shadow;
     position: sticky;
     background: white;
     top: 0;
-    height: 88px;
+    height: 204px;
     max-width: $max-width;
     display: grid;
     grid-template-columns: minmax(0,$container-width);
-    grid-template-rows: 1fr;
+    grid-template-rows: 76px 128px;
     justify-content: center;
     align-items: stretch;
     width: 100%;
