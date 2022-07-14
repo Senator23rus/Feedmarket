@@ -1,6 +1,7 @@
 import classes from './card.module.scss';
 import Image from 'next/image';
 import CustomLink from 'UI/custom-link';
+import {useState} from 'react';
 
 
 
@@ -19,13 +20,27 @@ import CustomLink from 'UI/custom-link';
  * @constructor
  */
 const Card = ({reference, img, title, animal, percentage, weight, price, click}) => {
+
+    const [quantity, setQuantity] = useState(1);
+    const [visible, setVisible] = useState(false);
+
+    function incr() {
+        setQuantity(quantity + 1);
+        }
+
+     function decr() {
+         quantity <= 1 ? setVisible(false) : setQuantity(quantity - 1);
+    }
+
 	return (
-        <CustomLink className={classes.card} href={reference}>
+        <div className={classes.card}>
+        <CustomLink  href={reference}>
             <div className={classes.card__img_wrapper}>
                 <div className={classes.card__img}>
                     <Image src={img} width={170} height={241} alt={"image"}/>
                 </div>
             </div>
+        </CustomLink>    
             <div className={classes.card__wrapper}>
                 <ul className={classes.card__list}>
                     <li className={classes.card__item}>{title}</li>
@@ -38,10 +53,22 @@ const Card = ({reference, img, title, animal, percentage, weight, price, click})
                     <div className={classes.card__weight}>{weight} кг</div>
                     <div className={classes.card__price}>{price} руб.</div>
                 </div>
-                <button className={classes.card__button} onClick={click}><Image src={"/card/Stroke.svg"} width={18} height={18} alt={"logo"}/></button>
+                {!visible ?
+                <button className={classes.card__button} onClick={() => setVisible(true)}><Image src={"/card/Stroke.svg"} width={18} height={18} alt={"logo"}/></button>
+                : null}
+                {visible ? 
+                <div className={classes.card__button_amount}>
+                    <div className={classes.card__button_decr} onClick={(e) =>{
+                        e.preventDefault();
+                        decr()}}></div>
+                    <div className={classes.card__button_number}>{quantity}</div>
+                    <div className={classes.card__button_incr} onClick={(e) =>{
+                        e.preventDefault(); 
+                        incr()}}></div>
+                </div>
+                : null}
             </div>
-        </CustomLink>
+        </div>
 	);
 };
-
 export default Card
