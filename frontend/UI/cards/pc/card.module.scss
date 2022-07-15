@@ -51,50 +51,10 @@
       border-radius: 8px;
     }
     &_decr{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 15px;
-      height: 15px;
-      border-radius:50%;
-      border: 2px solid $green-btn;
       cursor: pointer;
-      &::after{
-        content: '';
-        position: absolute;
-        width: 6.8px;
-        height: 1.7px;
-        background-color: $green-btn;
-        border-radius: 1px;
-      }
     }
     &_incr{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 15px;
-      height: 15px;
-      border-radius:50%;
-      position: relative;
-      border: 2px solid $green-btn;
       cursor: pointer;
-      &::after{
-        content: '';
-        position: absolute;
-        width: 6.8px;
-        height: 1.7px;
-        background-color: $green-btn;
-        border-radius: 1px;
-      }
-      &::before{
-        content: '';
-        position: absolute;
-        width: 6.8px;
-        height: 1.7px;
-        background-color: $green-btn;
-        border-radius: 1px;
-        transform: rotate(90deg)
-      }
     }
     &_number{
       @extend %text_bold;
