@@ -12,7 +12,7 @@ import {cloneElement, useEffect, useState} from "react";
  * @constructor
  */
 
-export default function SelectBox({onOpen, onClose, disabled, children, ...other}) {
+export default function SelectBox({ variation = 'little', itemIcon = 'none', onOpen, onClose, disabled, children, ...other}) {
 
     let [open, setOpen] = useState(false);
     let [content, setContent] = useState([]);
@@ -26,7 +26,21 @@ export default function SelectBox({onOpen, onClose, disabled, children, ...other
             if (item?.type?.render?.name !== 'MenuItem') {
                 throw new Error('Все элементы должны являтся MenuItem');
             }
-            return cloneElement(item,{...item.props, className: classes.item,
+            let classesItem;
+            switch (itemIcon) {
+                case 'circle': {
+                    classesItem = classes.circle;
+                    break;
+                }
+                case 'square': {
+                    classesItem = classes.square;
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+            return cloneElement(item,{...item.props, className: classNames(classes.item, classesItem),
                 sx: {'&.Mui-selected': {background: 'transparent', '&:hover.Mui-selected': {background: 'transparent'}}},
                 key: index});
         }));
@@ -49,19 +63,20 @@ export default function SelectBox({onOpen, onClose, disabled, children, ...other
     }
 
     return (
-        <Select className={classNames( classes.test, !open || classes.extended, !disabled || classes.disabled)} onOpen={openHandler} onClose={closeHandler} {...other}
+        <Select className={classNames( classes.root, !open || classes.extended, !disabled || classes.disabled)} onOpen={openHandler} onClose={closeHandler} {...other}
                 disabled={disabled}
                 IconComponent={(props) => <Arrow {...props}/>}
                 inputProps={{
             classes: {
                     icon: classNames(classes.icon, !disabled || classes.iconDisabled),
-                    select: classNames(classes.select, !open || classes.selectOpen, !disabled || classes.selectDisabled),
+                    select: classNames(classes.select, !open || classes.selectOpen, !disabled || classes.selectDisabled, variation !== 'little' || classes.little),
                     iconOpen: classes.iconOpen
                 }
                 }}
                 variant='outlined'
                 MenuProps={{ classes: { paper: classes.dropdownStyle }}}
-                sx={ {'&.Mui-focused': {background: '#FFF', '& fieldset.MuiOutlinedInput-notchedOutline': {border: '4px solid #FF7A00'}}} }
+                sx={ variation !== 'little' ? {'&.Mui-focused': {background: '#FFF', '& fieldset.MuiOutlinedInput-notchedOutline': {border: '4px solid #FF7A00'}}} :
+                    {'&.Mui-focused': {'& fieldset.MuiOutlinedInput-notchedOutline': {border: 'none'}}}}
         >
             {content}
     </Select>
