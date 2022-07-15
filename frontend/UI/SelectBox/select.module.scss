@@ -1,10 +1,12 @@
+@import "styles/variables";
+
 .test {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
   padding-right: 10px;
   position: relative;
-  background: #F2FAF5;
+  background: $SelectLightGrey;
   transition: all 0.2s linear;
 
   & fieldset {
@@ -16,40 +18,40 @@
   }
 
   &:hover {
-    background: #FFFFFF;
+    background: $RadioAndCheckboxAndSelectWhite;
 
     & fieldset {
-      border: 1px solid #C8C8C8;
+      border: 1px solid $SelectLightGrey2;
     }
   }
 
   &:active {
-    background: #FFFFFF;
+    background: $RadioAndCheckboxAndSelectWhite;
 
     & fieldset {
-      border: 1px solid #C8C8C8;
+      border: 1px solid $SelectLightGrey2;
     }
   }
 }
 
 .extended {
-  background: #FFFFFF;
+  background: $RadioAndCheckboxAndSelectWhite;
 
   & fieldset {
-    border: 2px solid #C8C8C8 !important;
+    border: 2px solid $SelectLightGrey2 !important;
   }
 }
 
 .icon {
-  fill: #999999;
+  fill: $SelectLightGrey5;
 }
 
 .iconDisabled {
-  fill: #7E7E7E;
+  fill: $SelectLightGrey4;
 }
 
 .iconOpen {
-  fill: #414141;
+  fill: $black;
 }
 
 .select {
@@ -57,21 +59,21 @@
   padding-bottom: 10px;
   padding-left: 16px;
 
-  color: #999999;
+  color: $SelectLightGrey5;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }
 
 .selectOpen {
-  color: #414141;
+  color: $black;
 }
 
 .dropdownStyle {
-  background: #FFFFFF;
+  background: $RadioAndCheckboxAndSelectWhite;
   margin-left: 5px;
   margin-top: 4px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: $box-shadow;
   border-radius: 8px;
   & ul {
     padding-bottom: 4px;
@@ -80,17 +82,17 @@
 }
 
 .disabled {
-  background: #B0B0B0;
-  border: 1px solid #7E7E7E;
+  background: $SelectLightGrey3;
+  border: 1px solid $SelectLightGrey4;
 
   &:hover {
-    background: #B0B0B0;
-    border: 1px solid #7E7E7E;
+    background: $SelectLightGrey3;
+    border: 1px solid $SelectLightGrey4;
   }
 }
 
 .selectDisabled {
-  color: #7E7E7E;
+  color: $SelectLightGrey4;
 }
 
 .item {
@@ -104,7 +106,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #414141;
+  color: $black;
 
   &:hover {
     background: transparent;
@@ -114,7 +116,7 @@
     content: '';
     width: 16px;
     height: 16px;
-    border: 1px solid #B0B0B0;
+    border: 1px solid $SelectLightGrey3;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -125,7 +127,7 @@
 .circle {
   width: 16px;
   height: 16px;
-  border: 1px solid #B0B0B0;
+  border: 1px solid $SelectLightGrey3;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
