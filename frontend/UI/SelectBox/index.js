@@ -8,6 +8,8 @@ import {cloneElement, useEffect, useState} from "react";
  * @description Компонент SelectBox
  *
  * @param {React.SelectHTMLAttributes} props
+ * @property {('big'|'little')} props.variation - Тип SelectBox
+ * @property {('none'|'circle'|'square')} props.size - Тип иконки перед элементами списка
  * @returns {JSX.Element}
  * @constructor
  */
