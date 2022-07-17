@@ -13,15 +13,16 @@ const ChipsButtonGroup = ({children, onClick,...other}) => {
         let buf = Array.from(content)
         if (currentActive.current !== 'none') {
             let num = parseInt(currentActive.current);
-            console.log( content, buf, num, buf[num])
+            console.log('content', content, buf, num, buf[num])
             content[num] = cloneElement(content[num], {...content[num].props,  active: false});
         }
         currentActive.current = index;
         return content;
     }
 
-    const deleteHandler = (content) => {
-        setContent([...activeChange('none', Array.from(content))]);
+    const deleteHandler = (e) => {
+        console.log(content);
+        setContent([...activeChange('none')]);
     }
 
     const clickHandler = (e) => {
