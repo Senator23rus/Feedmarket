@@ -3,17 +3,25 @@ import {Chip} from "@mui/material";
 import DeleteIcon from "./deleteIcon";
 import classNames from "classnames";
 
+/**
+ * @description Компонент ChipsButton
+ *
+ * @param {React.ReactElement} props
+ * @property {boolean} props.active - Состояние нажата ли кнопка
+ * @returns {JSX.Element}
+ * @constructor
+ */
+
 const ChipsButton = ({children, active, onDelete, ...other}) => {
 
     const deleteHandler = (e) => {
       if (onDelete)
           onDelete(e);
     }
-    //clickable={true}
   return (
       <div>
-          <Chip label={children} onDelete={active ? deleteHandler : null} {...other}
-                deleteIcon={(props) => <DeleteIcon {...props}/>}
+          <Chip label={children} clickable={true} onDelete={active ? deleteHandler : null} {...other}
+                deleteIcon={<DeleteIcon/>}
             classes={{
                 root: classNames(classes.root, !active || classes.rootActive),
                 deleteIcon: classes.deleteIcon,
