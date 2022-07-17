@@ -1,28 +1,23 @@
 import  classes from './ChipsButton.module.scss';
 import {Chip} from "@mui/material";
 import DeleteIcon from "./deleteIcon";
+import classNames from "classnames";
 
-const ChipsButton = ({children, onDelete, onClick, ...other}) => {
+const ChipsButton = ({children, active, onDelete, ...other}) => {
 
-    const ClickHandler = (e) => {
-      if (onClick)
-          onClick(e);
-    }
-
-    const DeleteHandler = (e) => {
+    const deleteHandler = (e) => {
       if (onDelete)
           onDelete(e);
-
     }
-
+    //clickable={true}
   return (
       <div>
-          <Chip label={children} onClick={ClickHandler} onDelete={DeleteHandler} {...other}
+          <Chip label={children} onDelete={active ? deleteHandler : null} {...other}
                 deleteIcon={(props) => <DeleteIcon {...props}/>}
             classes={{
-                root: classes.root,
+                root: classNames(classes.root, !active || classes.rootActive),
                 deleteIcon: classes.deleteIcon,
-                label: classes.label
+                label: classNames(classes.label, !active || classes.labelActive)
             }}
           />
       </div>
