@@ -1,5 +1,5 @@
 import Card from '/UI/cards/pc/card';
-import classes from './cards_grid.module.scss'
+import classes from './cards_grid.module.scss' 
 
 
 /**
@@ -16,11 +16,12 @@ import classes from './cards_grid.module.scss'
         <div className={classes[typeGrid]}>
             {cards.map((card, i) => <Card key={i} reference={card.reference} img={card.img} title={card.title}
             animal={card.animal} percentage={card.percentage} weight={card.weight} price={card.price}
-             click={(event) =>{
-                event.preventDefault();
-                alert('TECT')
-            }}/>
-            )}
+            //  click={(event) =>{
+            //     event.preventDefault();
+            //     alert('TECT');
+            //     () => setVisible(false);
+            // }}
+            />)}
         </div>
     )
 }
