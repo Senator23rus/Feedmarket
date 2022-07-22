@@ -14,28 +14,41 @@
     gap: 32px;
     .link{
       @extend %menu;
-      color: $black;
+      color: $white;
       display: flex;
       align-items: center;
       transition: all ease-in-out 0.1s;
       &:hover{
-        color:$base-green;
-        border-bottom: 4px solid $base-green;
+        border-top: 4px solid $white;
       }
     }
     .link_active{
       color: $green_link;
     }
   }
+  &__logo{
+    @extend .col-2;
+    align-self: center !important;
+  }
+  &__category{
+    @extend .col-3;
+    align-self: center !important;
+  }
+  &__search{
+    @extend .col-7;
+    align-self: center !important;
+  }
   &__other{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 24px;
+    gap: 5vw;
     .btn{
       @extend %small_text_bold;
       text-align: center;
-      width: 116px;
+      width: auto;
+      padding: 12px 10px;
+      white-space: nowrap;
       height: 40px;
       display: flex;
       justify-content: center;
@@ -52,7 +65,7 @@
     .link{
       @extend %text_mobile;
       gap: 4px;
-      color: $mute;
+      color: $white;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;

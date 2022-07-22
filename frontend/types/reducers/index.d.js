@@ -1,5 +1,5 @@
 /**
  * @description Глобальный store
  * @typedef {Object} StateApp
- * @property {CounterReducer} counter - редьюсер управлением состояния счетчика
+ * @property {CatalogReducer} catalog - редьюсер управлением состояния счетчика
  */

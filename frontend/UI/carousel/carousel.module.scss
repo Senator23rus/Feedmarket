@@ -1,0 +1,63 @@
+@import "./styles/variables";
+
+
+.product__carousel{
+  grid-column: 1 / 5;
+  margin-right: 24px;
+  &__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 472px;
+    width: 472px;
+    border-radius: 16px;
+    background: #FFFFFF;
+    margin-bottom: 20px;
+  }
+}
+
+.carousel__bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  &__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background: #FFFFFF;
+    border-radius: 8px;
+  }
+  &__chevron_left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 36px;
+    height: 40px;
+    top:27px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    z-index: 99;
+    cursor: pointer;
+  }
+  &__chevron_right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 36px;
+    height: 40px;
+    top:27px;
+    right: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    z-index: 99;
+    cursor: pointer;
+  }
+}
+

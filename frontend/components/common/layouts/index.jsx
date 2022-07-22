@@ -1,9 +1,14 @@
 import NavBar from 'components/common/layouts/nav-bar';
-import {useEffect, useState} from 'react';
-import Slide from "@mui/material/Slide";
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar';
+import { useEffect, useState } from 'react';
+import Slide from '@mui/material/Slide';
+import AppBar from '@mui/material/AppBar';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import React from 'react';
+
+/**
+ *
+ * @type {React.Context<{getTextGenerator,getDefaultTextGenerator}>}
+ */
 
 /**
  * @description Компонент обертка для скрытия навигационной панели
@@ -13,8 +18,8 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
  * @returns {JSX.Element}
  * @constructor
  */
-function HideOnScroll({children,target}) {
-	const trigger = useScrollTrigger({target});
+function HideOnScroll({ children, target }) {
+	const trigger = useScrollTrigger({ target });
 
 	return (
 		<Slide appear={false} direction="down" in={!trigger}>
@@ -22,7 +27,6 @@ function HideOnScroll({children,target}) {
 		</Slide>
 	);
 }
-
 
 /**
  * @description Корневой Layout, содержит основную разметку страницы, одинаковую для нескольких страниц
@@ -45,26 +49,24 @@ function HideOnScroll({children,target}) {
  * @constructor
  */
 const Layout = ({ children }) => {
-	const [target,setTarget] = useState(undefined)
+	const [target, setTarget] = useState(undefined);
 	useEffect(() => {
 		if (typeof document === 'object') {
 			const node = document?.querySelector('#__next');
 			if (node) {
-				setTarget(node)
+				setTarget(node);
 			}
 		}
-	},[]);
+	}, []);
 
 	return (
-		<div className={'app'} >
+		<div className={'app'}>
 			<HideOnScroll target={target}>
-				<AppBar className={'app__navbar'}>
-					<Toolbar className={'nav-wrapper'}>
-						<NavBar />
-					</Toolbar>
+				<AppBar className="app__navbar">
+					<NavBar />
 				</AppBar>
 			</HideOnScroll>
-			<main className='app__content' >{children}</main>
+			<main className="app__content">{children}</main>
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 {
   "cards":[
       {
+          "id": 1,
           "img": "/card/PreMix-Pigs_1.jpg",
           "imgAd": "/ad.jpg",
           "title": "Премикс VITOMEK",
@@ -20,6 +21,7 @@
           "vertical": "vertical"
       },
       {
+          "id": 2,
           "img": "/card/PreMix-Pigs_1.jpg",
           "imgAd": "/ad.jpg",
           "title": "Премикс VITOMEK",
@@ -38,6 +40,7 @@
           "small": "small",
           "vertical": "vertical"
       },{
+          "id": 3,
           "img": "/card/PreMix-Pigs_1.jpg",
           "imgAd": "/ad.jpg",
           "title": "Премикс VITOMEK",
@@ -57,6 +60,7 @@
           "vertical": "vertical"
       },
       {
+          "id": 4,
           "img": "/card/PreMix-Pigs_1.jpg",
           "imgAd": "/ad.jpg",
           "title": "Премикс VITOMEK",
@@ -76,6 +80,7 @@
           "vertical": "vertical"
       },
       {
+          "id": 5,
           "img": "/card/PreMix-Pigs_1.jpg",
           "imgAd": "/ad.jpg",
           "title": "Премикс VITOMEK",
@@ -95,6 +100,7 @@
           "vertical": "vertical"
       },
       {
+          "id": 6,
           "img": "/card/PreMix-Pigs_1.jpg",
           "imgAd": "/ad.jpg",
           "title": "Премикс VITOMEK",

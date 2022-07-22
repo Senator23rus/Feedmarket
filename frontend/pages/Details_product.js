@@ -1,127 +1,51 @@
 import Layout from 'components/common/layouts';
-import CardGrid from 'components/common/cards_grid/cards_grid';
-import cards from '/mock/cards.json';
-import Recomend from '/components/pages/home/recomend/recomend';
-import classes from './Details_product.module.scss';
+import classes from 'styles/pages/Details_product.module.scss';
+import { useEffect, useRef, useState } from 'react';
+import Carousel from 'UI/carousel/carousel';
+import PriseTag from 'UI/price_tag/prise_tag';
+import ListCharacteristic from 'components/list_characteristic/list_characteristic';
+import DatailedCharacteristic from 'components/common/datailed_characteristic/datailed_characteristic';
+import cards from 'mock/cards.json';
 
-const Details_product = ({ cards }) => {
+const Details_product = () => {
+	const myRef = useRef(null);
+	const scrollToRef = () =>
+		myRef.current && myRef.current.scrollIntoView({ behavior: 'smooth' });
+	console.log(cards);
+
+	const containerGrid = useRef(null);
+
+	const [padding, setPadding] = useState(false);
+
+	function onWheel() {
+		if (containerGrid.current) {
+			const top = containerGrid.current?.getBoundingClientRect().top;
+			if (top <= 0) {
+				setPadding(true);
+			} else {
+				setPadding(false);
+			}
+		}
+	}
+
+	useEffect(() => {
+		if (typeof document === 'object') {
+			document?.querySelector('#__next').addEventListener('wheel', onWheel);
+		}
+		return () => document?.querySelector('#__next').addEventListener('wheel', onWheel);
+	}, []);
+
 	return (
 		<Layout>
-			{/*// characteristics*/}
-			{/*	<div className="characteristics container flex">*/}
-			{/*		<div className="character__foto">*/}
-			{/*    <img className="character__img" src="../media/jpeg/korma(1 page)/Vitomek-PreMix-Layers 1.png" alt=""/>*/}
-			{/*</div>*/}
-			<div className={classes.carousel}>
-				<div className={classes.container}>
-					<div
-						id="carouselExampleIndicators"
-						className={classes.carousel}
-						data-bs-ride="carousel">
-						<div className={classes.carousel_indicators}>
-							<button className={classes.carousel__pagination__item} />
-						</div>
-						{/*<div className={classes.carousel_inner}>*/}
-						{/*	<div className={classes.carousel_item}>*/}
-						{/*		<img*/}
-						{/*			className={classes.character__img}*/}
-						{/*			src="../media/jpeg/korma(1 page)/Vitomek-PreMix-Layers 1.png"*/}
-						{/*			alt=""*/}
-						{/*		/>*/}
-						{/*	</div>*/}
-						{/*	<div className={classes.carousel_item}>*/}
-						{/*		<img*/}
-						{/*			className={classes.character__img}*/}
-						{/*			src="../media/jpeg/korma(1 page)/Vitomek-PreMix-Layers 1.png"*/}
-						{/*			alt="#"*/}
-						{/*		/>*/}
-						{/*	</div>*/}
-						{/*	<div className={classes.carousel__item}>*/}
-						{/*		<img*/}
-						{/*			className={classes.character__img}*/}
-						{/*			src="../media/jpeg/korma(1 page)/Vitomek-PreMix-Layers 1.png"*/}
-						{/*			alt=""*/}
-						{/*		/>*/}
-						{/*	</div>*/}
-						{/*	<div className={classes.carousel__item}>*/}
-						{/*		<img*/}
-						{/*			className={classes.character__img}*/}
-						{/*			src="../media/jpeg/korma(1 page)/Vitomek-PreMix-Layers 1.png"*/}
-						{/*			alt=""*/}
-						{/*		/>*/}
-						{/*	</div>*/}
-						{/*	<div className={classes.carousel__item}>*/}
-						{/*		<img*/}
-						{/*			className={classes.character__img}*/}
-						{/*			src="../media/jpeg/korma(1 page)/Vitomek-PreMix-Layers 1.png"*/}
-						{/*			alt=""*/}
-						{/*		/>*/}
-						{/*	</div>*/}
-						{/*</div>*/}
+			<div className={classes.main__grid} ref={containerGrid}>
+				<div className={classes.main__grid__left}>
+					<div className={classes.product__title}>
+						<Carousel />
+						<ListCharacteristic scrollToRef={scrollToRef} />
 					</div>
-				</div>
-				<div className={classes.character__text}>
-					<div className={classes.character__description}>
-						<div className={classes.text__wrapper}>
-							<div className={classes.text__left}>
-								<div className={classes.text__strouk}>
-									<div className={classes.text__description}>Категория</div>
-									<div className={classes.text__line}></div>
-								</div>
-								<div className={classes.text__strouk}>
-									<div className={classes.text__description}>Тип</div>
-									<div className={classes.ext__line}></div>
-								</div>
-								<div className={classes.text__strouk}>
-									<div className={classes.text__description}>Вид</div>
-									<div className={classes.text__line}></div>
-								</div>
-								<div className={classes.text__strouk}>
-									<div className={classes.text__description}>Возраст животного</div>
-									<div className={classes.text__line}></div>
-								</div>
-								<div className={classes.text__strouk}>
-									<div className={classes.text__description}>Процент ввода</div>
-									<div className={classes.text__line}></div>
-								</div>
-								<div className={classes.text__strouk}>
-									<div className={classes.text__description}>Вес в упаковке, кг</div>
-									<div className={classes.text__line}></div>
-								</div>
-								<div className={classes.text__strouk}>
-									<div className={classes.text__description}>Страна изготовитель</div>
-									<div className={classes.text__line}></div>
-								</div>
-							</div>
-
-							<div>
-								<div className={classes.text__right}>Птицеводство</div>
-								<div className={classes.text__right}>Премикс, 1%</div>
-								<div className={classes.text__right}>Бройлер</div>
-								<div className={classes.text__right}>6 месяцев</div>
-								<div className={classes.text__right}>10 кг/т</div>
-								<div className={classes.text__right}>10</div>
-								<div className={classes.text__right}>Российская Федерация</div>
-							</div>
-						</div>
-					</div>
-
-					<div className={classes.coast}>
-						<span coast__text>10 500 руб.</span>
-						<button className={classes.coast__btn}>В корзину</button>
-					</div>
-				</div>
-				{/**************************************description***********************************/}
-				<div className={classes.container}>
-					<div className={classes.description}>
-						<h4 className={classes.description__title}>
-							Рекомендуемый рецепт смешивания (Комбикорм)
-						</h4>
-						<button className={classes.description__btn} Заказать индивидуальный рецепт />
-					</div>
-					<div className={classes.description}>
-						<h4 className={classes.description__title}>Описание</h4>
-						<p className={classes.description__text}>
+					<div className={classes.block__characteristic}>
+						<h2 className={classes.block__characteristic_title}>Описание</h2>
+						<p className={classes.block__characteristic_text}>
 							Принимая во внимание показатели успешности, перспективное планирование
 							обеспечивает широкому кругу (специалистов) участие в формировании дальнейших
 							направлений развития. Являясь всего лишь частью общей картины, сделанные на
@@ -131,186 +55,88 @@ const Details_product = ({ cards }) => {
 							традиционное производство, нанотехнологии представлены в исключительно
 							положительном свете.
 						</p>
-						<div className={classes.description__title}>Состав</div>
-						<p className={classes.description__text}>
+					</div>
+					<div className={classes.block__characteristic}>
+						<h2 className={classes.block__characteristic_title}>Состав</h2>
+						<p className={classes.block__characteristic_text}>
 							Учитывая ключевые сценарии поведения, глубокий уровень погружения выявляет
 							срочную потребность глубокомысленных рассуждений. Есть над чем задуматься:
 							элементы политического процесса функционально разнесены на независимые
 							элементы.
 						</p>
 					</div>
-				</div>
-				{/***********************fullcharacteristics***************/}
-				<div className={classes.fullcharacteristics}>
-					<h4 className={classes.text__title}>Полные характеристики</h4>
-					<div className={classes.character__text}>
-						<div className={classes.character__description}>
-							<div className={classes.fullcharacteristics}>
-								<div className={classes.text__left}>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Категория</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Тип</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вид</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Возраст животного</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Процент ввода</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вес в упаковке, кг</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__str}>
-										<div className={classes.text__description}>Страна изготовитель</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Категория</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Тип</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вид</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Возраст животного</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Процент ввода</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вес в упаковке, кг</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Страна изготовитель</div>
-										<div className={classes.text__line}></div>
-									</div>
-								</div>
+					<div className={classes.block__characteristic}>
+						<h2 className={classes.block__characteristic_title}>
+							Рекомендуемый рецепт смешивания
+							<br />
+							(Комбикорм)
+						</h2>
+						<div className={classes.block__characteristic_text}>
+							<span className={classes.block__characteristic_subtitle}>
+								Вам потребуется:
+							</span>
+							<ul className={classes.block__characteristic_list}>
+								<li>Пшеница — 550 граммов (предельная норма ввода 600 граммов — 60%);</li>
+								<li>Ячмень — 150 граммов (предельная норма ввода 300 граммов — 30%);</li>
+								<li>
+									Отруби пшеничные — 50 граммов (предельная норма ввода 100 граммов —
+									10%);
+								</li>
+								<li>
+									Жмых подсолнечный — 100 граммов (предельная норма ввода 150 граммов —
+									15%);
+								</li>
+								<li>
+									Мука мясокостная — 40 граммов (предельная норма ввода 70 граммов — 7%);
+								</li>
+								<li>
+									Масло подсолнечное — 20 граммов (предельная норма ввода 30 граммов —
+									3%);
+								</li>
+								<li>Ракушка — 50 граммов (предельная норма ввода 80 граммов — 8%);</li>
+								<li>
+									Мел кормовой — 27 граммов (предельная норма ввода 30 граммов — 3%);
+								</li>
+								<li>
+									Соль поваренная — 3 грамма (предельная норма ввода 3 грамма — 0,3%);
+								</li>
+								<li>
+									Премикс (1%) для кур-несушек промышленного стада — 10 граммов
+									(предельная норма ввода 10 граммов — 1%)
+								</li>
+							</ul>
+						</div>
+						<div className={classes.card__button_long}>
+							Заказать индивидуальный рецепт
+						</div>
+					</div>
 
-								<div>
-									<div className={classes.text__right}>Птицеводство</div>
-									<div className={classes.text__right}>Премикс, 1%</div>
-									<div className={classes.text__right}>Бройлер</div>
-									<div className={classes.text__right}>6 месяцев</div>
-									<div className={classes.text__right}>10 кг/т</div>
-									<div className={classes.text__right}>10</div>
-									<div className={classes.text__right}>Российская Федерация</div>
-									<div className={classes.text__right}>Птицеводство</div>
-									<div className={classes.text__right}>Премикс, 1%</div>
-									<div className={classes.text__right}>Бройлер</div>
-									<div className={classes.text__right}>6 месяцев</div>
-									<div className={classes.text__right}>10 кг/т</div>
-									<div className={classes.text__right}>10</div>
-									<div className={classes.text__right}>Российская Федерация</div>
-								</div>
-							</div>
-							<div className={classes.fullcharacteristics_text__wrapper}>
-								<div className={classes.text__left}>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Категория</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Тип</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вид</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Возраст животного</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Процент ввода</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вес в упаковке, кг</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Страна изготовитель</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Категория</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Тип</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вид</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Возраст животного</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Процент ввода</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Вес в упаковке, кг</div>
-										<div className={classes.text__line}></div>
-									</div>
-									<div className={classes.text__strouk}>
-										<div className={classes.text__description}>Страна изготовитель</div>
-										<div className={classes.text__line}></div>
-									</div>
-								</div>
-
-								<div>
-									<div className={classes.text__right}>Птицеводство</div>
-									<div className={classes.text__right}>Премикс, 1%</div>
-									<div className={classes.text__right}>Бройлер</div>
-									<div className={classes.text__right}>6 месяцев</div>
-									<div className={classes.text__right}>10 кг/т</div>
-									<div className={classes.text__right}>10</div>
-									<div className={classes.text__right}>Российская Федерация</div>
-									<div className={classes.text__right}>Птицеводство</div>
-									<div className={classes.text__right}>Премикс, 1%</div>
-									<div className={classes.text__right}>Бройлер</div>
-									<div className={classes.text__right}>6 месяцев</div>
-									<div className={classes.text__right}>10 кг/т</div>
-									<div className={classes.text__right}>10</div>
-									<div className={classes.text__right}>Российская Федерация</div>
-								</div>
-							</div>
+					<div className={classes.detailed__characteristic}>
+						<h2 className={classes.detailed__characteristic_title} ref={myRef}>
+							Подробные характеристики
+						</h2>
+						<div className={classes.detailed__characteristic_wrapper}>
+							<DatailedCharacteristic />
+							<DatailedCharacteristic />
 						</div>
 					</div>
 				</div>
+
+				<div
+					style={{
+						...(padding && {
+							paddingTop: 53,
+							transition: 'padding linear 200ms',
+						}),
+					}}
+					className={classes.main__grid__right}>
+					<PriseTag />
+				</div>
 			</div>
-			<Recomend />
-			<CardGrid type="row" cards={cards} />
+			{/*<Recomend />*/}
+			{/*{cards.length && <CardGrid type="row" cards={cards.cards} />}*/}
 		</Layout>
 	);
 };
-export async function getStaticProps() {
-	return {
-		props: cards,
-	};
-}
+
 export default Details_product;
