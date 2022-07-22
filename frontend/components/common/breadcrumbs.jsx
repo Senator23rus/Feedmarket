@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect } from 'react';
 import React from 'react';
 import cards from 'mock/n_cards.json';
-import categories from 'mock/categories.json';
 import CustomLink from 'UI/custom-link';
 
 const _defaultGetTextGenerator = (param, query) => null;
@@ -118,7 +117,6 @@ export function AppWrapper({ children }) {
 		console.log('query>>>', query);
 		return {
 			card_id: () => cards.find(_ => _.id === query.card_id).title,
-			type: () => categories.find(_ => _.id === query.type).title,
 		}[param];
 	}, []);
 
