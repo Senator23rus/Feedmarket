@@ -210,6 +210,11 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@badrap/bar-of-progress@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@badrap/bar-of-progress/-/bar-of-progress-0.2.1.tgz#68200c7547ecd7f3a3450597c596810a5a06c02c"
+  integrity sha512-+vqWaMkHnCcoKDo0dRhMpY40Lt2+Li2/vo0IArrbYWKTLeHatEGLJRX23iUl6quxwxVqrflJPCr8F0Sak+hujg==
+
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
@@ -3171,6 +3176,11 @@ next@12.1.6:
     "@next/swc-win32-ia32-msvc" "12.1.6"
     "@next/swc-win32-x64-msvc" "12.1.6"
 
+nextjs-breadcrumbs@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/nextjs-breadcrumbs/-/nextjs-breadcrumbs-1.1.9.tgz#6b50c3bcf0db6b59985d89cfb95b69b6bc4f4bb5"
+  integrity sha512-kzK1bysO5dqdlsPgJ84XgAfAFKWEqlXcSWROwuR1BqST8ibcmLc3LKgak8hiO2DH2mMdd0wTR7oCkebReyBQTg==
+
 node-dir@^0.1.10:
   version "0.1.17"
   resolved "https://registry.npmjs.org/node-dir/-/node-dir-0.1.17.tgz"
@@ -3192,6 +3202,11 @@ normalize-url@^4.1.0:
   version "4.5.1"
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-4.5.1.tgz"
   integrity sha512-9UZCFRHQdNrfTpGg8+1INIg93B6zE0aXMVFkw1WFwvO4SlZywU6aLg5Of0Ap/PgcbSw4LNxvMWXMeugwMCX0AA==
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
