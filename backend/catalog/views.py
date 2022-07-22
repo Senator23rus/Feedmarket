@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from drf_yasg import openapi
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.views import get_schema_view
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
@@ -7,6 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from .permissions import *
 from .serializers import *
+from .service import *
 
 from .models import *
 from .permissions import *
@@ -24,16 +26,23 @@ schema_view = get_schema_view(
    public=True,
    permission_classes=(permissions.AllowAny,),
 )
+
+
 class GoodAPIListPagination(PageNumberPagination):
     page_size = 4
     page_size_query_param = 'page_size'
     max_page_size = 10000
 
+
 class GoodAPIList(generics.ListCreateAPIView):
+    """Вывод списка товаров"""
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
     permission_classes = (IsAdminOrReadOnly, )
     pagination_class = GoodAPIListPagination
+    filter_backends = (DjangoFilterBackend, )
+    filterset_class = GoodFilter
+
 
 class GoodAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Good.objects.all()

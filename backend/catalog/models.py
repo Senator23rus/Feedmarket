@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Good(models.Model):
     name = models.CharField(max_length=200, help_text="Введите название Товара", verbose_name="Название Товара", default=0)
 
-    image = models.IntegerField(help_text="Введите картинку продукта", verbose_name="Картинка", default=0)
+    image = models.ImageField(help_text="Добавьте картинку продукта", verbose_name="Картинка", default=0)
 
     product = models.ForeignKey('Product', on_delete=models.CASCADE, help_text="Выберете продукт",
                                 verbose_name="Продукт", null=True)
@@ -25,8 +25,10 @@ class Good(models.Model):
 
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
-    verbose_name = "Товар"
-    verbose_name_plural = "Товары"
+    class Meta:
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
+    
 
     objects = models.Manager()
 
@@ -81,7 +83,10 @@ class BVMK(Product):
 class TypeMaterial(models.Model):
     name = models.CharField(max_length=200, help_text="Введите тип сырья", verbose_name="Тип Сырья")
     objects = models.Manager()
-
+    
+    class Meta:
+        verbose_name = "Тип сырья"
+        verbose_name_plural = "Типы сырья"
     def __str__(self):
         return '%s' % (self.name)
 
@@ -89,6 +94,10 @@ class TypeMaterial(models.Model):
 class Country(models.Model):
     name = models.CharField(max_length=200, help_text="Введите страну изготовителя", verbose_name="Страна изготовитель")
     objects = models.Manager()
+
+    class Meta:
+        verbose_name = "Страна"
+        verbose_name_plural = "Страны"
 
     def __str__(self):
         return '%s' % (self.name)
@@ -104,13 +113,19 @@ class Animal(models.Model):
     animal_description = models.CharField(max_length=200, help_text="Введите описание Животного",
                                           verbose_name="Описание Животного", null=True, blank=True)
 
-    animal_age_min = models.IntegerField(help_text="Введите минимальный Возраст",
-                                 verbose_name="Минимальный Возраст", null=True)
-    animal_age_max = models.IntegerField(help_text="Введите максимальный Возраст",
-                                         verbose_name="Максимальный Возраст", null=True)
-    weight_min = models.IntegerField(help_text="Выберите вес Животного (от)",
+    animal_day_min = models.IntegerField(help_text="Введите минимальный Возраст в днях",
+                                         verbose_name="Минимальный Возраст в днях", null=True, blank=True)
+    animal_day_max = models.IntegerField(help_text="Введите максимальный Возраст в днях",
+                                         verbose_name="Максимальный Возраст в днях", null=True, blank=True)
+    animal_month_min = models.IntegerField(help_text="Введите минимальный Возраст в месяцах",
+                                         verbose_name="Минимальный Возраст в месяцах", null=True, blank=True)
+    animal_month_max = models.IntegerField(help_text="Введите максимальный Возраст в месяцах",
+                                         verbose_name="Максимальный Возраст в месяцах", null=True, blank=True)
+
+
+    weight_min = models.DecimalField(max_digits=5, decimal_places=2, help_text="Выберите вес Животного (от)",
                                  verbose_name="Минимальный вес Животного", null=True)
-    weight_max = models.IntegerField(help_text="Выберите вес Животного (до)",
+    weight_max = models.DecimalField(max_digits=5, decimal_places=2, help_text="Выберите вес Животного (до)",
                                      verbose_name="Максимальный вес Животного", null=True)
     objects = models.Manager()
 
@@ -144,6 +159,10 @@ class Industry(models.Model):
                                         verbose_name="Отрасль", null=True)
     objects = models.Manager()
 
+    class Meta:
+        verbose_name = "Отрасль"
+        verbose_name_plural = "Отрасли"
+
     def __str__(self):
         return '%s' % (self.industry_animal)
 
@@ -152,6 +171,10 @@ class TypeOfIndustry(models.Model):
     name = models.CharField(max_length=50, help_text="Введите Отрасль", verbose_name="Отрасль")
     objects = models.Manager()
 
+    class Meta:
+        verbose_name = "Тип Отрасли"
+        verbose_name_plural = "Типы Отрасли"
+
     def __str__(self):
         return '%s' % (self.name)
 
@@ -159,6 +182,10 @@ class TypeOfIndustry(models.Model):
 class BirdsType(models.Model):
     name = models.CharField(max_length=200, help_text="Введите тип птицы", verbose_name="Птица")
     objects = models.Manager()
+
+    class Meta:
+        verbose_name = "Тип птицы"
+        verbose_name_plural = "Типы птицы"
 
     def __str__(self):
         return '%s' % (self.name)
