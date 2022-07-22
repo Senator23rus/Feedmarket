@@ -3,6 +3,7 @@ from django.urls import path, include, re_path
 from catalog import views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 from . views import *
@@ -14,6 +15,18 @@ urlpatterns = [
     path('api/v1/good_create/', GoodAPICreate.as_view()),
     path('api/v1/good/<int:pk>/', GoodAPIUpdate.as_view()),
     path('api/v1/good_delete/<int:pk>/', GoodAPIDetail.as_view()),
+
+#path to djoser end points
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+
+
+# gets all user profiles and create a new profile
+    path("all-profiles", UserProfileListCreateView.as_view(), name="all-profiles"),
+
+    
+# retrieves profile details of the currently logged in user
+    path("profile/<int:pk>", UserProfileDetailView.as_view(), name="profile"),
 
 
 # JWT tokens

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from .models import *
 
 class GoodSerializer(serializers.ModelSerializer):
@@ -6,3 +7,10 @@ class GoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Good
         fields = '__all__'
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    user=serializers.StringRelatedField(read_only=True)
+    class Meta:
+        model = UserProfile
+        fields='__all__'
