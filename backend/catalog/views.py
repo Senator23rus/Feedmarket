@@ -35,7 +35,7 @@ class GoodAPIListPagination(PageNumberPagination):
 
 
 class GoodAPIList(generics.ListCreateAPIView):
-    """Вывод списка товаров"""
+    """Вывод списка товаров с возможностью добавления новых если Админ"""
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
     permission_classes = (IsAdminOrReadOnly, )
@@ -44,12 +44,23 @@ class GoodAPIList(generics.ListCreateAPIView):
     filterset_class = GoodFilter
 
 
+class GoodAPICreate(generics.CreateAPIView):
+    """Добавление новых товаров если Админ"""
+    queryset = Good.objects.all()
+    serializer_class = GoodSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+    pagination_class = GoodAPIListPagination
+
+
 class GoodAPIUpdate(generics.RetrieveUpdateAPIView):
+    """Изменение конкретного товара если Создатель"""
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
     permission_classes = (IsOwnerOrReadOnly, )
 
+
 class GoodAPIDetail(generics.RetrieveDestroyAPIView):
+    """Удаление конкретного товара если Создатель"""
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
     permission_classes = (IsOwnerOrReadOnly, )
