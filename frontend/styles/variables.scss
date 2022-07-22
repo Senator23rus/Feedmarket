@@ -2,6 +2,7 @@
 /* text */
 
 %h1{
+  margin: 2px 0;
   font-family: 'Gilroy',sans-serif;
   font-size: 48px;
   line-height: 52px;
@@ -53,8 +54,8 @@
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1em;
+  line-height: 1.5em;
 }
 %text_underline {
   font-family: 'Roboto',sans-serif;
@@ -83,8 +84,8 @@
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75em;
+  line-height: 1em;
 }
 %text_mobile_semibold {
   font-family: 'Roboto',sans-serif;
@@ -113,7 +114,7 @@
 }
 /* colors */
 
-$base-green: rgba(13, 149, 69, 0.8);
+$base-green: #0D9545;
 $base-green-35: rgba(16, 150, 72, 0.3);;
 $yellow:#DCC600;
 $base-yellow:#FF7A00;
@@ -130,6 +131,7 @@ $disabled-text:#7E7E7E;
 $disabled-background:#B0B0B0;
 $disabled-chips:#B0B0B0;
 $input-text:#999999;
+$gray:#9FA1A5;
 $inputs:#F2FAF5;
 $main-slider-background:linear-gradient(360deg, rgba(0, 0, 0, 0.7) 2.02%, rgba(0, 0, 0, 0) 61.73%);;
 $landing-page-background: #DFE6EE;
@@ -137,6 +139,8 @@ $black2: #484C52;
 $green-btn:#0D9545;
 $green_link:#005624;
 $mute:#787E87;
+
+$chips-background:#C8C8C8;
 
 $RadioAndCheckboxGreen: #0D9545;
 $RadioAndCheckboxGrey: #BFC5D2;
