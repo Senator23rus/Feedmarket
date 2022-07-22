@@ -100,7 +100,7 @@ const Index = () => {
 								<div className="select">
 									<Input />
 								</div>
-								<div className="chips"/>
+								<div className="chips" />
 							</div>
 							<div className="catalog-page-wrap__cards">as</div>
 						</div>
