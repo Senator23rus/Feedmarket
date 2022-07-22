@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/drf-auth/', include('rest_framework.urls')),
     path('api/v1/good/', GoodAPIList.as_view()),
+    path('api/v1/good_create/', GoodAPICreate.as_view()),
     path('api/v1/good/<int:pk>/', GoodAPIUpdate.as_view()),
     path('api/v1/good_delete/<int:pk>/', GoodAPIDetail.as_view()),
 
