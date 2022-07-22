@@ -4,6 +4,7 @@ import NextBreadcrumbs, { useAppContext } from 'components/common/breadcrumbs';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import Input from 'UI/Input/input';
 
 const Index = () => {
 	const { getTextGenerator, getDefaultTextGenerator } = useAppContext();
@@ -93,7 +94,17 @@ const Index = () => {
 							</div>
 						</div>
 					</div>
-					<div className="catalog-page__wrapper-content" />
+					<div className="catalog-page__wrapper-content catalog-page-wrap">
+						<div className="catalog-page-wrap__wrapper-cards">
+							<div className="catalog-page-wrap__filters_card">
+								<div className="select">
+									<Input />
+								</div>
+								<div className="chips"/>
+							</div>
+							<div className="catalog-page-wrap__cards">as</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</Layout>
