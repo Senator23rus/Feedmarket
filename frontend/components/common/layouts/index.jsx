@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react';
 import Slide from '@mui/material/Slide';
 import AppBar from '@mui/material/AppBar';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import React from 'react';
+
+/**
+ *
+ * @type {React.Context<{getTextGenerator,getDefaultTextGenerator}>}
+ */
 
 /**
  * @description Компонент обертка для скрытия навигационной панели
@@ -56,7 +62,7 @@ const Layout = ({ children }) => {
 	return (
 		<div className={'app'}>
 			<HideOnScroll target={target}>
-				<AppBar className="app__navbar nav-wrapper">
+				<AppBar className="app__navbar">
 					<NavBar />
 				</AppBar>
 			</HideOnScroll>
