@@ -13,7 +13,12 @@ import classes from './checkbox.module.scss';
 const Checkbox = ({ groupChecked, children, ...other }) => {
 	return (
 		<label className={classes.wrapper}>
-			<input type="checkbox" {...other} className={classNames(classes.customCheckbox)} />
+			<input
+				readOnly={true}
+				type="checkbox"
+				{...other}
+				className={classNames(classes.customCheckbox)}
+			/>
 			<span className={classNames(classes.view, !groupChecked || classes.groupChecked)} />
 			<span className={classes.child}>{children}</span>
 		</label>

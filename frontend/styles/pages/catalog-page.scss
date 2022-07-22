@@ -2,6 +2,7 @@
 
 .catalog-page{
   padding-top: 72px;
+  padding-bottom: 100px;
   &__header{
     display: flex;
     flex-direction: column;
@@ -16,13 +17,17 @@
     margin-top: 52px;
     grid-template-columns: repeat(12,1fr);
     grid-auto-rows: min-content;
+    position: relative;
     gap: 26px;
     &-filter{
       @extend .col-3;
+      position: sticky;
+      top: 0;
       background: white;
       border-radius: 16px;
       display: flex;
       flex-direction: column;
+      align-self: start !important;
       padding: 32px;
       gap: 32px;
     }
@@ -94,5 +99,8 @@
     grid-template-columns: repeat(9, 1fr);
     grid-auto-rows: min-content;
     gap: 24px;
+    .card{
+      @extend .col-3;
+    }
   }
 }

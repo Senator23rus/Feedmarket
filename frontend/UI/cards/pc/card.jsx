@@ -1,6 +1,7 @@
 import classes from './card.module.scss';
 import Image from 'next/image';
 import CustomLink from 'UI/custom-link';
+import classNames from 'classnames';
 
 /**
  * @description Под экраны desktop: Карточка товара под все страницы
@@ -27,9 +28,10 @@ const Card = ({
 	weight,
 	price,
 	click,
+	className,
 }) => {
 	return (
-		<CustomLink className={classes.card} href={reference} as={as}>
+		<CustomLink className={classNames(classes.card, className)} href={reference} as={as}>
 			<div className={classes.card__img_wrapper}>
 				<div className={classes.card__img}>
 					<Image src={img} width={170} height={241} alt={'image'} />

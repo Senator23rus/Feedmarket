@@ -5,6 +5,10 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import Input from 'UI/Input/input';
+import ChipsButton from 'UI/chipsButton';
+import Checkbox from 'UI/checkbox';
+import Card from 'UI/cards/pc/card';
+import cards from 'mock/n_cards.json';
 
 const Index = () => {
 	const { getTextGenerator, getDefaultTextGenerator } = useAppContext();
@@ -12,7 +16,23 @@ const Index = () => {
 
 	const [filters, setFilters] = useState({
 		types: [],
+		brand: [
+			{ id: 1, name: 'VitoMex', active: false },
+			{ id: 2, name: 'Wiskas', active: false },
+			{ id: 3, name: 'Pedegree', active: false },
+			{ id: 5, name: 'Фруто-няня', active: false },
+			{ id: 6, name: 'Monster', active: false },
+			{ id: 7, name: 'IezeN', active: false },
+		],
 	});
+
+	const [chips, setChips] = useState([]);
+
+	const changeBrand = (itemBrand, index) => {
+		const brand = JSON.parse(JSON.stringify(filters.brand));
+		brand[index] = { ...itemBrand, active: !itemBrand.active };
+		setFilters(prevState => ({ ...prevState, brand }));
+	};
 
 	const catalogState = useSelector(/**@param {StateApp} state*/ state => state.catalog);
 
@@ -35,7 +55,46 @@ const Index = () => {
 		newTypes[index] = { ...newTypes[index], active: !newTypes[index].active };
 		setFilters(prevState => ({ ...prevState, types: newTypes }));
 	};
-	console.log(filters);
+
+	const deleteChips = item => {
+		const newFilters = JSON.parse(JSON.stringify(filters));
+		for (const filtersKey in newFilters) {
+			if (newFilters.hasOwnProperty(filtersKey)) {
+				const temp = newFilters[filtersKey].find(_ => _.name === item.name);
+				if (temp) {
+					newFilters[filtersKey] = newFilters[filtersKey].map(_ =>
+						_.id === temp.id ? { ..._, active: false } : { ..._ }
+					);
+				}
+			}
+		}
+		setFilters(newFilters);
+	};
+
+	const clearAllFilters = () => {
+		const newFilters = JSON.parse(JSON.stringify(filters));
+		for (const filtersKey in newFilters) {
+			if (newFilters.hasOwnProperty(filtersKey)) {
+				newFilters[filtersKey] = newFilters[filtersKey].map(_ => ({
+					..._,
+					active: false,
+				}));
+			}
+		}
+		setFilters(newFilters);
+	};
+
+	useEffect(() => {
+		const arr = [];
+		for (const filtersKey in filters) {
+			const temp = filters[filtersKey].filter(_ => _.active);
+			arr.push(temp);
+		}
+		if (arr.length) {
+			setChips(arr.flat());
+		}
+	}, [filters.brand, filters.types]);
+
 	return (
 		<Layout>
 			<div className={'catalog-page'}>
@@ -80,17 +139,30 @@ const Index = () => {
 							</div>
 						</div>
 						<div className="filter-block">
-							<p className="title">тип</p>
+							<p className="title">Тип</p>
 							<div className={'items'}>
-								{!!filters.types.length &&
-									filters.types.map((_, index) => (
-										<span
-											onClick={() => changeActiveType(index)}
-											className={`link ${_.active ? 'active-link' : ''}`}
-											key={index}>
-											{_.name}
-										</span>
-									))}
+								{filters.types.map((_, index) => (
+									<span
+										onClick={() => changeActiveType(index)}
+										className={`link ${_.active ? 'active-link' : ''}`}
+										key={index}>
+										{_.name}
+									</span>
+								))}
+							</div>
+						</div>
+						<div className="filter-block">
+							<p className="title">Бренд</p>
+							<div className={'items'}>
+								{filters.brand.map((_, index) => (
+									<Checkbox
+										onClick={() => changeBrand(_, index)}
+										key={_.id}
+										groupChecked={false}
+										checked={_.active}>
+										{_.name}
+									</Checkbox>
+								))}
 							</div>
 						</div>
 					</div>
@@ -98,11 +170,47 @@ const Index = () => {
 						<div className="catalog-page-wrap__wrapper-cards">
 							<div className="catalog-page-wrap__filters_card">
 								<div className="select">
-									<Input />
+									<Input label={'тут будет селект'} size={'small'} />
 								</div>
-								<div className="chips" />
+								<div className="chips">
+									{!!chips.length && (
+										<>
+											{chips.map((_, index) => (
+												<ChipsButton
+													key={index}
+													onDelete={() => deleteChips(_)}
+													active={_.active}>
+													{_.name}
+												</ChipsButton>
+											))}
+											<ChipsButton onClick={clearAllFilters} active={false}>
+												Очистить
+											</ChipsButton>
+										</>
+									)}
+								</div>
 							</div>
-							<div className="catalog-page-wrap__cards">as</div>
+							<div className="catalog-page-wrap__cards">
+								{cards.map((card, i) => {
+									return (
+										<Card
+											key={i}
+											className={'card'}
+											reference={`/catalog/${card.id}`}
+											img={card.image}
+											title={card.title}
+											animal={card.form}
+											percentage={card.inputPercentage}
+											weight={card.weight}
+											price={card.price}
+											click={event => {
+												event.preventDefault();
+												alert('TECT');
+											}}
+										/>
+									);
+								})}
+							</div>
 						</div>
 					</div>
 				</div>

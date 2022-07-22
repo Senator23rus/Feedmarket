@@ -1,0 +1,81 @@
+@import "./styles/variables";
+
+
+.right__price{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: sticky;
+  width: 472px;
+  height: 244px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 52px 32px;
+  &__text{
+    @extend %h1;
+    color: $black;
+    padding-bottom: 25px;
+  }
+}
+.card{
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    width: 259px;
+    padding: 20px 16px;
+    background: $green-btn;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    border: none;
+    &_inner{
+      display: flex;
+      text-align: center;
+    }
+    &_amount {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      width: 176px;
+      height: 64px;
+      border: 2px solid $green-btn;
+      border-radius: 8px;
+    }
+    &_decr{
+      cursor: pointer;
+    }
+    &_incr{
+      cursor: pointer;
+    }
+    &_number{
+      @extend %text_bold;
+      color: $green-btn;
+    }
+    &_long{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 295px;
+      height: 48px;
+      background: #FF7A00;
+      border-radius: 8px;
+      @extend %text_bold;
+      color: #FFFFFF;
+    }
+    &_transition{
+      padding: 16px;
+      width: 116px;
+      height: 64px;
+      margin-right: 24px;
+      background: #FF7A00;
+      border-radius: 8px;
+      @extend %caption;
+      color: #FFFFFF;
+    }
+  }
+}

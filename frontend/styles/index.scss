@@ -9,8 +9,6 @@
   justify-content: center;
   grid-template-columns: 1fr;
   grid-template-rows: 204px 1fr;
-  position: relative;
-  overflow-x: hidden;
   &__navbar{
     box-shadow: $box-shadow;
     position: sticky;
