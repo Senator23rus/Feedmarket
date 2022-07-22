@@ -18,7 +18,7 @@
     grid-auto-rows: min-content;
     gap: 26px;
     &-filter{
-      @extend .col-2;
+      @extend .col-3;
       background: white;
       border-radius: 16px;
       display: flex;
@@ -27,7 +27,7 @@
       gap: 32px;
     }
     &-content{
-      @extend .col-10;
+      @extend .col-9;
     }
   }
   .link{
