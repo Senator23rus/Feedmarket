@@ -5,7 +5,7 @@ import CardGrid from 'components/common/cards_grid/cards_grid';
 import Recomend from 'components/pages/home/recomend/recomend';
 
 const Test = ({ cards }) => {
-	console.log(cards);
+
 	return (
 		<Layout>
 			<div className="home">
@@ -37,7 +37,6 @@ const Test = ({ cards }) => {
 	);
 };
 export async function getStaticProps() {
-	console.log(cards);
 	return {
 		props: cards,
 	};

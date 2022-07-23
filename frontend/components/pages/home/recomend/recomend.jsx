@@ -26,7 +26,7 @@ const Recomend = ({ ad, cards }) => {
 						if (i < 4) {
 							return (
 								<Card
-									key={i}
+									key={card.id}
 									reference={`/catalog/${card.id}`}
 									img={card.image}
 									title={card.title}

@@ -114,7 +114,6 @@ export function AppWrapper({ children }) {
 	}, []);
 
 	const getTextGenerator = React.useCallback((param, query) => {
-		console.log('query>>>', query);
 		return {
 			card_id: () => cards.find(_ => _.id === query.card_id).title,
 		}[param];

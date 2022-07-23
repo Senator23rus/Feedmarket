@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const images = [
-	{ id: 1, src: '/card/PreMix-Pigs.jpg' },
-	{ id: 2, src: '/card/PreMix-Layers.jpg' },
-	{ id: 3, src: '/card/PreMix-Poultry.jpg' },
-	{ id: 4, src: '/card/PreMix-Ruminant.jpg' },
+	{ id: 1, src: '/card/brown_card.svg' },
+	{ id: 2, src: '/card/green_card.svg' },
+	{ id: 3, src: '/card/pink_card.svg' },
+	{ id: 4, src: '/card/orange.svg' },
 ];
 
 const Carousel = () => {
@@ -20,15 +20,17 @@ const Carousel = () => {
 			setState(prevState => ({ ...prevState, active: 0 }));
 		}
 	};
+	
 	const prevImage = () => {
 		const active = state.active - 1;
-		console.log(state.images[-1]);
+
 		if (active < 0) {
-			setState(prevState => ({ ...prevState, active: prevState.images - 1 }));
+			setState(prevState => ({ ...prevState, active: prevState.images.length - 1 }));
 		} else {
 			setState(prevState => ({ ...prevState, active }));
 		}
 	};
+
 	const changeActiveImage = index => {
 		setState(prevState => ({ ...prevState, active: index }));
 	};
@@ -62,40 +64,15 @@ const Carousel = () => {
 
 				{state.images.map((_, index) => (
 					<div
-						style={{
-							border: index === state.active ? '1px solid red' : '',
-							cursor: 'pointer',
-						}}
 						key={_.id}
-						className={classes.carousel__bottom__img}
+						className={`${classes.carousel__bottom__img} 
+							${index === state.active ?  
+								classes.carousel__bottom__img_active : ''}`
+						}
 						onClick={() => changeActiveImage(index)}>
 						<Image src={_.src} width={45} height={64} alt={'img_product'} />
 					</div>
 				))}
-				{/*<div className={classes.carousel__bottom__img}>*/}
-				{/*	<Image*/}
-				{/*		src={'/card/PreMix-layers.jpg'}*/}
-				{/*		width={45}*/}
-				{/*		height={64}*/}
-				{/*		alt={'img_product'}*/}
-				{/*	/>*/}
-				{/*</div>*/}
-				{/*<div className={classes.carousel__bottom__img}>*/}
-				{/*	<Image*/}
-				{/*		src={'/card/PreMix-Poultry.jpg'}*/}
-				{/*		width={45}*/}
-				{/*		height={64}*/}
-				{/*		alt={'img_product'}*/}
-				{/*	/>*/}
-				{/*</div>*/}
-				{/*<div className={classes.carousel__bottom__img}>*/}
-				{/*	<Image*/}
-				{/*		src={'/card/PreMix-Ruminant.jpg'}*/}
-				{/*		width={45}*/}
-				{/*		height={64}*/}
-				{/*		alt={'img_product'}*/}
-				{/*	/>*/}
-				{/*</div>*/}
 				<div className={classes.carousel__bottom__chevron_right} onClick={nextImage}>
 					<svg
 						width="16"

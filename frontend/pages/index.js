@@ -23,7 +23,6 @@ export default function Home({ cards }) {
 	);
 }
 export async function getStaticProps() {
-	console.log(cards);
 	return {
 		props: { cards },
 	};
