@@ -18,7 +18,7 @@ admin.site.register(BirdsType)
 @admin.register(Good)
 class GoodAdmin(admin.ModelAdmin):
     list_display = ('name', 'product', 'animal', 'price', 'user', 'date', 'summary', 'blending')
-    fields = ('name', 'product', 'animal', 'price', 'user', 'date', 'summary', 'blending')
+    fields = ('name', 'product', 'image', 'animal', 'price', 'user', 'date', 'summary', 'blending')
     list_filter = ('price', 'date', 'animal', 'date')
 @admin.register(Premix)
 class PremixAdmin(admin.ModelAdmin):
@@ -46,20 +46,24 @@ class BVMKAdmin(admin.ModelAdmin):
 
 @admin.register(Pig)
 class PigAdmin(admin.ModelAdmin):
-    list_display = ('industry', 'animal_age_min', 'animal_age_max', 'weight_min', 'weight_max', 'animal_description')
-    fields = ('industry', 'animal_age_min', 'animal_age_max', 'weight_min', 'weight_max', 'animal_description')
+    list_display = ('industry', 'animal_description', 'animal_day_min', 'animal_day_max', 'animal_month_min', 'animal_month_max',
+                    'weight_min', 'weight_max')
+    fields = ['industry', ('animal_day_min', 'animal_day_max'), ('animal_month_min', 'animal_month_max'),
+              ('weight_min', 'weight_max'), 'animal_description']
     list_filter = ('animal_description', )
 
 @admin.register(Birds)
 class BirdsAdmin(admin.ModelAdmin):
-    list_display = ('industry', 'animal_age_min', 'animal_age_max', 'weight_min', 'weight_max',
-                    'animal_type', 'animal_description')
-    fields = ('industry', 'animal_age_min', 'animal_age_max', 'weight_min', 'weight_max', 'animal_type',
-              'animal_description')
+    list_display = ('industry', 'animal_description', 'animal_day_min', 'animal_day_max', 'animal_month_min', 'animal_month_max',
+                    'weight_min', 'weight_max', 'animal_type')
+    fields = ['industry', ('animal_day_min', 'animal_day_max'), ('animal_month_min', 'animal_month_max'),
+              ('weight_min', 'weight_max'), 'animal_type', 'animal_description']
     list_filter = ('animal_description', 'animal_type')
 
 @admin.register(Cows)
 class CowsAdmin(admin.ModelAdmin):
-    list_display = ('industry', 'animal_age_min', 'animal_age_max', 'weight_min', 'weight_max', 'animal_description')
-    fields = ('industry', 'animal_age_min', 'animal_age_max', 'weight_min', 'weight_max', 'animal_description')
+    list_display = ('industry', 'animal_description', 'animal_day_min', 'animal_day_max', 'animal_month_min', 'animal_month_max',
+                    'weight_min', 'weight_max')
+    fields = ['industry', ('animal_day_min', 'animal_day_max'), ('animal_month_min', 'animal_month_max'),
+              ('weight_min', 'weight_max'), 'animal_description']
     list_filter = ('animal_description', )
