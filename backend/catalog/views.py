@@ -7,6 +7,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from .permissions import *
+from .models import UserProfile
 from .serializers import *
 from .service import *
 
@@ -65,3 +66,17 @@ class GoodAPIDetail(generics.RetrieveDestroyAPIView):
     serializer_class = GoodSerializer
     permission_classes = (IsOwnerOrReadOnly, )
 
+class UserProfileListCreateView(generics.ListCreateAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        serializer.save(user=user)
+
+
+class UserProfileDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsOwnerProfileOrReadOnly,IsAuthenticated]
