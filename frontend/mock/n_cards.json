@@ -61,7 +61,7 @@
     },
     {
         "id": "3",
-        "image": "/card/pink_card.svg",
+        "image": "/card/green_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
             "id": 1,
@@ -91,7 +91,7 @@
     },
     {
         "id": "4",
-        "image": "/card/brown_card.svg",
+        "image": "/card/orange_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
             "id": 1,

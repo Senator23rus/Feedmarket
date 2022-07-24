@@ -1,5 +1,11 @@
 import classes from './list_characteristic.module.scss';
-
+/**
+ * @description Под экраны desktop: Список характеристик товара
+ *
+ * @param {(function():void)} scrollToRef - скролл до блока Подробные характеристики
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const ListCharacteristic = ({ scrollToRef }) => {
 	return (
 		<div className={classes.text__wrapper}>

@@ -2,44 +2,38 @@ import classes from './carousel.module.scss';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const images = [
-	{ id: 1, src: '/card/brown_card.svg' },
-	{ id: 2, src: '/card/green_card.svg' },
-	{ id: 3, src: '/card/pink_card.svg' },
-	{ id: 4, src: '/card/orange.svg' },
-];
-
-const Carousel = () => {
-	const [state, setState] = useState({ images, active: 0 });
+const Carousel = ({cards}) => {
+	const [index, setIndex] = useState({active: 0});
+	const [state, setState] = useState({cards: cards.slice(0, 4)});
 
 	const nextImage = () => {
-		const active = state.active + 1;
-		if (state.images[active]) {
-			setState(prevState => ({ ...prevState, active }));
+		const active = index.active + 1;
+		if (index.active < cards.length-1) {
+			setIndex(prevState => ({ ...prevState, active}));
 		} else {
-			setState(prevState => ({ ...prevState, active: 0 }));
+			setIndex(prevState => ({ ...prevState, active: 0 }));
 		}
 	};
 	
 	const prevImage = () => {
-		const active = state.active - 1;
+		const active = index.active - 1;
 
 		if (active < 0) {
-			setState(prevState => ({ ...prevState, active: prevState.images.length - 1 }));
+			setIndex(prevState => ({ ...prevState, active:cards.length - 1 }));
 		} else {
-			setState(prevState => ({ ...prevState, active }));
+			setIndex(prevState => ({ ...prevState, active }));
 		}
 	};
 
 	const changeActiveImage = index => {
-		setState(prevState => ({ ...prevState, active: index }));
+		setIndex(prevState => ({ ...prevState, active: index }));
 	};
 
 	return (
 		<div className={classes.product__carousel}>
 			<div className={classes.product__carousel__img}>
 				<Image
-					src={state.images[state.active].src}
+					src={cards[index.active].image}
 					width={240}
 					height={340}
 					alt={'img_product'}
@@ -61,16 +55,15 @@ const Carousel = () => {
 						/>
 					</svg>
 				</div>
-
-				{state.images.map((_, index) => (
+				{state.cards.map((card, i) => (
 					<div
-						key={_.id}
+						key={card.id}
 						className={`${classes.carousel__bottom__img} 
-							${index === state.active ?  
+							${i == index.active ?  
 								classes.carousel__bottom__img_active : ''}`
 						}
-						onClick={() => changeActiveImage(index)}>
-						<Image src={_.src} width={45} height={64} alt={'img_product'} />
+						onClick={() => changeActiveImage(i)}>
+						<Image src={card.image} width={45} height={64} alt={'img_product'} />
 					</div>
 				))}
 				<div className={classes.carousel__bottom__chevron_right} onClick={nextImage}>

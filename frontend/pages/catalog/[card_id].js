@@ -50,7 +50,7 @@ const CardPage = ({ card, cards }) => {
 				<div className="main__grid" ref={containerGrid}>
 					<div className="main__grid__left">
 						<div className="product__title">
-							<Carousel />
+							<Carousel cards={cards}/>
 							<ListCharacteristic scrollToRef={scrollToRef} />
 						</div>
 						<Recipe card={card}/>
