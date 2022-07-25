@@ -93,6 +93,7 @@ const Index = () => {
 		if (arr.length) {
 			setChips(arr.flat());
 		}
+		//eslint-disable-next-line
 	}, [filters.brand, filters.types]);
 
 	return (
@@ -183,7 +184,7 @@ const Index = () => {
 													{_.name}
 												</ChipsButton>
 											))}
-											<ChipsButton onClick={clearAllFilters} active={false}>
+											<ChipsButton onDelete={()=>{}} onClick={clearAllFilters} active={false}>
 												Очистить
 											</ChipsButton>
 										</>
@@ -219,7 +220,10 @@ const Index = () => {
 	);
 };
 
-export function getStaticProps(ctx) {
+export async function getServerSideProps({query,params}) {
+
+	console.log('query',query)
+
 	return {
 		props: {},
 	};

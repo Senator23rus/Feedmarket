@@ -141,12 +141,12 @@ const CardPage = ({ card, cards }) => {
 					<div
 						style={{
 							...(padding && {
-								paddingTop: 53,
+								paddingTop: 223,
 								transition: 'padding linear 200ms',
 							}),
 						}}
 						className={classes.main__grid__right}>
-						<PriseTag />
+						<PriseTag price={card.price} />
 					</div>
 				</div>
 			</div>
