@@ -1,7 +1,7 @@
-import { counterReducer } from 'store/reducers/counter-reducer';
 import { combineReducers } from 'redux';
+import { catalogReducer } from 'store/reducers/catalog-reducer';
 
 const reducers = combineReducers({
-	counter: counterReducer,
+	catalog: catalogReducer,
 });
 export default reducers;

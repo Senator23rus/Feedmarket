@@ -18,9 +18,9 @@
       box-shadow: 0 0 1px 2px $base-green ;
     }
     &:disabled{
-      border:2px solid #787E87;
+      border:2px solid $mute;
       background: #9A9EA5;
-      color:#787E87;
+      color:$mute;
     }
   }
   &__green{
@@ -43,22 +43,24 @@
     }
   }
   &__yellow{
-    background: #F3DB00;
+    background: $base-yellow;
     border:none;
-    color:#414141;
+    color:$white;
     &:hover{
-      background: rgba(243, 219, 0, 0.8);
+      background: rgba(255, 122, 0, 0.8);
+      color:$black;
     }
     &:active{
-      background: #DCC600;
+      background: $yellow;
+      color: $black;
     }
     &:focus{
       box-shadow: 0 0 1px 2px rgba(65, 65, 65, 0.33); ;
     }
     &:disabled{
-      border:2px solid #787E87;
+      border:2px solid $mute;
       background: #9A9EA5;
-      color:#787E87;
+      color:$mute;
     }
   }
 }
@@ -82,7 +84,7 @@
   }
   &__m{
     @extend %text_bold;
-    min-width: 152;
+    min-width: 152px;
     height: 56px;
     padding: 12px 16px;
     gap: 16px;

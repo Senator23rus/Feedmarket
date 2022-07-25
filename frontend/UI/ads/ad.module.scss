@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.ad__block {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    &_large {
+        width: 1464px;
+        height: 328px;
+        @extend %ad;
+    }
+
+    &_medium {
+        width: 1092px;
+        height: 328px;
+        @extend %ad;
+    }
+
+    &_small {
+        width: 1092px;
+        height: 272px;
+        @extend %ad;
+    }
+
+    &_vertical {
+        width: 346px;
+        height: 960px;
+        @extend %ad;
+    }
+}
