@@ -23,6 +23,7 @@ const Paginations = () => {
 
     return (
         <Container>
+            <div style={{width:'100%',height:200,margin:40,display:'flex',justifyContent:'center'}}>
             <Pagination  sx={{
                 ".MuiPaginationItem-previousNext":{
                     padding: '12px 10px',
@@ -36,7 +37,7 @@ const Paginations = () => {
                         border: '2px solid #7E7E7E',
                     }},
                     ".MuiPaginationItem-text":{
-                        fontFamily: 'Roboto',
+                        fontFamily: 'Roboto, sans-serif',
                         fontStyle: 'normal',
                         fontWeight: '700',
                         fontSize: '12px',
@@ -50,8 +51,10 @@ const Paginations = () => {
                         background: 'rgba(16, 150, 72, 0.3)',
                         border: '2px solid #0D9545',
                     }    
-        }}  count={10} siblingCount={2}   shape="rounded" />
-        </Container>
+        }}  count={5} siblingCount={2}   shape="rounded" />
+
+            </div>
+        </Container >
     )
 }
 
