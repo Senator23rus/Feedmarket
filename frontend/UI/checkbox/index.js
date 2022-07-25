@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import classes from './checkbox.module.scss';
-import {useState} from "react";
 
 /**
  * @description Компонент Checkbox
@@ -11,17 +10,19 @@ import {useState} from "react";
  * @constructor
  */
 
-const Checkbox = ({groupChecked, children, checked, ...other}) => {
-
-    return (
-        <div>
-            <label className={classes.wrapper}>
-                <input type="checkbox" defaultChecked={checked} {...other} className={classNames(classes.customCheckbox)}/>
-                <span className={classNames(classes.view, !groupChecked || classes.groupChecked)}/>
-                <span className={classes.child}>{children}</span>
-            </label>
-        </div>
-    );
-}
+const Checkbox = ({ groupChecked, children, ...other }) => {
+	return (
+		<label className={classes.wrapper}>
+			<input
+				readOnly={true}
+				type="checkbox"
+				{...other}
+				className={classNames(classes.customCheckbox)}
+			/>
+			<span className={classNames(classes.view, !groupChecked || classes.groupChecked)} />
+			<span className={classes.child}>{children}</span>
+		</label>
+	);
+};
 
 export default Checkbox;

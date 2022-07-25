@@ -32,7 +32,7 @@
   border: 1px solid $RadioAndCheckboxLightGrey;
   border-radius: 4px;
   //margin-right: 0.5em;
-  background: $RadioAndCheckboxWhite no-repeat center center;
+  background: $RadioAndCheckboxAndSelectWhite no-repeat center center;
   background-size: 50% 50%;
   transition: all 0.2s linear;
 }
@@ -72,5 +72,5 @@
 }
 
 .groupChecked:checked:before {
-  background-color: $RadioAndCheckboxWhite;
+  background-color: $RadioAndCheckboxAndSelectWhite;
 }

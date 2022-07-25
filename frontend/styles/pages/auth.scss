@@ -1,0 +1,51 @@
+@import "../variables";
+
+.auth{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 32px;
+  &_title{
+    @extend %h1;
+    color: $black2;
+  }
+}
+.auth-form{
+  max-width: 720px;
+  width: 100%;
+  padding: 52px 124px;
+  background: white;
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  &_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $gray;
+    .title{
+      @extend %h3;
+    }
+    .step{
+      @extend %text;
+    }
+  }
+  &_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  &_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.some{
+  display: flex;align-items: flex-start;
+}

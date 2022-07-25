@@ -1,0 +1,60 @@
+@import "../../../styles/variables";
+
+.list_item {
+  display: block;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px 16px 10px;
+  position: relative;
+  width: 288px;
+  min-height: 220px;
+
+
+
+  &:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: $green-btn;
+    position: absolute;
+    right: 16px;
+  }
+
+  & h4 {
+    font-family: 'Open Sans', sans-serif;
+    @extend %h4;
+    margin:0 0 5px 0;
+  }
+
+  &__descr {
+    margin: 0 0 6px 0;
+    color: $black2;
+    @extend %text_mobile;
+  }
+
+  &__key {
+    @extend %text_mobile;
+    color: $mute;
+  }
+
+  &__title_img {
+    float: right;
+    position: relative;
+    bottom: 26px;
+
+    &_product {
+      float: left;
+      height: 84px;
+      margin-right: 8px;
+
+      & img {
+        height: 100%;
+      }
+    }
+  }
+
+
+}

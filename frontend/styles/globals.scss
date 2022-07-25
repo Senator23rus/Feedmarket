@@ -17,6 +17,8 @@ a {
 
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 input{
   border:none;
@@ -40,10 +42,21 @@ button {
   color: red;
 }
 .app-link:hover{
-  border-bottom: 1px solid black;
+  //border-bottom: 1px solid black;
 }
 .app-link{
   cursor: pointer;
 }
-
-
+.breadcrumb-link{
+  cursor: pointer;
+  color: $base-green;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+.breadcrumbs-separator{
+    width: 4px;
+    border-radius: 50%;
+    height: 4px;
+    background: black;
+}

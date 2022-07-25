@@ -1,7 +1,32 @@
 import NavBar from 'components/common/layouts/nav-bar';
-import Footer from 'components/common/layouts/footer';
-import { useEffect, useRef, useState } from 'react';
-import { func } from 'prop-types';
+import { useEffect, useState } from 'react';
+import Slide from '@mui/material/Slide';
+import AppBar from '@mui/material/AppBar';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import React from 'react';
+
+/**
+ *
+ * @type {React.Context<{getTextGenerator,getDefaultTextGenerator}>}
+ */
+
+/**
+ * @description Компонент обертка для скрытия навигационной панели
+ *
+ * @param children - Шапка сайта
+ * @param target - Прокручиваемый элемент DOM дерева
+ * @returns {JSX.Element}
+ * @constructor
+ */
+function HideOnScroll({ children, target }) {
+	const trigger = useScrollTrigger({ target });
+
+	return (
+		<Slide appear={false} direction="down" in={!trigger}>
+			{children}
+		</Slide>
+	);
+}
 
 /**
  * @description Корневой Layout, содержит основную разметку страницы, одинаковую для нескольких страниц
@@ -24,20 +49,24 @@ import { func } from 'prop-types';
  * @constructor
  */
 const Layout = ({ children }) => {
-	const [navbar, setNavbar] = useState(true);
-
-	function scroll(e) {
-		if (e.deltaY < 1) {
-			setNavbar(true);
-		} else if (e.deltaY > 1) {
-			setNavbar(false);
+	const [target, setTarget] = useState(undefined);
+	useEffect(() => {
+		if (typeof document === 'object') {
+			const node = document?.querySelector('#__next');
+			if (node) {
+				setTarget(node);
+			}
 		}
-	}
+	}, []);
 
 	return (
-		<div onWheel={scroll} className={'app'}>
-			<NavBar show={navbar} />
-			<main className='app__content'>{children}</main>
+		<div className={'app'}>
+			<HideOnScroll target={target}>
+				<AppBar className="app__navbar">
+					<NavBar />
+				</AppBar>
+			</HideOnScroll>
+			<main className="app__content">{children}</main>
 		</div>
 	);
 };
