@@ -12,16 +12,16 @@ const Carousel = ({cards}) => {
     let mountPointWrapper = useRef();
 
     const chevronLeftHandler = (e) => {
-        console.log(Math.abs(+mountPoint.current.style.left.replace('px', '')) + mountPointWrapper.current.clientWidth <= mountPoint.current.clientWidth, Math.abs(+mountPoint.current.style.left.replace('px', '')),
-            mountPointWrapper.current.clientWidth, mountPoint.current.clientWidth)
-        console.log(mountPoint.current.getBoundingClientRect())
-        console.log(cards.length)
+        // console.log(Math.abs(+mountPoint.current.style.left.replace('px', '')) + mountPointWrapper.current.clientWidth <= mountPoint.current.clientWidth, Math.abs(+mountPoint.current.style.left.replace('px', '')),
+        //     mountPointWrapper.current.clientWidth, mountPoint.current.clientWidth)
+        // console.log(mountPoint.current.getBoundingClientRect(), mountPointWrapper.current.getBoundingClientRect())
         if ((Math.abs(+mountPoint.current.style.left.replace('px', '')) + mountPointWrapper.current.clientWidth) <= mountPoint.current.clientWidth)
         {
             mountPoint.current.style.setProperty('left', +mountPoint.current.style.left.replace('px', '') - mountPointWrapper.current.clientWidth - 24 + 'px');
         } else {
-            mountPoint.current.style.setProperty('left', mountPoint.current.clientWidth + mountPointWrapper.current.clientWidth + 'px');
+            mountPoint.current.style.setProperty('left', -mountPoint.current.clientWidth + mountPointWrapper.current.clientWidth + 'px');
         }
+        console.log(mountPoint.current.offsetLeft)
     }
 
     const chevronRightHandler = (e) => {

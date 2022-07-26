@@ -256,6 +256,9 @@ $margin: (($max-width - $container-width) / 2);
   }
 }
 
-.hiden {
+.hidden {
   overflow: hidden;
+  position: relative;
+  margin-left: -$margin;
+  margin-right: -$margin;
 }

@@ -66,8 +66,8 @@ const cards = [
 
 const WelcomePage = () => {
   return (
-      <div className={classes.hiden}>
-          <Layout>
+      <Layout>
+          <div className={classes.hidden}>
               <section className={classes.welcome}>
                   <div className={classes.welcome__title}>
                       <h1><span className={classes.subtitle}>Объединяем бизнес и покупателя</span>
@@ -343,8 +343,8 @@ const WelcomePage = () => {
                       <Button size={'l'} factor={'yellow'}>Написать боту</Button>
                   </div>
               </section>
-          </Layout>
-      </div>
+          </div>
+      </Layout>
   );
 }
 
