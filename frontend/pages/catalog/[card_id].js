@@ -7,6 +7,7 @@ import Carousel from 'UI/carousel/carousel';
 import ListCharacteristic from 'components/list_characteristic/list_characteristic';
 import DatailedCharacteristic from 'components/common/datailed_characteristic/datailed_characteristic';
 import PriseTag from 'UI/price_tag/prise_tag';
+import Paginations from 'UI/pagination/pagination';
 
 const CardPage = ({ card, cards }) => {
 	const { getTextGenerator, getDefaultTextGenerator } = useAppContext();
@@ -150,6 +151,7 @@ const CardPage = ({ card, cards }) => {
 					</div>
 				</div>
 			</div>
+			<Paginations/>
 			{/*<Recomend cards={cards} />*/}
 		</Layout>
 	);
