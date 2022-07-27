@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: $container_width;
-  @media screen and(max-width: $container_width){
+  @media screen and (max-width: 1464px){
     padding: 0 15px;
   }
   &__links{
