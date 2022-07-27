@@ -4,22 +4,25 @@ import { useRouter } from 'next/router';
 /**
  * @description Кастомная ссылка для оборачивания Link от Next'а
  *
- * @param {import('next/link').LinkProps} props
- * @property {string} [props.active]
+ * @param {import('next/link').LinkProps & React.HTMLAttributes<HTMLSpanElement> & {[active]:string}} props
  * @returns {JSX.Element}
  * @constructor
  */
 const CustomLink = props => {
 	const { pathname } = useRouter();
-	const { href, className, active, children } = props;
+	const { href, className, active, children, ...other } = props;
 	if (pathname === href) {
 		return (
-			<span className={`${className || 'app-link'} ${active || ''}`}>{children}</span>
+			<span className={`${className || 'app-link'} ${active || ''}`} {...other}>
+				{children}
+			</span>
 		);
 	}
 	return (
 		<Link href={href}>
-			<a className={className || 'app-link'}>{children}</a>
+			<a className={className || 'app-link'} {...other}>
+				{children}
+			</a>
 		</Link>
 	);
 };

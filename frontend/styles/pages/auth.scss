@@ -45,6 +45,14 @@
     justify-content: space-between;
     align-items: center;
   }
+  &__link{
+    @extend %text;
+    color: $base-yellow;
+    cursor: pointer;
+    &:hover{
+    text-decoration: underline;
+  }
+  }
 }
 .some{
   display: flex;align-items: flex-start;
