@@ -17,7 +17,7 @@ $margin: (($max-width - $container-width) / 2);
   color: $black;
 
   &.sectionTitle_white {
-    color: white;
+    color: $RadioAndCheckboxAndSelectWhite;
   }
 }
 
@@ -51,7 +51,7 @@ $margin: (($max-width - $container-width) / 2);
   }
 
   .characterItem {
-    background: #DFE6EE;
+    background: $RadioAndCheckboxLightGrey;
     border-radius: 20px;
     padding: 52px 26px;
     display: flex;
@@ -81,7 +81,7 @@ $margin: (($max-width - $container-width) / 2);
     z-index: 0;
     position: absolute;
     left: -$margin;
-    width: calc(100% + $margin * 2 - 28px);
+    width: calc(100% + $margin * 2);
     height: 100%;
 
     & .image__wrapper {
@@ -98,7 +98,7 @@ $margin: (($max-width - $container-width) / 2);
 
     & .stepsBody__title {
       @extend %h1;
-      color: white;
+      color: $RadioAndCheckboxAndSelectWhite;
       margin-bottom: 92px;
     }
 
@@ -106,7 +106,7 @@ $margin: (($max-width - $container-width) / 2);
       p {
         margin: 0;
         @extend %h3;
-        color: white;
+        color: $RadioAndCheckboxAndSelectWhite;
 
         span {
           display: block;
@@ -137,17 +137,17 @@ $margin: (($max-width - $container-width) / 2);
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
           border-radius: 50%;
-          border: 2px solid white;
+          border: 2px solid $RadioAndCheckboxAndSelectWhite;
           background: transparent;
           @extend %h2;
-          color: white;
+          color: $RadioAndCheckboxAndSelectWhite;
           padding: 0 40px;
         }
 
         .stepsBody__stepConnections {
           width: 100%;
           height: 2px;
-          background: white;
+          background: $RadioAndCheckboxAndSelectWhite;
         }
       }
     }
@@ -175,7 +175,7 @@ $margin: (($max-width - $container-width) / 2);
   }
 
   & .schemesOfWork__scheme {
-    background: #DFE6EE;
+    background: $RadioAndCheckboxLightGrey;
     border-radius: 20px;
     padding: 52px 24px 12px;
 
@@ -250,7 +250,7 @@ $margin: (($max-width - $container-width) / 2);
 
 .footer__text {
   @extend %h3;
-  color: white;
+  color: $RadioAndCheckboxAndSelectWhite;
   span {
     color: $base-yellow;
   }
@@ -258,7 +258,53 @@ $margin: (($max-width - $container-width) / 2);
 
 .hidden {
   overflow: hidden;
-  position: relative;
   margin-left: -$margin;
-  margin-right: -$margin;
+  margin-right: -($margin);
+  max-width: $max-width;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1920px) {
+  .hidden {
+    overflow: hidden;
+    margin-left: -$margin;
+    margin-right: -($margin - 30px);
+    max-width: 1920px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+.comments__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 52px;
+
+  .chevrons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .chevron {
+      height: 48px;
+      width: 48px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      background: $ChevronBackground;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:first-child {
+        margin-right: 12px;
+      }
+    }
+  }
 }

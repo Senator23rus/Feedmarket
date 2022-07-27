@@ -3,11 +3,6 @@
 .card {
   flex: 0 0 100%;
   max-width: 472px;
-  margin-right: 24px;
-
-  &:last-child {
-    margin-right: 0;
-  }
 }
 
 .comment__wrapper {
