@@ -11,8 +11,11 @@ from . views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/drf-auth/', include('rest_framework.urls')),
-    path('api/v1/good/', GoodAPIList.as_view()),
+    path('api/v1/good_list/', GoodAPIList.as_view()),
+    path('api/v1/industry_list/', IndustryAPIList.as_view()),
     path('api/v1/good_create/', GoodAPICreate.as_view()),
+    path('api/v1/product_list_create/', ProductAPICreate.as_view()),
+    path('api/v1/animal_list_create/', AnimalAPICreate.as_view()),
     path('api/v1/good/<int:pk>/', GoodAPIUpdate.as_view()),
     path('api/v1/good_delete/<int:pk>/', GoodAPIDetail.as_view()),
 
@@ -30,9 +33,9 @@ urlpatterns = [
 
 
 # JWT tokens
-    path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+#     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+#     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+#     path('api/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
 # swagger
 

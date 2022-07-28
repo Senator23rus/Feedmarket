@@ -19,6 +19,9 @@ class UserProfile(models.Model):
 class Good(models.Model):
     name = models.CharField(max_length=200, help_text="Введите название Товара", verbose_name="Название Товара", default=0)
 
+    industry = models.ForeignKey('Industry', on_delete=models.CASCADE, help_text="Выберите Отрасль",
+                                 verbose_name="Отрасль", null=True)
+
     code_of_good = models.CharField(max_length=20, help_text="Введите код Товара", verbose_name="Код Товара",
                                     null=True, blank=True)
     input_percentage = models.CharField(max_length=50, help_text="Введите процент ввода", verbose_name="Процент ввода",
