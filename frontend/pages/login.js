@@ -1,23 +1,21 @@
-import React, { createContext, useState } from 'react';
-import Stepper from 'components/pages/auth/stepper';
+import React, { useState } from 'react';
 import Input from 'UI/Input/input';
 import Button from 'UI/button';
-import Checkbox from 'UI/checkbox';
 import CustomLink from 'UI/custom-link';
+import { useSelector } from 'react-redux';
+import { wrapper } from 'store';
 
-const Auth = () => {
+const Login = () => {
+	const state = useSelector(state => state);
+	console.log(state);
 	const [auth, setAuth] = useState({
-		name: '',
-		pass: '',
+		username: '',
+		password: '',
 	});
 	const changeData = e => {
 		const name = e.target.name;
-		if (name === 'agreement') {
-			setAuth(prevState => ({ ...prevState, agreement: !prevState.agreement }));
-		} else {
-			const value = e.target.value;
-			setAuth(prevState => ({ ...prevState, [name]: value }));
-		}
+		const value = e.target.value;
+		setAuth(prevState => ({ ...prevState, [name]: value }));
 	};
 
 	const submit = e => {
@@ -29,13 +27,34 @@ const Auth = () => {
 			<h1 className="auth_title">Вход</h1>
 			<form className="auth-form">
 				<div className="auth-form_block">
-					<Input value={auth.name} label={'Имя'} size={'small'} />
+					<Input
+						name={'username'}
+						onChange={changeData}
+						value={auth.username}
+						label={'Имя'}
+						size={'small'}
+					/>
 				</div>
 				<div className="auth-form_block">
-					<Input pass={true} label={'Пароль'} size={'small'} />
+					<Input
+						name={'password'}
+						onChange={changeData}
+						value={auth.password}
+						pass={true}
+						label={'Пароль'}
+						size={'small'}
+					/>
+					<CustomLink href={'/refresh-pass'} className="auth-form__refresh-pass">
+						Не помню пароль
+					</CustomLink>
 				</div>
 				<div className="auth-form_footer">
-					<Button style={{ margin: 'auto' }} size={'s'} factor={'green'}>
+					<Button
+						disabled={!auth.password || !auth.username}
+						onClick={submit}
+						style={{ margin: 'auto' }}
+						size={'s'}
+						factor={'green'}>
 						Вход
 					</Button>
 				</div>
@@ -52,4 +71,14 @@ const Auth = () => {
 	);
 };
 
-export default Auth;
+export const getServerSideProps = wrapper.getServerSideProps(
+	store =>
+		async ({ req, res }) => {
+			console.log('arguments', store.getState());
+			return {
+				props: {},
+			};
+		}
+);
+
+export default Login;
