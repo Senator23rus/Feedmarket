@@ -1,10 +1,11 @@
 import 'nprogress/nprogress.css';
-import { Provider } from 'react-redux';
+import { useStore } from 'react-redux';
 import 'styles/index.scss';
-import { store } from 'store';
 import ProgressBar from '@badrap/bar-of-progress';
 import Router from 'next/router';
 import { AppWrapper } from 'components/common/breadcrumbs';
+import { PersistGate } from 'redux-persist/integration/react';
+import { wrapper } from 'store';
 
 /**
  * Установлена новая зависимость nprogress - для отображения индикатора загрузки страницы
@@ -38,13 +39,16 @@ Router.events.on('routeChangeError', progress.finish);
  * @constructor
  */
 function MyApp({ Component, pageProps }) {
+	const store = useStore();
 	return (
-		<Provider store={store}>
+		<PersistGate persistor={store.__PERSISTOR} loading={null}>
+			{/*// <Provider store={store}>*/}
 			<AppWrapper>
 				<Component {...pageProps} />
-			</AppWrapper>{' '}
-		</Provider>
+			</AppWrapper>
+			{/*// </Provider>*/}
+		</PersistGate>
 	);
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
