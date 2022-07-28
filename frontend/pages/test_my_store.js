@@ -7,23 +7,14 @@ import Button from 'UI/button';
 import Checkbox from 'UI/checkbox';
 import StoreProduct from 'UI/store_product/store_product';
 import ProductStatus from 'UI/product_status/product_status';
+import StoreNav from 'UI/store_nav/store_nav';
 
 const Details_product = () => {
 	return (
 		<Layout>
-			<div className={classes.subheader__nav}>
-				<button className={classes.subheader__btn}>Список&nbsp;товаров</button>
-				<button className={classes.subheader__btn}>Склады</button>
-				<button className={classes.subheader__btn}>Финансы</button>
-				<button className={classes.subheader__btn}>Аналитика</button>
-				<button className={classes.subheader__btn}>Реклама</button>
-				<button className={classes.subheader__btn}>Маркетинг</button>
-				<button className={classes.subheader__btn}>Рейтинги</button>
-				<button className={classes.subheader__btn}>Отзывы</button>
-			</div>
-
+			<StoreNav />
 			<div className={classes.product__selection}>
-				<Button factor={'green'} size={'m'}>
+				<Button factor={'green'}>
 					<div className={classes.product__btn_wrapper}>
 						<div className={classes.product__btn_text}>Добавить товар</div>
 						<svg

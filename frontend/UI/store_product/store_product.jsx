@@ -22,7 +22,9 @@ const StoreProduct = ({ card }) => {
 		card;
 	return (
 		<div className={classes.store__product}>
-			<Image src={img} width={85} height={120} alt={'product_img'} />
+			<div className={classes.store__product_img}>
+				<Image src={img} width={85} height={120} alt={'product_img'} />
+			</div>
 			<div className={classes.store__product__descr}>
 				<p className={classes.store__descr_title}>{description}</p>
 				<div className={classes.store__descr_subtitle}>
@@ -66,7 +68,7 @@ const StoreProduct = ({ card }) => {
 			</div>
 			<div className={classes.store__descr_check}>
 				<Checkbox />
-				<span className={classes.store__descr_coast}>
+				<span className={classes.store__descr_points}>
 					<svg
 						width="22"
 						height="5"

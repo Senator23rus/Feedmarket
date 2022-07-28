@@ -1,0 +1,32 @@
+@import '../../styles/variables.scss';
+
+.subheader {
+	&__nav {
+		margin: 52px auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: #c8c8c8;
+		max-width: 930px;
+		border-radius: 8px;
+		height: 44px;
+		position: relative;
+		z-index: 1;
+	}
+	&__btn {
+		@extend %menu;
+		font-size: 16px;
+		transition: all ease-in 0.2s;
+		padding: 0 16px;
+		height: 44px;
+		border-radius: 8px;
+		z-index: 3;
+		background-color: rgba($color: #ffffff, $alpha: 0);
+		&:hover {
+			color: $base-green;
+		}
+	}
+}
+.active {
+	color: $base-green;
+}
