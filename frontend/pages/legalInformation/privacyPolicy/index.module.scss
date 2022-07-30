@@ -1,0 +1,92 @@
+@import "styles/variables";
+
+.title {
+  @extend %h2;
+  color: $black;
+  margin-bottom: 48px;
+}
+
+.list {
+  list-style-type: none;
+  counter-reset: num;
+
+  & > li {
+    position: relative;
+    margin-left: 3px;
+    @extend %h3;
+    color: $black;
+
+    &:before {
+      content: counter(num) '.';
+      counter-increment: num;
+      display: inline-block;
+      //position: relative;
+      top: 0;
+      //left: -22px;
+      color: inherit;
+      //text-align: right;
+      font-size: inherit;
+      font-weight: inherit;
+      padding-right: 4px;
+    }
+  }
+
+  .liBody {
+    margin-top: 32px;
+    margin-bottom: 44px;
+
+    p {
+      margin-bottom: 16px;
+      @extend %text;
+      color: $black;
+
+      span {
+        font-weight: 700;
+
+        &.block {
+          font-weight: 400;
+          display: block;
+        }
+      }
+
+      ul {
+        margin-left: 25px;
+        list-style: none;
+
+        li {
+          position: relative;
+
+          &:before {
+            content: '';
+            height: 3px;
+            width: 3px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background: $black;
+            display: inline-block;
+            position: absolute;
+            top: 11px;
+            left: -12px;
+            color: inherit;
+            text-align: right;
+            font-size: inherit;
+            font-weight: inherit;
+          }
+        }
+      }
+
+      &.table {
+        display: grid;
+        grid-template-columns: 421px 544px;
+        grid-column-gap: 24px;
+        grid-row-gap: 4px;
+
+        .tel {
+          padding: 16px 24px;
+          background: $LineBackground;
+        }
+      }
+    }
+  }
+}
