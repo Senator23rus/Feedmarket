@@ -4,10 +4,10 @@ import Button from 'UI/button';
 import CustomLink from 'UI/custom-link';
 import { useSelector } from 'react-redux';
 import { wrapper } from 'store';
+import api from 'api';
 
 const Login = () => {
 	const state = useSelector(state => state);
-	console.log(state);
 	const [auth, setAuth] = useState({
 		username: '',
 		password: '',
@@ -71,14 +71,25 @@ const Login = () => {
 	);
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(
-	store =>
-		async ({ req, res }) => {
-			console.log('arguments', store.getState());
-			return {
-				props: {},
-			};
-		}
-);
+export const getServerSideProps = wrapper.getServerSideProps(state => async () => {
+	// const response = await fetch('http://127.0.0.1:8000/api/v1/good_list/', {
+	// 	method: 'GET',
+	// });
+	const response = await api.getGoodList();
+	console.log('response>>>', response);
+
+	return {
+		props: {},
+	};
+});
+
+// async () => {
+// 	const response = await api.getGoodList().then(r => r.data);
+// 	// ('/industry_list'
+// 	console.log('response>>>', response);
+// 	return {
+// 		props: {},
+// 	};
+// };
 
 export default Login;
