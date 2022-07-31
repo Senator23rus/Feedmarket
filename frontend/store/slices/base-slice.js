@@ -3,5 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	industries: [],
 	animals: [],
+	products: [],
 };
-const baseSlice = createSlice({});
+/**
+ * @type {import('@reduxjs/toolkit/src').Slice}
+ */
+const baseSlice = createSlice({
+	name: 'baseSlice',
+	initialState,
+	reducer: {},
+});
+
+export const baseActions = baseSlice.actions;
+
+export const baseReducer = baseSlice.reducer;
