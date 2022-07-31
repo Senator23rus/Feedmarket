@@ -12,7 +12,23 @@ const TestPageStore = () => {
 
 	const [stateView, setStateView] = useState(
 		/**
-		 * @type {{category:{id:number,active:boolean,name:string,category:string}[],active:null|{id:number,active:boolean,name:string,category:string}}}
+		 * @type {
+		 * {
+		 * category:
+		 * {id:number,
+		 * active:boolean,
+		 * name:string,
+		 * category:string
+		 * }[],
+		 * types:
+		 * {id:number,
+		 * active:boolean,
+		 * name:string,
+		 * category:string
+		 * }[],
+		 * activeCategory:null|{id:number,active:boolean,name:string,category:string},
+		 * activeType:null|{id:number,active:boolean,name:string,category:string}
+		 * }}
 		 */
 		{
 			category: [
@@ -69,6 +85,7 @@ const TestPageStore = () => {
 				})),
 			}));
 		}
+		//eslint-disable-next-line
 	}, [stateView.activeCategory]);
 
 	return (
@@ -99,8 +116,10 @@ const TestPageStore = () => {
 						className={`store-product-page__type store-product-page__type-${startAnimate} `}>
 						<h3 className={'title'}>Выберете тип товара</h3>
 						<div className={'list'}>
-							{stateView.types.map(_ => (
+							{stateView.types.map((_,index) => (
 								<ChipsButton
+									onDelete={()=>{}}
+									key={index}
 									className={`list__item`}
 									onClick={() => clickOnChips(_)}
 									active={_.active}>
@@ -253,5 +272,6 @@ const TestPageStore = () => {
 		</Layout>
 	);
 };
+
 
 export default TestPageStore;

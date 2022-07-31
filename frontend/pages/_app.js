@@ -1,8 +1,8 @@
-import 'nprogress/nprogress.css';
+// import 'nprogress/nprogress.css'
 import { Provider } from 'react-redux';
 import 'styles/index.scss';
 import { store } from 'store';
-import ProgressBar from '@badrap/bar-of-progress';
+// import ProgressBar from '@badrap/bar-of-progress';
 import Router from 'next/router';
 import { AppWrapper } from 'components/common/breadcrumbs';
 
@@ -15,19 +15,19 @@ import { AppWrapper } from 'components/common/breadcrumbs';
  *
  * @type {ProgressBar}
  */
-const progress = new ProgressBar({
-	size: 5,
-	color: '#FF7A00',
-	className: 'bar-of-progress',
-	delay: 100,
-});
+// const progress = new ProgressBar({
+// 	size: 5,
+// 	color: '#FF7A00',
+// 	className: 'bar-of-progress',
+// 	delay: 100,
+// });
 
 /**
  * Установка прослушивание событий роутера приложения и вызываются соответствующие функции
  */
-Router.events.on('routeChangeStart', progress.start);
-Router.events.on('routeChangeComplete', progress.finish);
-Router.events.on('routeChangeError', progress.finish);
+// Router.events.on('routeChangeStart', progress.start);
+// Router.events.on('routeChangeComplete', progress.finish);
+// Router.events.on('routeChangeError', progress.finish);
 
 /**
  * @description Компонент который оборачивает весь сайт, в том числе и глобальным состоянием, доступным на всех уровнях вложенности
