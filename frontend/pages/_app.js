@@ -4,8 +4,8 @@ import 'styles/index.scss';
 import ProgressBar from '@badrap/bar-of-progress';
 import Router from 'next/router';
 import { AppWrapper } from 'components/common/breadcrumbs';
-import { PersistGate } from 'redux-persist/integration/react';
 import { wrapper } from 'store';
+import { Provider } from 'react-redux'
 
 /**
  * Установлена новая зависимость nprogress - для отображения индикатора загрузки страницы
@@ -41,13 +41,11 @@ Router.events.on('routeChangeError', progress.finish);
 function MyApp({ Component, pageProps }) {
 	const store = useStore();
 	return (
-		<PersistGate persistor={store.__PERSISTOR} loading={null}>
-			{/*// <Provider store={store}>*/}
+		<Provider store={store}>
 			<AppWrapper>
 				<Component {...pageProps} />
 			</AppWrapper>
-			{/*// </Provider>*/}
-		</PersistGate>
+		</Provider>
 	);
 }
 
