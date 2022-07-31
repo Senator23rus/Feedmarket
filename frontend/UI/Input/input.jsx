@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { IconButton, InputAdornment, TextField } from '@mui/material';
 
+
 /**
- * @param {import('@mui/material/TextField/TextField.d.ts').TextFieldProps} props
+ * @param {import("@mui/material/TextField").TextFieldProps} props
  * @property {string} [props.label]
  * @property {boolean} [props.pass]
  * @property {boolean} [props.searchIcon]
  * @property {boolean} [props.borderFocus]
  * @property {any} [props.value]
  * @property {Function} [props.setValue]
- * @property [props.name]
+ * @property {any} [props.name]
  * @returns {JSX.Element}
  * @constructor
  */
