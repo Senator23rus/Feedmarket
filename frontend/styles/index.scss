@@ -27,7 +27,7 @@
     &-top{
       width: 100%;
       background: $base-green;
-      @media screen and(max-width: $container-width){
+      @media screen and (max-width: 1464px){
         padding: 0 16px;
       }
       &-container{
@@ -41,7 +41,7 @@
     }
     &-bottom{
       width: 100%;
-      @media screen and(max-width: $container-width){
+      @media screen and (max-width: 1464px){
         padding: 0 16px;
       }
       &-container{
@@ -60,7 +60,7 @@
     max-width: $container-width;
     width: 100%;
     margin: auto;
-    @media screen and(max-width: $container-width){
+    @media screen and (max-width: 1464px){
       padding: 0 16px;
     }
   }
