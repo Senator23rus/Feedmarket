@@ -7,10 +7,12 @@
 .wrapper {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
-.child {
-  margin-left: 12px;
+.view__wrapper {
+  display: flex;
+  align-items: center;
 }
 
 /* для элемента label, связанного с .custom-checkbox */
