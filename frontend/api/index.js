@@ -16,8 +16,11 @@ const codeMessage = {
 
 class Api {
 	constructor() {
+		/**
+		 * @type {import('axios').AxiosInstance}
+		 */
 		this.client = axios.create();
-		this.source = axios.CancelToken.source();
+
 		this.refreshRequest = null;
 		// this.access = nookies.get('access') || null;
 
@@ -38,7 +41,9 @@ class Api {
 				const newConfig = {
 					...config,
 				};
-				newConfig.header.Authorization = `Bearer ${this.access}`;
+				if (this.access) {
+					newConfig.headers.Authorization = `Bearer ${this.access}`;
+				}
 				return newConfig;
 			},
 			e => {
@@ -65,8 +70,10 @@ class Api {
 					if (errorMessage) {
 						// notification.error({ type: 'error', message: errorMessage, duration: 2 });
 					}
+					console.log(error);
 					if (status === 401 || status === 403 || status === 500 || status === 0) {
 						this.access = null;
+						throw new Error('ошибка в api ' + status);
 						// nookies.remove('access');
 					}
 					console.log('status api response>>>', status);
@@ -91,18 +98,24 @@ class Api {
 	}
 
 	async loggedInServer(auth) {
-		return await this.client.post('/login', { ...auth });
+		return await this.client.post('/auth/jwt/create/', { ...auth });
 	}
 
 	async login(auth) {
 		const response = await this.loggedInServer(auth);
-		this.setToken(response.data.access_token);
-		return response.data.access_token;
+		this.setToken(response.data.access);
+		return response.data.access;
 	}
 
 	async logout() {
 		this.access = null;
 		// nookies.remove('access');
+	}
+	async getIndustries() {
+		return await this.client.get('/industry_list');
+	}
+	async getGoodList() {
+		return await this.client.get('/good_list/');
 	}
 }
 
