@@ -62,15 +62,7 @@ const Layout = ({ children }) => {
 	return (
 		<div className={'app'}>
 			<HideOnScroll target={target}>
-				<AppBar
-					sx={{
-						'&': {
-							right: 'none',
-							background: 'white',
-							left: 0,
-						},
-					}}
-					className="app__navbar">
+				<AppBar className="app__navbar">
 					<NavBar />
 				</AppBar>
 			</HideOnScroll>
