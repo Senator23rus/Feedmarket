@@ -9,24 +9,23 @@
   justify-content: center;
   grid-template-columns: 1fr;
   grid-template-rows: 204px 1fr;
+  position: relative;
   &__navbar{
     box-shadow: $box-shadow;
-    position: sticky;
+    //position: sticky;
     background: white;
-    top: 0;
-    height: 204px;
     max-width: $max-width;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 76px 128px;
     justify-content: center;
     align-items: stretch;
-    width: 100%;
-    margin: 0 auto;
     z-index: 999;
     &-top{
+      height: 76px;
       width: 100%;
       background: $base-green;
+      //background: $base-green;
       @media screen and (max-width: 1464px){
         padding: 0 16px;
       }
@@ -40,6 +39,7 @@
       }
     }
     &-bottom{
+      height: 128px;
       width: 100%;
       @media screen and (max-width: 1464px){
         padding: 0 16px;
