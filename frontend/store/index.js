@@ -1,7 +1,16 @@
 import { compose } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
+import {
+	persistStore,
+	persistReducer,
+	FLUSH,
+	REHYDRATE,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
+} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import reducers from 'store/reducers';
 const SET_CLIENT_STATE = 'SET_CLIENT_STATE';
@@ -14,6 +23,12 @@ const makeStore = ({ isServer }) => {
 	if (isServer) {
 		return configureStore({
 			reducer: reducers,
+			// middleware: getDefaultMiddleware =>
+			// 	getDefaultMiddleware({
+			// 		serializableCheck: {
+			// 			ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			// 		},
+			// 	}),
 		});
 	} else {
 		const persistConfig = {
@@ -26,6 +41,12 @@ const makeStore = ({ isServer }) => {
 
 		const store = configureStore({
 			reducer,
+			middleware: getDefaultMiddleware =>
+				getDefaultMiddleware({
+					serializableCheck: {
+						ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+					},
+				}),
 		});
 
 		// Argument type
