@@ -35,11 +35,12 @@
 		margin-bottom: 20px;
 		cursor: pointer;
 		@extend %text;
+		transition: all ease-in-out 0.2s;
+		&:hover {
+			color: $base_green;
+		}
 	}
-	&__status_all {
-		margin-bottom: 20px;
-		cursor: pointer;
-		@extend %text;
+	&__active {
 		color: $base_green;
 	}
 	&__products_list {

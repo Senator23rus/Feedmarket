@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import { useState, useEffect } from 'react';
 import classes from './store_nav.module.scss';
 
-const StoreNav = () => {
+const StoreNav = ({ changeTab }) => {
 	const [activeTab, setActiveTab] = useState('list');
 	const [style, setStyle] = useState({
 		transform: 'translateX(0)',
-		transition: 'all ease-in-out 0.15s',
+		transition: 'all ease-in-out 0.2s',
 		position: 'absolute',
 		width: 167,
 		height: 48,
@@ -25,6 +25,7 @@ const StoreNav = () => {
 				width: `${e.target.getBoundingClientRect().width}px`,
 			}));
 			setActiveTab(dataValue);
+			changeTab(dataValue);
 		}
 	};
 

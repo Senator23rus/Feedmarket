@@ -1,18 +1,50 @@
 import Layout from 'components/common/layouts';
+import classNames from 'classnames';
 import classes from 'styles/pages/my_store_test.module.scss';
 import cards from 'mock/cards.json';
 import status from 'mock/status.json';
 import Paginations from 'UI/pagination/pagination';
 import Button from 'UI/button';
 import Checkbox from 'UI/checkbox';
-import StoreProduct from 'UI/store_product/store_product';
+import StoreProduct from 'components/pages/my_store/store_product/store_product';
 import ProductStatus from 'UI/product_status/product_status';
-import StoreNav from 'UI/store_nav/store_nav';
-
+import StoreNav from 'components/pages/my_store/store_nav/store_nav';
+import Ad from 'components/pages/my_store/ad/ad';
+import Analytics from 'components/pages/my_store/analytics/analytics';
+import Finance from 'components/pages/my_store/finance/finance';
+import Marketing from 'components/pages/my_store/marketing/marketing';
+import Ratings from 'components/pages/my_store/ratings/ratings';
+import Reviews from 'components/pages/my_store/reviews/reviews';
+import Warehouses from 'components/pages/my_store/warehouses/warehouses';
+import { useState } from 'react';
+const List = () => {
+	const render = cards.cards.map(card => <StoreProduct card={card} key={card.id} />);
+	return render;
+};
 const Details_product = () => {
+	const [state, setState] = useState('list');
+	const [animate, setAnimate] = useState(false);
+	const fields = {
+		list: List,
+		warehouses: Warehouses,
+		finance: Finance,
+		analytics: Analytics,
+		ad: Ad,
+		marketing: Marketing,
+		ratings: Ratings,
+		reviews: Reviews,
+	};
+	const changeTab = el => {
+		setAnimate(true);
+		setTimeout(() => {
+			setState(state => (state = el));
+			setAnimate(false);
+		}, 200);
+	};
+	const TempComponent = fields[state];
 	return (
 		<Layout>
-			<StoreNav />
+			<StoreNav changeTab={changeTab} />
 			<div className={classes.product__selection}>
 				<Button factor={'green'}>
 					<div className={classes.product__btn_wrapper}>
@@ -50,13 +82,16 @@ const Details_product = () => {
 					<Checkbox />
 				</div>
 			</div>
-
 			<div className={classes.store__grid}>
 				<ProductStatus status={status[0]} />
 				<div className={classes.store__products_list}>
-					{cards.cards.map(card => {
-						return <StoreProduct card={card} key={card.id} />;
-					})}
+					<div
+						className={classNames(
+							{ [classes.invisible]: animate },
+							{ [classes.visible]: !animate }
+						)}>
+						{<TempComponent />}
+					</div>
 				</div>
 			</div>
 			<Paginations />
