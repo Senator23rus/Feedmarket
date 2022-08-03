@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import Input from 'UI/Input/input';
 import Button from 'UI/button';
 import CustomLink from 'UI/custom-link';
-import { useSelector } from 'react-redux';
 import { wrapper } from 'store';
 import api from 'api';
+import { useRouter } from 'next/router';
 
-const Login = () => {
-	const state = useSelector(state => state);
+const Login = ({ response, state, industry }) => {
+	console.log(response);
+	console.log(industry);
+
+	console.log(state);
+
+	// const state = useSelector(state => state);
 	const [auth, setAuth] = useState({
 		username: '',
 		password: '',
@@ -18,8 +23,18 @@ const Login = () => {
 		setAuth(prevState => ({ ...prevState, [name]: value }));
 	};
 
+	const router = useRouter();
+
 	const submit = e => {
 		e.preventDefault();
+		(async () => {
+			try {
+				await api.login(auth);
+				router.back();
+			} catch (e) {
+				console.log(e);
+			}
+		})();
 	};
 
 	return (
@@ -72,14 +87,11 @@ const Login = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(state => async () => {
-	// const response = await fetch('http://127.0.0.1:8000/api/v1/good_list/', {
-	// 	method: 'GET',
-	// });
-	const response = await api.getGoodList();
-	console.log('response>>>', response);
+	const list = await api.getGoodList().then(r => r.data);
+	const industry = await api.getIndustries().then(r => r.data);
 
 	return {
-		props: {},
+		props: { response: list, industry, state: state.getState() },
 	};
 });
 
