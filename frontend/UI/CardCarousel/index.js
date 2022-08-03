@@ -1,5 +1,6 @@
 import classes from './cardCarousel.module.scss';
 import { useEffect, useRef } from 'react';
+import { useFetching } from '../../hooks/useFetching';
 
 /**
  * @description Компонент универсальной карусели для карточек
@@ -21,6 +22,7 @@ const CardCarousel = ({
 	rightBtn,
 	children,
 	gap = 24,
+	addData,
 	...other
 }) => {
 	let mountPointWidth = useRef(0);
@@ -29,8 +31,39 @@ const CardCarousel = ({
 		startPoint: 0,
 		actualSituation: 0,
 	});
+	let [fetch, isLoad, error] = useFetching(addData);
+
+	const addDataFunc = () => {
+		if (!isLoad && !error) {
+			console.log('ok');
+			fetch();
+			mountPointWidth.current =
+				mountPoint.current.lastChild.getBoundingClientRect().width *
+					mountPoint.current.children.length +
+				gap * (mountPoint.current.children.length - 1);
+		} else if (error) {
+			console.error(error);
+		}
+	};
 
 	const chevronLeftHandler = e => {
+		console.log(
+			Math.abs(
+				Math.abs(+mountPoint.current.offsetLeft) +
+					mountPointWrapper.current.clientWidth * 2 -
+					mountPointWidth.current
+			)
+		);
+		if (
+			Math.abs(
+				Math.abs(+mountPoint.current.offsetLeft) +
+					mountPointWrapper.current.clientWidth * 2 -
+					mountPointWidth.current
+			) <= mountPointWrapper.current.clientWidth
+		) {
+			addDataFunc();
+		}
+
 		if (
 			Math.abs(+mountPoint.current.offsetLeft) + mountPointWrapper.current.clientWidth <
 			mountPointWidth.current - mountPointWrapper.current.clientWidth
@@ -65,6 +98,18 @@ const CardCarousel = ({
 	};
 
 	const scrollHandler = e => {
+		console.log(
+			Math.abs(
+				Math.abs(mountPoint.current.offsetLeft) + e.deltaY * 5 - mountPointWidth.current
+			)
+		);
+		if (
+			Math.abs(
+				Math.abs(mountPoint.current.offsetLeft) + e.deltaY * 5 - mountPointWidth.current
+			) <= mountPointWrapper.current.clientWidth
+		) {
+			addDataFunc();
+		}
 		if (
 			Math.abs(mountPoint.current.offsetLeft) + e.deltaY * 5 >
 			mountPointWidth.current - mountPointWrapper.current.clientWidth
@@ -94,6 +139,17 @@ const CardCarousel = ({
 
 	const mouseMoveHandler = e => {
 		if (isMouseDown.current) {
+			if (
+				Math.abs(
+					Math.abs(
+						mouseStartPoint.current.actualSituation +
+							e.pageX -
+							mouseStartPoint.current.startPoint
+					) - mountPointWidth.current
+				) <= mountPointWrapper.current.clientWidth
+			) {
+				addDataFunc();
+			}
 			if (
 				Math.abs(
 					mouseStartPoint.current.actualSituation +
