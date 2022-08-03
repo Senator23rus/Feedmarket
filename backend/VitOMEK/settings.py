@@ -1,3 +1,4 @@
+
 """
 Django settings for VitOMEK project.
 
@@ -11,9 +12,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
-import os.path
+
+
 import os
 
+
+#env = environ.Env()
+#environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,11 +28,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = "15+n96&r%)n47of%6f(5#mjhly)symakn^1+=qp+3karhra=vn"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get("DEBUG", default=0))
+DEBUG = int(os.environ.get("DEBUG", default=1))
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = ['feed-market.ru', '151.248.114.18', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -39,9 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djoser',
     'rest_framework',
+    'rest_framework_simplejwt',
     'rest_framework.authtoken',
     'drf_yasg',
+    'django_filters',
 
 
 ]
@@ -86,24 +96,24 @@ DATABASES = {
     # }
 
     # # PostgreSQL
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'feedmarket',
-    #     'USER': 'admin_vitomek',
-    #     'PASSWORD': '236450',
-    #     'HOST': 'localhost',
-    #     'PORT': '5432'
+    #  'default': {
+    #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #      'NAME': 'feedmarket',
+    #      'USER': 'admin_vitomek',
+    #      'PASSWORD': '236450',
+    #      'HOST': 'localhost',
+    #      'PORT': '5432'
     #
-    # }
-    'default': {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
-        "USER": os.environ.get("SQL_USER", "user"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-        "HOST": os.environ.get("SQL_HOST", "localhost"),
-        "PORT": os.environ.get("SQL_PORT", "5432"),
+    #  }
+   'default': {
+       "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+       "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+       "USER": os.environ.get("SQL_USER", "user"),
+       "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+       "HOST": os.environ.get("SQL_HOST", "localhost"),
+       "PORT": os.environ.get("SQL_PORT", "5432"),
 
-    }
+   }
 }
 
 # Password validation
@@ -127,9 +137,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -138,14 +148,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_DIR = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
+#STATIC_DIR = os.path.join(BASE_DIR, 'static')
+#STATICFILES_DIRS = [STATIC_DIR] 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-STATICFILES_DIRS = [STATIC_DIR]
-
+MEDIA_URL = '/media/'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media/')
 MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -160,6 +170,9 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer', # отключаем интерфейс комментируя строку
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
     ],
 
     'DEFAULT_PERMISSION_CLASSES':[
