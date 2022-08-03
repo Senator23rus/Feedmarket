@@ -78,8 +78,11 @@ const Details_product = () => {
 					</div>
 				</Button>
 				<div className={classes.product__wrapper}>
-					<span className={classes.product__selection_label}>Выбрать все</span>
 					<Checkbox />
+					<span className={classes.product__selection_label}>Выбрать все</span>
+					<span className={classes.product__separator}>|</span>
+					<span className={classes.product__delete}>Удалить выбранное
+					</span>
 				</div>
 			</div>
 			<div className={classes.store__grid}>

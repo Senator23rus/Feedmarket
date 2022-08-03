@@ -2,6 +2,12 @@
     {
         "id": "1",
         "image": "/card/pink_card.svg",
+        "sale": "43%",
+        "rating": "4,3",
+        "novelty": true,
+        "choice": true,
+        "comments": "66",
+        "favorites": true,
         "title": "Премикс VITOMEK",
         "category": {
             "id": 1,
@@ -31,6 +37,12 @@
     },
     {
         "id": "2",
+        "sale": "",
+        "novelty": true,
+        "choice": false,
+        "rating": "4,1",
+        "comments": "43",
+        "favorites": false,
         "image": "/card/brown_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
@@ -61,6 +73,12 @@
     },
     {
         "id": "3",
+        "sale": "",
+        "novelty": false,
+        "choice": true,
+        "rating": "4,2",
+        "comments": "36",
+        "favorites": true,
         "image": "/card/pink_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
@@ -91,6 +109,12 @@
     },
     {
         "id": "4",
+        "sale": "",
+        "rating": "4,9",
+        "novelty": false,
+        "choice": true,
+        "comments": "366",
+        "favorites": false,
         "image": "/card/brown_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
@@ -121,6 +145,12 @@
     },
     {
         "id": "5",
+        "sale": "39",
+        "novelty": false,
+        "choice": false,
+        "rating": "4,7",
+        "comments": "136",
+        "favorites": true,
         "image": "/card/green_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
@@ -151,6 +181,12 @@
     },
     {
         "id": "6",
+        "sale": "43%",
+        "novelty": false,
+        "choice": false,
+        "rating": "4,9",
+        "comments": "69",
+        "favorites": false,
         "image": "/card/pink_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
@@ -181,6 +217,12 @@
     },
     {
         "id": "7",
+        "sale": "43%",
+        "choice": false,
+        "novelty": false,
+        "rating": "4,4",
+        "comments": "26",
+        "favorites": true,
         "image": "/card/brown_card.svg",
         "title": "Премикс VITOMEK",
         "category": {

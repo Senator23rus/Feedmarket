@@ -68,10 +68,10 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 152px;
+		min-height: 152px;
 		background: #ffffff;
 		border-radius: 12px;
-		padding: 20px 20px 20px 17px;
+		padding: 16px;
 		margin-bottom: 4px;
 		&__descr {
 			display: flex;
@@ -79,7 +79,6 @@
 			justify-content: space-between;
 			height: 100%;
 			width: 100%;
-			margin: 0px 20px 0 0px;
 		}
 		&_img {
 			width: 120px;
@@ -91,7 +90,7 @@
 			@extend %text_bold;
 			color: $black;
 			font-size: 16px;
-			margin-bottom: 13px;
+			margin-bottom: 2.3%;
 		}
 		&_top {
 			margin-bottom: 0px;
@@ -100,12 +99,12 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-right: 55px;
+			margin-right: 5%;
 		}
 		&_characteristics {
 			display: flex;
 			justify-content: space-between;
-			width: 65%;
+			width: 80%;
 		}
 		&_right {
 			margin-right: 30px;
@@ -114,6 +113,8 @@
 			@extend %text_mobile_semibold;
 			color: $disabled-text;
 			text-align: end;
+			display: inline-block;
+			margin: 8px 0 0 0;
 		}
 		&_value {
 			@extend %text_mobile;
@@ -121,18 +122,31 @@
 			margin: 0 0 0 8px;
 			display: inline-block;
 		}
+		&_status {
+			@extend %text_mobile;
+			color: $base-green;
+			margin: 0 0 0 8px;
+			display: inline-block;
+		}
+		&_price{
+			display: flex;
+			flex-direction: column;
+		}
+		&_kg {
+			@extend %text_mobile;
+			color: $disabled-text;
+			display: inline-block;
+		}
 		&_coast {
 			@extend %text_bold;
 			color: $black;
 			font-size: 16px;
-			margin-top: 5px;
+			margin: 0 0 0 8px;
 		}
 		&_check {
 			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
 			align-items: flex-end;
-			height: 100%;
+			height: 110px;
 		}
 		&_points {
 			margin: 0 0 6px 0;

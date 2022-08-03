@@ -3,20 +3,19 @@
 .product {
 	&__selection {
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-start;
 		margin-bottom: 32px;
 		padding: 0 18px;
 		&_label {
 			display: inline-block;
-			margin: 0 0 3px 0;
 			color: $base-green;
-			font-size: 16px;
+			@extend %text_bold;
 		}
 	}
 	&__wrapper {
 		display: flex;
 		align-items: end;
-		justify-content: space-between;
+		margin-left: 4%;
 	}
 	&__btn {
 		&_btn {
@@ -32,10 +31,20 @@
 		&_text {
 			@extend %text_bold;
 			color: #ffffff;
-			margin-right: 18px;
 			font-size: 16px;
 		}
 	}
+	&__separator {
+		@extend %text_bold;
+		color: $disabled-text;
+		margin: 0 12px;
+	}
+	&__delete{
+		@extend %text_underline;
+		color: $base-yellow;
+		cursor: pointer;
+	}
+
 }
 
 .store {
@@ -58,7 +67,7 @@
 	&__status_list {
 		list-style: none;
 		&_counter {
-			margin-left: 4px;
+			margin: 0 57px 0 4px;
 			padding: 6px 3px;
 			border-radius: 100%;
 			background-color: $base-yellow;
@@ -89,4 +98,9 @@
 	transform: translateX(0);
 	transition: all 0.1s linear;
 	opacity: 1;
+}
+
+.checkbox_view__YvQOY::before {
+	width: 24px;
+	height: 24px;
 }

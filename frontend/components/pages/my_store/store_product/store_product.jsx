@@ -18,10 +18,11 @@ import Image from 'next/image';
 //  * @constructor
 //  */
 const StoreProduct = ({ card }) => {
-	const { img, description, title, barcode, dateCreated, status, stock, weight, price } =
+	const { img, description, title, barcode, dateCreated, status, stock, weight,price_kg, price } =
 		card;
 	return (
 		<div className={classes.store__product}>
+			<Checkbox />
 			<div className={classes.store__product_img}>
 				<Image src={img} width={85} height={120} alt={'product_img'} />
 			</div>
@@ -46,12 +47,12 @@ const StoreProduct = ({ card }) => {
 							</div>
 							<div>
 								<span className={classes.store__descr_text}>Статус:</span>
-								<span className={classes.store__descr_value}>{status}</span>
+								<span className={classes.store__descr_status}>{status}</span>
 							</div>
 						</div>
 						<div className={classes.store__descr_right}>
 							<div className={classes.store__descr_top}>
-								<span className={classes.store__descr_text}>Количество:</span>
+								<span className={classes.store__descr_text}>Количество на складе:</span>
 								<span className={classes.store__descr_value}>{stock}</span>
 							</div>
 							<div>
@@ -61,13 +62,15 @@ const StoreProduct = ({ card }) => {
 						</div>
 					</div>
 					<div className={classes.store__descr_price}>
-						<p className={classes.store__descr_text}>Цена:</p>
-						<p className={classes.store__descr_coast}>{price}</p>
+						<span className={classes.store__descr_kg}>Цена: {price_kg}</span>
+						<div>
+							<span className={classes.store__descr_text}>Цена:</span>
+							<span className={classes.store__descr_coast}>{price}</span>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div className={classes.store__descr_check}>
-				<Checkbox />
 				<span className={classes.store__descr_points}>
 					<svg
 						width="22"
