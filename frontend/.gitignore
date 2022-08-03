@@ -35,3 +35,4 @@ yarn-error.log*
 /docs
 ../.idea
 .idea
+yarn.lock
