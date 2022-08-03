@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
+
 
 const codeMessage = {
 	202: 'Запрос вошёл в фоновую очередь (асинхронная задача)',
@@ -15,12 +16,14 @@ const codeMessage = {
 };
 
 class Api {
+
+
 	constructor() {
 		/**
+		 *
 		 * @type {import('axios').AxiosInstance}
 		 */
 		this.client = axios.create();
-
 		this.refreshRequest = null;
 		// this.access = nookies.get('access') || null;
 
@@ -112,7 +115,7 @@ class Api {
 		// nookies.remove('access');
 	}
 	async getIndustries() {
-		return await this.client.get('/industry_list');
+		return await this.client.get('/industry_list/');
 	}
 	async getGoodList() {
 		return await this.client.get('/good_list/');
