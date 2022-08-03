@@ -342,7 +342,7 @@ const WelcomePage = ({ cards, addCards, clear }) => {
 							addData={async () =>
 								await new Promise(resolve =>
 									setTimeout(() => {
-										resolve(addCards(cards));
+										resolve(addCards(cardComment));
 									}, 2000)
 								)
 							}>

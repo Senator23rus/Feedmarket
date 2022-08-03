@@ -1,24 +1,19 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 export const useFetching = callback => {
-	// const [isLoading, setIsLoading] = useState(false);
-	const isLoading = useRef(false);
-	const error = useRef('');
-	// const [error, setError] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState('');
 
 	const fetching = async (...args) => {
 		try {
-			isLoading.current = true;
-			error.current = '';
-			const a = async () => {};
-			await callback(...args);
+			setIsLoading(true);
+			setError('');
+			await callback(...args, isLoading.current);
 		} catch (e) {
-			error.current = e.message;
+			setError(e.message);
 		} finally {
-			console.log(isLoading.current);
-			isLoading.current = false;
+			setIsLoading(false);
 		}
 	};
-
-	return [fetching, isLoading.current, error.current];
+	return [fetching, isLoading, error];
 };
