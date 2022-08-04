@@ -26,7 +26,7 @@ class Good(models.Model):
                                     null=True, blank=True)
     input_percentage = models.CharField(max_length=50, help_text="Введите процент ввода", verbose_name="Процент ввода",
                                     null=True, blank=True)
-    image = models.ImageField(help_text="Добавьте картинку продукта", verbose_name="Картинка", default=0)
+    image = models.ImageField(upload_to='images/goods/', help_text="Добавьте картинку продукта", verbose_name="Картинка", default=0)
 
     product = models.ForeignKey('Product', on_delete=models.CASCADE, help_text="Выберете продукт",
                                 verbose_name="Продукт", null=True)
@@ -38,11 +38,11 @@ class Good(models.Model):
                                 default=0)
     summary = models.TextField(max_length=1000, help_text="Введите описание товара",
                                verbose_name="Описание товара", null=True, blank=True)
-    file_summary = models.FileField(upload_to='uploads/%Y/%m/%d/', help_text="Добавьте файл к описанию",
+    file_summary = models.FileField(upload_to='images/uploads/%Y/%m/%d/', help_text="Добавьте файл к описанию",
                                 verbose_name="Файл описания товара", null=True, blank=True)
     blending = models.TextField(max_length=1000, help_text="Введите описание по смешиванию",
                                 verbose_name="Описание по смешиванию", null=True, blank=True)
-    file_blending = models.FileField(upload_to='uploads/%Y/%m/%d/', help_text="Добавьте файл к рецепту смешивания",
+    file_blending = models.FileField(upload_to='images/uploads/%Y/%m/%d/', help_text="Добавьте файл к рецепту смешивания",
                                     verbose_name="Файл рецепта смешивания", null=True, blank=True)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
@@ -178,14 +178,12 @@ class Cows(Animal):
 class Industry(models.Model):
     industry_animal = models.ForeignKey('TypeOfIndustry', on_delete=models.CASCADE, help_text="Выберите Отрасль",
                                         verbose_name="Отрасль", null=True)
-    objects = models.Manager()
-
     class Meta:
         verbose_name = "Отрасль"
         verbose_name_plural = "Отрасли"
 
     def __str__(self):
-        return '%s' % (self.industry_animal)
+        return f"{self.industry_animal.name}"
 
 
 class TypeOfIndustry(models.Model):
