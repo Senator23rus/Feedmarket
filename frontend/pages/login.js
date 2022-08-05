@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from 'UI/Input/input';
 import Button from 'UI/button';
 import CustomLink from 'UI/custom-link';
 import { wrapper } from 'store';
 import api from 'api';
 import { useRouter } from 'next/router';
+import { useAsyncThunk } from 'hooks/use-async-thunk';
+import { useSelector } from 'react-redux';
 
 const Login = () => {
 	// const state = useSelector(state => state);
+
+	const { loggedIn } = useAsyncThunk();
+
+	const { isAuth, token, isLoading } = useSelector(
+		/**@param{StateApp} state*/ state => state.user
+	);
+	const store = useSelector(/**@param{StateApp} state*/ state => state);
+
 	const [auth, setAuth] = useState({
 		username: '',
 		password: '',
 	});
+
 	const changeData = e => {
 		const name = e.target.name;
 		const value = e.target.value;
@@ -22,15 +33,14 @@ const Login = () => {
 
 	const submit = e => {
 		e.preventDefault();
-		(async () => {
-			try {
-				await api.loggedInServer(auth);
-				router.back();
-			} catch (e) {
-				console.log(e);
-			}
-		})();
+		loggedIn(auth);
 	};
+
+	useEffect(() => {
+		if (!isLoading && isAuth && token) {
+			router.back();
+		}
+	}, [isAuth, token, isLoading, router]);
 
 	return (
 		<div className={'auth'}>
@@ -85,7 +95,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 	({ dispatch, getState }) =>
 		async () => {
 			// const list = await api.getGoodList().then(r => r.data);
-			const industry = await api.getIndustries();
+			// const industry = await api.getIndustries();
 			return {
 				props: {},
 			};

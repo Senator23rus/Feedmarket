@@ -70,9 +70,71 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        background: transparent;
+        transform: scale(1);
+        width: 43px;
+        height: 43px;
+        top: calc(50% - (43px / 2));
+        left: calc(50% - (43px / 2));
+        border-radius: 50%;
+        opacity: 0;
+        transition: all linear .2s;
+
+      }
       &:hover{
         text-decoration: underline;
+        &::after{
+          content: '';
+          position: absolute;
+          background: $base-yellow;
+          width: 43px;
+          height: 43px;
+          transform: scale(1);
+          top: calc(50% - (43px / 2));
+          left: calc(50% - (43px / 2));
+          border-radius: 50%;
+          opacity: 0.5;
+          transition: all linear .2s;
+        }
       }
+
     }
+  }
+
+}
+.drop {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 324px;
+  width: 100%;
+
+}
+.dropdown-absolute{
+  position: absolute;
+  opacity: 0;
+  max-height: 0;
+  background: white;
+  padding: 0;
+  transition: all .2s linear;
+  overflow: hidden;
+  z-index: 999;
+  box-shadow: $box-shadow;
+  border-radius: 8px;
+  &-true{
+    opacity: 1;
+    padding: 16px;
+    max-height: 500px;
+    transition: all .2s linear;
+  }
+  &-false{
+    opacity: 0;
+    padding: 0;
+    max-height: 500px;
+    transition: all .2s linear;
   }
 }

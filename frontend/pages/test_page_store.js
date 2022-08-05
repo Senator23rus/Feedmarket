@@ -5,8 +5,9 @@ import Input from 'UI/Input/input';
 import { useSelector } from 'react-redux';
 import ChipsButton from 'UI/chipsButton';
 import { wrapper } from 'store';
+import api from 'api';
 
-const TestPageStore = () => {
+const TestPageStore = ({ category }) => {
 	const categoriesFromStore = useSelector(
 		/**@param {StateApp} state*/ state => state.catalog
 	);
@@ -19,7 +20,6 @@ const TestPageStore = () => {
 		 * {id:number,
 		 * active:boolean,
 		 * name:string,
-		 * category:string
 		 * }[],
 		 * types:
 		 * {id:number,
@@ -32,17 +32,21 @@ const TestPageStore = () => {
 		 * }}
 		 */
 		{
-			category: [
-				{ id: 1, active: false, name: 'Птицеводство', category: 'poetry' },
-				{ id: 2, active: false, name: 'Свиноводство', category: 'pig' },
-				{ id: 3, active: false, name: 'Крупный рогатый скот', category: 'cattle' },
-				{ id: 4, active: false, name: 'Сырье', category: 'raw' },
-			],
+			category: [],
 			activeCategory: null,
 			activeType: null,
 			types: [],
 		}
 	);
+	useEffect(() => {
+		console.log(category);
+		if (category.length) {
+			setStateView(prevState => ({
+				...prevState,
+				category: category.map(_ => ({ ..._, active: false })),
+			}));
+		}
+	}, [category]);
 
 	const [startAnimate, setStartAniimate] = useState(false);
 
@@ -76,18 +80,15 @@ const TestPageStore = () => {
 	};
 	const imageRef = useRef(null);
 
-	useEffect(() => {
-		if (stateView.activeCategory) {
-			setStateView(prevState => ({
-				...prevState,
-				types: categoriesFromStore[stateView.activeCategory.category].types.map(_ => ({
-					..._,
-					active: false,
-				})),
-			}));
-		}
-		//eslint-disable-next-line
-	}, [stateView.activeCategory]);
+	// useEffect(() => {
+	// 	if (stateView.activeCategory) {
+	// 		setStateView(prevState => ({
+	// 			...prevState,
+	// 			})),
+	// 		}));
+	// 	}
+	// 	//eslint-disable-next-line
+	// }, [stateView.activeCategory]);
 
 	return (
 		<Layout>
@@ -95,6 +96,35 @@ const TestPageStore = () => {
 				<div className={'store-product-page__title'}>
 					<h1>Добавление товара</h1>
 					<div>хлебные крошки</div>
+				</div>
+				<div>
+					<Button
+						factor={'ghost'}
+						size={'l'}
+						onClick={async () => {
+							const response = await api
+								.goodCreate({
+									name: '',
+									code_of_good: '123456',
+									input_percentage: '50',
+									image: null,
+									date: null,
+									summary: 'Это пробный товар и вряд ли будет выставлен на полку',
+									price: '12345',
+									file_summary: null,
+									blending:
+										'Смешивать нет необходимости, рассасывается при соприкосновении с воздухом',
+									file_blending: null,
+									industry: 1,
+									product: null,
+									animal: null,
+								})
+								.then(r => r.data);
+
+							console.log(response);
+						}}>
+						create
+					</Button>
 				</div>
 				<div className="store-product-page__category">
 					<h3 className="title">Выберете категорию товара</h3>
@@ -104,7 +134,7 @@ const TestPageStore = () => {
 								className={`list__item ${_.active && 'list__item-active'}`}
 								key={_.id}
 								data-name={_.name}
-								data-category={_.category}
+								data-category={_.name}
 								onClick={() => changeCategory(_, index)}>
 								{_.name}
 							</div>
@@ -274,8 +304,16 @@ const TestPageStore = () => {
 	);
 };
 
-export const getInitialPageProps = wrapper.getStaticProps(state => async () => {
-	console.log('asd');
+export const getServerSideProps = wrapper.getServerSideProps(state => async () => {
+	let industries = await api.getIndustries().then(r => r.data);
+	// let animals = await api.getAnimals().then(r => r.data);
+	// let products = await api.getProducts().then(r => r.data);
+	console.log(industries);
+	return {
+		props: {
+			category: industries.results,
+		},
+	};
 });
 
 export default TestPageStore;

@@ -14,16 +14,12 @@ import { useEffect } from 'react';
  * @constructor
  */
 export default function Home({ cards }) {
-	const { test } = useSelector(state => state.base);
-	useEffect(() => {
-		console.log(test);
-	}, [test]);
-	console.log(test);
+	const store = useSelector(state => state);
+	console.log(store);
 	return (
 		<Layout>
 			<div className="home">
 				<NavBlock />
-				{test}
 				<Recomend cards={cards} />
 				<Recomend cards={cards} />
 				<Recomend cards={cards} />
