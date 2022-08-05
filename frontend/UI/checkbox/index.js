@@ -6,11 +6,12 @@ import classes from './checkbox.module.scss';
  *
  * @param {React.InputHTMLAttributes} props
  * @property {boolean} props.groupChecked - флаг для отображения выбора всех checkbox
+ * @property {('big'|'little')} props.checkboxSize - параметр для определения размера checkbox
  * @returns {JSX.Element}
  * @constructor
  */
 
-const Checkbox = ({ groupChecked, children, ...other }) => {
+const Checkbox = ({ groupChecked, children, checkboxSize, ...other }) => {
 	return (
 		<label className={classes.wrapper}>
 			<div className={classes.view__wrapper}>
@@ -21,7 +22,7 @@ const Checkbox = ({ groupChecked, children, ...other }) => {
 					className={classNames(classes.customCheckbox)}
 				/>
 				<span
-					className={classNames(classes.view, !groupChecked || classes.groupChecked)}
+					className={classNames(classes.view, !groupChecked || classes.groupChecked, checkboxSize !== 'big' || classes.big )}
 				/>
 			</div>
 			<span>{children}</span>
