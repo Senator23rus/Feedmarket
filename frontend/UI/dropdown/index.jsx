@@ -54,18 +54,7 @@ const DropDown = ({ children, menu }) => {
 			} else {
 				leftDropDown = centerChildren - (widthDropdown + 16) / 2;
 			}
-			// const rightDropdown =
-			// 	dropRef.current?.offsetLeft + dropRef.current.getBoundingClientRect().right;
-			//
-			// if (rightDropdown && rightDropdown >= document.body.getBoundingClientRect().width) {
-			// 	console.log(dropRef.current.getBoundingClientRect().width);
-			// 	centerChildren =
-			// 		dropRef.current.getBoundingClientRect().width -
-			// 		document.body.getBoundingClientRect().right;
-			// } else {
-			// 	centerChildren =
-			// 		centerChildren - dropRef.current.getBoundingClientRect().width / 2;
-			// }
+
 			console.log(centerChildren);
 			setPosition(prevState => ({
 				...prevState,
