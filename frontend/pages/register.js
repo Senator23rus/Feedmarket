@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react';
-import Stepper from 'components/pages/auth/stepper';
 import Input from 'UI/Input/input';
 import Button from 'UI/button';
 import Checkbox from 'UI/checkbox';
@@ -49,7 +48,7 @@ const Auth = () => {
 					<Input pass={true} label={'Пароль'} size={'small'} />
 					<Input pass={true} label={'Подтверждение пароля'} size={'small'} />
 				</div>
-				<Checkbox>
+				<Checkbox groupChecked={false}>
 					Я подтверждаю свое согласие на обработку{' '}
 					<span className="auth-form__link">персональных данных</span>
 				</Checkbox>

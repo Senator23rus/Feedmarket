@@ -6,12 +6,7 @@ import { wrapper } from 'store';
 import api from 'api';
 import { useRouter } from 'next/router';
 
-const Login = ({ response, state, industry }) => {
-	console.log(response);
-	console.log(industry);
-
-	console.log(state);
-
+const Login = () => {
 	// const state = useSelector(state => state);
 	const [auth, setAuth] = useState({
 		username: '',
@@ -29,7 +24,7 @@ const Login = ({ response, state, industry }) => {
 		e.preventDefault();
 		(async () => {
 			try {
-				await api.login(auth);
+				await api.loggedInServer(auth);
 				router.back();
 			} catch (e) {
 				console.log(e);
@@ -86,14 +81,16 @@ const Login = ({ response, state, industry }) => {
 	);
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(state => async () => {
-	const list = await api.getGoodList().then(r => r.data);
-	const industry = await api.getIndustries().then(r => r.data);
-
-	return {
-		props: { response: list, industry, state: state.getState() },
-	};
-});
+export const getServerSideProps = wrapper.getServerSideProps(
+	({ dispatch, getState }) =>
+		async () => {
+			// const list = await api.getGoodList().then(r => r.data);
+			const industry = await api.getIndustries();
+			return {
+				props: {},
+			};
+		}
+);
 
 // async () => {
 // 	const response = await api.getGoodList().then(r => r.data);

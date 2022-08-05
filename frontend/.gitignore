@@ -33,6 +33,7 @@ yarn-error.log*
 
 # other
 /docs
-../.idea
+../.idea/**/*
+.idea/**/*
 .idea
 yarn.lock

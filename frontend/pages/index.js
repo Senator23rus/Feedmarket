@@ -4,7 +4,6 @@ import cards from 'mock/n_cards.json';
 import NavBlock from 'components/pages/home/nav-block';
 import { useSelector } from 'react-redux';
 import { wrapper } from 'store';
-import { setTest } from 'store/slices/base-slice';
 import { useEffect } from 'react';
 
 /**
@@ -33,7 +32,6 @@ export default function Home({ cards }) {
 	);
 }
 export const getServerSideProps = wrapper.getServerSideProps(state => async () => {
-	state.dispatch(setTest());
 	return {
 		props: { cards },
 	};

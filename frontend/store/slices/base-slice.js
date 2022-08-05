@@ -1,9 +1,4 @@
-import {
-	createSlice,
-	CaseReducerActions,
-	SliceCaseReducers,
-	Slice,
-} from '@reduxjs/toolkit';
+import { createSlice, CaseReducerActions, SliceCaseReducers } from '@reduxjs/toolkit';
 
 /**
  *
@@ -16,10 +11,6 @@ const initialState = {
 	test: null,
 };
 
-/**
- *
- * @type {Slice<{test: (string|null), industries: *[], animals: *[], products: *[]}, {setTest: reducers.setTest}, string>}
- */
 const baseSlice = createSlice({
 	name: 'baseSlice',
 	initialState,
@@ -34,7 +25,7 @@ const baseSlice = createSlice({
  *
  * @type {CaseReducerActions<SliceCaseReducers<BaseReducer>>}
  */
-export const { setTest } = baseSlice.actions;
+export const baseActions = baseSlice.actions;
 
 /**
  *

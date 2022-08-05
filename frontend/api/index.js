@@ -1,5 +1,4 @@
-import axios from "axios";
-
+import axios from 'axios';
 
 const codeMessage = {
 	202: 'Запрос вошёл в фоновую очередь (асинхронная задача)',
@@ -16,8 +15,6 @@ const codeMessage = {
 };
 
 class Api {
-
-
 	constructor() {
 		/**
 		 *
@@ -28,7 +25,7 @@ class Api {
 		// this.access = nookies.get('access') || null;
 
 		/* базовый URL для локальной разработки */
-		this.client.defaults.baseURL = 'http://127.0.0.1:8000/api/v1';
+		this.client.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 		/* базовый URL для продакшн разработки */
 		// this.client.defaults.baseURL = 'http://5.63.154.181:8000/api/v1';
@@ -47,6 +44,7 @@ class Api {
 				if (this.access) {
 					newConfig.headers.Authorization = `Bearer ${this.access}`;
 				}
+				newConfig.headers['Access-Control-Allow-Origin'] = '*';
 				return newConfig;
 			},
 			e => {
@@ -74,7 +72,7 @@ class Api {
 						// notification.error({ type: 'error', message: errorMessage, duration: 2 });
 					}
 					console.log(error);
-					if (status === 401 || status === 403 || status === 500 || status === 0) {
+					if (status === 401 || status === 403) {
 						this.access = null;
 						throw new Error('ошибка в api ' + status);
 						// nookies.remove('access');
@@ -101,7 +99,7 @@ class Api {
 	}
 
 	async loggedInServer(auth) {
-		return await this.client.post('/auth/jwt/create/', { ...auth });
+		return await this.client.post('auth/jwt/create/', { ...auth });
 	}
 
 	async login(auth) {
@@ -115,10 +113,10 @@ class Api {
 		// nookies.remove('access');
 	}
 	async getIndustries() {
-		return await this.client.get('/industry_list/');
+		return await this.client.get('/api/v1/industry_list/');
 	}
 	async getGoodList() {
-		return await this.client.get('/good_list/');
+		return await this.client.get('/api/v1/good_list/');
 	}
 }
 
