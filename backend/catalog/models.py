@@ -26,7 +26,7 @@ class Good(models.Model):
                                     null=True, blank=True)
     input_percentage = models.CharField(max_length=50, help_text="Введите процент ввода", verbose_name="Процент ввода",
                                     null=True, blank=True)
-    image = models.ImageField(upload_to='images/goods/', help_text="Добавьте картинку продукта", verbose_name="Картинка", default=0)
+    image = models.ImageField(upload_to='images/goods/', help_text="Добавьте картинку продукта", verbose_name="Картинка", null=True, blank=True)
 
     product = models.ForeignKey('Product', on_delete=models.CASCADE, help_text="Выберете продукт",
                                 verbose_name="Продукт", null=True)
