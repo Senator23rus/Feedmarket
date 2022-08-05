@@ -4,6 +4,7 @@ import Button from 'UI/button';
 import Input from 'UI/Input/input';
 import { useSelector } from 'react-redux';
 import ChipsButton from 'UI/chipsButton';
+import { wrapper } from 'store';
 
 const TestPageStore = () => {
 	const categoriesFromStore = useSelector(
@@ -116,9 +117,9 @@ const TestPageStore = () => {
 						className={`store-product-page__type store-product-page__type-${startAnimate} `}>
 						<h3 className={'title'}>Выберете тип товара</h3>
 						<div className={'list'}>
-							{stateView.types.map((_,index) => (
+							{stateView.types.map((_, index) => (
 								<ChipsButton
-									onDelete={()=>{}}
+									onDelete={() => {}}
 									key={index}
 									className={`list__item`}
 									onClick={() => clickOnChips(_)}
@@ -273,5 +274,8 @@ const TestPageStore = () => {
 	);
 };
 
+export const getInitialPageProps = wrapper.getStaticProps(state => async () => {
+	console.log('asd');
+});
 
 export default TestPageStore;

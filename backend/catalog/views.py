@@ -35,23 +35,37 @@ class GoodAPIListPagination(PageNumberPagination):
     max_page_size = 10000
 
 
-class GoodAPIList(generics.ListCreateAPIView):
-    """Вывод списка товаров с возможностью добавления новых если Админ"""
+class GoodAPIList(generics.ListAPIView):
+    """Вывод списка товаров """
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
-    permission_classes = (IsAdminOrReadOnly, )
     pagination_class = GoodAPIListPagination
     filter_backends = (DjangoFilterBackend, )
     filterset_class = GoodFilter
 
+class IndustryAPIList(generics.ListAPIView):
+    """Вывод списка Отраслей """
+    queryset = Industry.objects.all()
+    serializer_class = IndustrySerializer
 
 class GoodAPICreate(generics.CreateAPIView):
-    """Добавление новых товаров если Админ"""
+    """Добавление новых Товаров если Авторизирован"""
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
-    permission_classes = (IsAdminOrReadOnly,)
-    pagination_class = GoodAPIListPagination
+    permission_classes = (IsAuthenticated, )
 
+
+class ProductAPICreate(generics.ListCreateAPIView):
+    """Список Продуктов под конкретный Товар и добавление новых если Авторизирован"""
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = (IsAuthenticated, )
+
+class AnimalAPICreate(generics.ListCreateAPIView):
+    """Список Животных под конкретный Товар и добавление новых если Авторизирован"""
+    queryset = Animal.objects.all()
+    serializer_class = AnimalSerializer
+    permission_classes = (IsAuthenticated, )
 
 class GoodAPIUpdate(generics.RetrieveUpdateAPIView):
     """Изменение конкретного товара если Создатель"""
@@ -66,10 +80,12 @@ class GoodAPIDetail(generics.RetrieveDestroyAPIView):
     serializer_class = GoodSerializer
     permission_classes = (IsOwnerOrReadOnly, )
 
+
+
 class UserProfileListCreateView(generics.ListCreateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = (IsAuthenticated, )
 
     def perform_create(self, serializer):
         user = self.request.user

@@ -4,42 +4,42 @@
 %h1{
   margin: 2px 0;
   font-family: 'Gilroy',sans-serif;
-  font-size: 48px;
-  line-height: 52px;
+  font-size: 3rem;
+  line-height: 3.25rem;
 }
 %h2{
   font-family: 'Gilroy',sans-serif;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.5rem;
 }
 %h3 {
   font-family: 'Gilroy', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 }
 %h4 {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   letter-spacing: 1px;
 }
 %caption {
   font-family: 'Gilroy',sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %caption2 {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75rem;
+  line-height: 1rem;
   letter-spacing: 1.21333px;
   text-transform: uppercase;
 }
@@ -47,69 +47,69 @@
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 %text_bold {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1em;
-  line-height: 1.5em;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 %text_underline {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-decoration-line: underline;
 }
 %text_mobile {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %small_text_underline {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75rem;
+  line-height: 1rem;
   text-decoration-line: underline;
 }
 %small_text_bold {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 0.75em;
-  line-height: 1em;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %text_mobile_semibold {
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %menu {
   font-family: 'Gilroy',sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   letter-spacing: 1px;
   color: #414141;
 }
 %btn_base{
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 %ad {
     display: block;
-    border-radius: 16px;
+    border-radius: 1rem;
     overflow: hidden;
 }
 /* colors */

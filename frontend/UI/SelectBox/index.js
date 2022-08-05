@@ -9,7 +9,7 @@ import {cloneElement, useEffect, useState} from "react";
  *
  * @param {React.SelectHTMLAttributes} props
  * @property {('big'|'little')} props.variation - Тип SelectBox
- * @property {('none'|'circle'|'square')} props.itemIcon - Тип иконки перед элементами списка
+ * @property {('none'|'circle'|'square')} props.size - Тип иконки перед элементами списка
  * @returns {JSX.Element}
  * @constructor
  */
@@ -49,11 +49,11 @@ export default function SelectBox({ variation = 'little', itemIcon = 'none', onO
     }, [])
 
     const openHandler = (e) => {
-        if (onOpen) {
-            onOpen(e);
-        }
+      if (onOpen) {
+          onOpen(e);
+      }
 
-        setOpen(true)
+      setOpen(true)
     }
 
     const closeHandler = (e) => {
@@ -69,11 +69,11 @@ export default function SelectBox({ variation = 'little', itemIcon = 'none', onO
                 disabled={disabled}
                 IconComponent={(props) => <Arrow {...props}/>}
                 inputProps={{
-                    classes: {
-                        icon: classNames(classes.icon, !disabled || classes.iconDisabled),
-                        select: classNames(classes.select, !open || classes.selectOpen, !disabled || classes.selectDisabled, variation !== 'little' || classes.little),
-                        iconOpen: classes.iconOpen
-                    }
+            classes: {
+                    icon: classNames(classes.icon, !disabled || classes.iconDisabled),
+                    select: classNames(classes.select, !open || classes.selectOpen, !disabled || classes.selectDisabled, variation !== 'little' || classes.little),
+                    iconOpen: classes.iconOpen
+                }
                 }}
                 variant='outlined'
                 MenuProps={{ classes: { paper: classes.dropdownStyle }}}
@@ -81,7 +81,7 @@ export default function SelectBox({ variation = 'little', itemIcon = 'none', onO
                     {'&.Mui-focused': {'& fieldset.MuiOutlinedInput-notchedOutline': {border: 'none'}}}}
         >
             {content}
-        </Select>
+    </Select>
     );
 }
 
