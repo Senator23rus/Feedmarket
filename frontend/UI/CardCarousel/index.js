@@ -1,6 +1,6 @@
 import classes from './cardCarousel.module.scss';
 import { useEffect, useRef, useState } from 'react';
-import { useFetching } from '../../hooks/useFetching';
+import { useFetching } from 'hooks/useFetching';
 
 /**
  * @description Компонент универсальной карусели для карточек
