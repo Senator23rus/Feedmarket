@@ -39,6 +39,7 @@ const CardCarousel = ({
 
 	const addDataFunc = () => {
 		if (!isLoad && !error) {
+			console.log('ok');
 			fetch();
 		}
 		mountPointWidth.current =
