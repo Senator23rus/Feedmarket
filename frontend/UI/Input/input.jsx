@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { IconButton, InputAdornment, TextField } from '@mui/material';
 
-
 /**
  * @param {import("@mui/material/TextField").TextFieldProps} props
  * @property {string} [props.label]
@@ -32,7 +31,7 @@ const Input = props => {
 			id="filled-basic"
 			type={pass && !showPass ? 'password' : 'text'}
 			label={label}
-			variant={'filled'}
+			variant={props.variant ? props.variant : 'filled'}
 			name={name}
 			value={value && value}
 			onInput={setValue && setValue}
@@ -42,6 +41,9 @@ const Input = props => {
 					: {
 							'&:hover &:before': {
 								borderBottom: 'none',
+							},
+							'&:placeholder': {
+								color: 'red',
 							},
 							'& label': {
 								fontFamily: 'Roboto, sans-serif',
@@ -57,7 +59,59 @@ const Input = props => {
 								color: '#C8C8C8',
 							},
 							'& .MuiFilledInput-root': {
-								borderRadius: '20px',
+								borderRadius: props.size === 'small' ? '12px' : '20px',
+								border: '1px solid transparent',
+								background: '#F2FAF5',
+								'& fieldset': {
+									borderColor: '#EEEFF1',
+								},
+								'&:hover': {
+									backgroundColor: '#FFFFFF',
+									border: '1px solid #C8C8C8',
+								},
+								'&.Mui-focused fieldset': {
+									backgroundColor: 'transparent',
+									borderColor: '#F3DB00',
+								},
+								'&.Mui-focused': {
+									backgroundColor: '#FFFFFF',
+									border: '1px solid #FF7A00',
+								},
+								'&:before': {
+									display: 'none',
+								},
+								'&:after': {
+									display: 'none',
+								},
+							},
+							'& .MuiOutlinedInput-root': {
+								borderRadius: props.size === 'small' ? '12px' : '20px',
+								border: '1px solid transparent',
+								background: '#F2FAF5',
+								'& fieldset': {
+									borderColor: '#EEEFF1',
+								},
+								'&:hover': {
+									backgroundColor: '#FFFFFF',
+									border: '1px solid #C8C8C8',
+								},
+								'&.Mui-focused fieldset': {
+									backgroundColor: 'transparent',
+									borderColor: '#F3DB00',
+								},
+								'&.Mui-focused': {
+									backgroundColor: '#FFFFFF',
+									border: '1px solid #FF7A00',
+								},
+								'&:before': {
+									display: 'none',
+								},
+								'&:after': {
+									display: 'none',
+								},
+							},
+							'& .MuiStandartInput-root': {
+								borderRadius: props.size === 'small' ? '12px' : '20px',
 								border: '1px solid transparent',
 								background: '#F2FAF5',
 								'& fieldset': {
