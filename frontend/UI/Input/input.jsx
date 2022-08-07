@@ -39,16 +39,16 @@ const Input = props => {
 				props.sx
 					? props.sx
 					: {
+							'& input': {
+								fontSize: props.size === 'small' ? '0.75em' : '1em',
+							},
 							'&:hover &:before': {
 								borderBottom: 'none',
-							},
-							'&:placeholder': {
-								color: 'red',
 							},
 							'& label': {
 								fontFamily: 'Roboto, sans-serif',
 								fontStyle: 'normal',
-								fontSize: '1em',
+								// fontSize: props.size === 'small' ? '1em' : '0.75em',
 								fontWeight: 400,
 								color: '#999999',
 							},
@@ -75,7 +75,12 @@ const Input = props => {
 								},
 								'&.Mui-focused': {
 									backgroundColor: '#FFFFFF',
-									border: '1px solid #FF7A00',
+									// border: '1px solid #FF7A00',
+								},
+								'&.Mui-focused &:hover': {
+									backgroundColor: '#FFFFFF',
+									border: 'none',
+									// border: '1px solid #FF7A00',
 								},
 								'&:before': {
 									display: 'none',
@@ -101,7 +106,12 @@ const Input = props => {
 								},
 								'&.Mui-focused': {
 									backgroundColor: '#FFFFFF',
-									border: '1px solid #FF7A00',
+									// border: '1px solid #FF7A00',
+								},
+								'&.Mui-focused, &:hover': {
+									backgroundColor: '#FFFFFF',
+									border: '1px solid transparent',
+									// border: '1px solid #FF7A00',
 								},
 								'&:before': {
 									display: 'none',
