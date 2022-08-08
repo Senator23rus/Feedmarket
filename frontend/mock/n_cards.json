@@ -79,7 +79,7 @@
         "rating": "4,2",
         "comments": "36",
         "favorites": true,
-        "image": "/card/pink_card.svg",
+        "image": "/card/yellow_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
             "id": 1,
@@ -115,7 +115,7 @@
         "choice": true,
         "comments": "366",
         "favorites": false,
-        "image": "/card/brown_card.svg",
+        "image": "/card/green_card.svg",
         "title": "Премикс VITOMEK",
         "category": {
             "id": 1,

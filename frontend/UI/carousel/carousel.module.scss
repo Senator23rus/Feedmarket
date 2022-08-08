@@ -43,6 +43,8 @@
     border-radius: 8px;
     z-index: 99;
     cursor: pointer;
+    user-select: none;
+
   }
   &__chevron_right{
     display: flex;
@@ -58,6 +60,7 @@
     border-radius: 8px;
     z-index: 99;
     cursor: pointer;
+    user-select: none;
   }
 }
 

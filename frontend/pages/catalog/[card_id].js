@@ -172,7 +172,7 @@ const CardPage = ({ card, cards }) => {
 							}),
 						}}
 						className={classes.main__grid__right}>
-						<PriseTag />
+						<PriseTag cards ={cards}/>
 					</div>
 				</div>
 			</div>
