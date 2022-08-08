@@ -1,9 +1,20 @@
 import classes from './sliderLine.module.scss';
-import { Slider } from '@mui/material';
+import Slider from '@mui/material/Slider';
 import Input from '../Input/input';
 import { useEffect, useRef, useState } from 'react';
 
-const SliderLine = ({ values, setValue, placeholders, names, max, min }) => {
+/**
+ * @param {import("@mui/material/Slider").SliderInput} props
+ * @property {[number, number]} values
+ * @property {Function} setValue
+ * @property {number} max
+ * @property {number} min
+ * @property {[string, string]} [names]
+ * @returns {JSX.Element}
+ * @constructor
+ */
+
+const SliderLine = ({ values, setValue, names, max, min }) => {
 	let [slider, setSlider] = useState(values);
 	let interval = useRef();
 	let elem = useRef();
@@ -14,7 +25,11 @@ const SliderLine = ({ values, setValue, placeholders, names, max, min }) => {
 			if (val < min) {
 				return [min, prevState[1]];
 			} else if (val > +prevState[1] - width.current) {
-				return [+prevState[1] - width.current, prevState[1]];
+				if (val + width.current >= max) {
+					return [max - width.current, max];
+				} else {
+					return [val, val + width.current];
+				}
 			} else {
 				return [val, prevState[1]];
 			}
@@ -26,7 +41,11 @@ const SliderLine = ({ values, setValue, placeholders, names, max, min }) => {
 			if (val > max) {
 				return [prevState[0], max];
 			} else if (val < +prevState[0] + width.current) {
-				return [prevState[0], +prevState[0] + width.current];
+				if (val - width.current <= min) {
+					return [min, min + width.current];
+				} else {
+					return [val - width.current, val];
+				}
 			} else {
 				return [prevState[0], val];
 			}
@@ -39,10 +58,6 @@ const SliderLine = ({ values, setValue, placeholders, names, max, min }) => {
 	}, [values]);
 
 	useEffect(() => {
-		console.log(
-			16 / (elem.current.getBoundingClientRect().width / (max - min)),
-			elem.current.getBoundingClientRect().width / (max - min)
-		);
 		width.current = Math.round(
 			16 / (elem.current.getBoundingClientRect().width / (max - min))
 		);
@@ -50,27 +65,27 @@ const SliderLine = ({ values, setValue, placeholders, names, max, min }) => {
 
 	const firstInputHandler = e => {
 		let val = e.target.value;
+		clearTimeout(interval.current);
 		if (val === '') {
 			setValue(prevState => [min, prevState[1]]);
 			return;
 		}
-		setValue(prevState => [val, prevState[1]]);
-		clearTimeout(interval.current);
+		setValue(prevState => [+val, prevState[1]]);
 		interval.current = setTimeout(() => {
-			firstInputValidation(setValue, val);
+			firstInputValidation(setValue, +val);
 		}, 800);
 	};
 
 	const secondInputHandler = e => {
 		let val = e.target.value;
+		clearTimeout(interval.current);
 		if (val === '') {
 			setValue(prevState => [prevState[0], max]);
 			return;
 		}
-		setValue(prevState => [prevState[0], val]);
-		clearTimeout(interval.current);
+		setValue(prevState => [prevState[0], +val]);
 		interval.current = setTimeout(() => {
-			secondInputValidation(setValue, val);
+			secondInputValidation(setValue, +val);
 		}, 800);
 	};
 
@@ -104,7 +119,7 @@ const SliderLine = ({ values, setValue, placeholders, names, max, min }) => {
 			/>
 			<div className={classes.wrap}>
 				<Input
-					placeholder={placeholders[0]}
+					placeholder={'' + min}
 					name={Array.isArray(names) ? names[0] : ''}
 					value={values[0] === min ? '' : values[0]}
 					onInput={firstInputHandler}
@@ -115,7 +130,7 @@ const SliderLine = ({ values, setValue, placeholders, names, max, min }) => {
 				/>
 				<span className={classes.feature}>—</span>
 				<Input
-					placeholder={placeholders[1]}
+					placeholder={'' + max}
 					name={Array.isArray(names) ? names[1] : ''}
 					value={values[1] === max ? '' : values[1]}
 					className={classes.input}
