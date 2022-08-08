@@ -5,9 +5,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 32px;
   position: sticky;
   width: 472px;
-  height: 244px;
+  max-height: 444px;
   background: #FFFFFF;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
@@ -15,9 +16,14 @@
   &__text{
     @extend %h1;
     color: $black;
-    padding-bottom: 25px;
+  }
+  &__kg{
+    @extend %h4;
+    color: $chips-background;
+    display: inline-block;
   }
 }
+
 .card{
   &__button {
     display: flex;
@@ -32,6 +38,9 @@
     border-radius: 8px;
     color: #ffffff;
     border: none;
+    &_dotters{
+      border-bottom: 1px dashed #999999;
+    }
     &_inner{
       display: flex;
       text-align: center;
@@ -78,4 +87,35 @@
       color: #FFFFFF;
     }
   }
+    &__store{
+      &__title{
+        display: flex;
+        align-items: center;
+      }
+      &__name{
+        @extend %h4;
+        padding-left: 12px;
+        color: $black;
+      }
+      &__btn{
+        @extend %small_text_bold;
+        color: $base-green;
+        max-width: fit-content;
+        padding: 12px;
+        border: 2px solid $base-green;
+        border-radius: 8px;
+      }
+      &__rating{
+        padding-left: 6px;
+        @extend %text_mobile;
+        color: $input-text;
+        &_wrap{
+          padding-left: 11%;
+        }
+       }
+      &__dnl{
+        display: flex;
+        align-items: center;
+      }
+    }
 }

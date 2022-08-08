@@ -55,6 +55,9 @@ const Details_product = () => {
 							традиционное производство, нанотехнологии представлены в исключительно
 							положительном свете.
 						</p>
+						<div>
+
+						</div>
 					</div>
 					<div className={classes.block__characteristic}>
 						<h2 className={classes.block__characteristic_title}>Состав</h2>

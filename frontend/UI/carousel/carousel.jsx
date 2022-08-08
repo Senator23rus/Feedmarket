@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const images = [
-	{ id: 1, src: '/card/PreMix-Pigs.jpg' },
-	{ id: 2, src: '/card/PreMix-Layers.jpg' },
-	{ id: 3, src: '/card/PreMix-Poultry.jpg' },
-	{ id: 4, src: '/card/PreMix-Ruminant.jpg' },
+	{ id: 1, src: '/card/brown_card.svg'},
+	{ id: 2, src: '/card/green_card.svg'},
+	{ id: 3, src: '/card/pink_card.svg' },
+	{ id: 4, src: '/card/PreMix-Pigs_1.jpg' },
 ];
 
 const Carousel = () => {
@@ -61,41 +61,13 @@ const Carousel = () => {
 				</div>
 
 				{state.images.map((_, index) => (
-					<div
-						style={{
-							border: index === state.active ? '1px solid red' : '',
-							cursor: 'pointer',
-						}}
+					<div style={{ border: index === state.active ? '1px solid red' : '0px',	cursor: 'pointer' }}
 						key={_.id}
 						className={classes.carousel__bottom__img}
 						onClick={() => changeActiveImage(index)}>
 						<Image src={_.src} width={45} height={64} alt={'img_product'} />
 					</div>
 				))}
-				{/*<div className={classes.carousel__bottom__img}>*/}
-				{/*	<Image*/}
-				{/*		src={'/card/PreMix-layers.jpg'}*/}
-				{/*		width={45}*/}
-				{/*		height={64}*/}
-				{/*		alt={'img_product'}*/}
-				{/*	/>*/}
-				{/*</div>*/}
-				{/*<div className={classes.carousel__bottom__img}>*/}
-				{/*	<Image*/}
-				{/*		src={'/card/PreMix-Poultry.jpg'}*/}
-				{/*		width={45}*/}
-				{/*		height={64}*/}
-				{/*		alt={'img_product'}*/}
-				{/*	/>*/}
-				{/*</div>*/}
-				{/*<div className={classes.carousel__bottom__img}>*/}
-				{/*	<Image*/}
-				{/*		src={'/card/PreMix-Ruminant.jpg'}*/}
-				{/*		width={45}*/}
-				{/*		height={64}*/}
-				{/*		alt={'img_product'}*/}
-				{/*	/>*/}
-				{/*</div>*/}
 				<div className={classes.carousel__bottom__chevron_right} onClick={nextImage}>
 					<svg
 						width="16"

@@ -21,6 +21,7 @@ const List = () => {
 	const render = cards.cards.map(card => <StoreProduct card={card} key={card.id} />);
 	return render;
 };
+
 const Details_product = () => {
 	const [state, setState] = useState('list');
 	const [animate, setAnimate] = useState(false);
@@ -66,13 +67,13 @@ const Details_product = () => {
 								fillRule="evenodd"
 								clipRule="evenodd"
 								d="M10.0003 6.6665C10.4606 6.6665 10.8337 6.96498 10.8337 7.33317L10.8337 12.6665C10.8337 13.0347 10.4606 13.3332 10.0003 13.3332C9.54009 13.3332 9.16699 13.0347 9.16699 12.6665L9.16699 7.33317C9.16699 6.96498 9.54009 6.6665 10.0003 6.6665Z"
-								fill="white"
+								fill="black"
 							/>
 							<path
 								fillRule="evenodd"
 								clipRule="evenodd"
 								d="M13.333 9.99984C13.333 10.4601 13.0345 10.8332 12.6663 10.8332L7.33301 10.8332C6.96482 10.8332 6.66634 10.4601 6.66634 9.99984C6.66634 9.5396 6.96482 9.1665 7.33301 9.1665L12.6663 9.1665C13.0345 9.1665 13.333 9.5396 13.333 9.99984Z"
-								fill="white"
+								fill="black"
 							/>
 						</svg>
 					</div>
