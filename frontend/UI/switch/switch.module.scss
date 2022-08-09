@@ -1,0 +1,93 @@
+@import "styles/variables";
+
+.root {
+  padding: 0;
+  width: 52px;
+  height: 32px;
+  overflow: visible;
+
+  &:not(.disabled):hover .thumb {
+    box-shadow: 0 0 0 8px rgba(16, 150, 72, 0.3);
+  }
+
+  & input:not(.disabled):focus+.thumb {
+    box-shadow: 0 0 0 8px rgba(16, 150, 72, 0.3);
+  }
+  &:not(.disabled):active .thumb {
+    width: 28px !important;
+    height: 28px !important;
+    box-shadow: 0 0 0 8px rgba(16, 150, 72, 0.3) !important;
+  }
+
+  &:not(.disabled):active .switchBase {
+    top: -7px;
+    left: -7px;
+    right: 13px;
+  }
+
+  &:not(.disabled) input:not(:checked)+.thumb {
+    width: 16px;
+    height: 16px;
+    background: #414141;
+  }
+
+  & input:not(:checked)+.thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #7E7E7E;
+    &.icon {
+      width: 24px;
+      height: 24px;
+      background-image: url('../../public/switcher/cross.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &:not(.disabled):hover input:not(:checked):focus+.thumb {
+    box-shadow: 0 0 0 12px rgba(16, 150, 72, 0.3);
+  }
+
+  &:not(.disabled):hover input:not(:checked)+.thumb {
+    box-shadow: 0 0 0 12px rgba(16, 150, 72, 0.3);
+  }
+
+  .thumb {
+    //position: relative;
+    background-color: #F2FAF5;
+    //top: -5px;
+    //right: 5px;
+    width: 24px;
+    height: 24px;
+
+    &.icon {
+      background-image: url('../../public/switcher/check mark.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .switchBase {
+    top: -5px;
+    left: -5px;
+    right: 15px;
+  }
+
+  .track {
+    background: none;
+    opacity: 1;
+    border-radius: 35px;
+    border: 2px solid #414141;
+
+    &.disabledFalseTrack {
+      background: #414141 !important;
+      opacity: 0.12 !important;
+    }
+
+    &.disabledTrueTrack {
+      background: #B0B0B0 !important;
+      border: 2px solid #7E7E7E !important;
+      opacity: 1 !important;
+    }
+  }
+}

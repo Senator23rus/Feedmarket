@@ -61,11 +61,10 @@ const SliderLine = ({ values, setValue, names, max, min }) => {
 		width.current = Math.round(
 			16 / (elem.current.getBoundingClientRect().width / (max - min))
 		);
-		//eslint-disable-next-line
 	}, [elem.current, max, min]);
 
 	const firstInputHandler = e => {
-		let val = e.target.value;
+		let val = e.target.value.replace(/[a-zа-яё]/g, '');
 		clearTimeout(interval.current);
 		if (val === '') {
 			setValue(prevState => [min, prevState[1]]);
