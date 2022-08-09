@@ -1,72 +1,72 @@
-@import "../variables";
+@import '../variables';
 
-.auth{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  gap: 32px;
-  &_title{
-    @extend %h1;
-    color: $black2;
-  }
+.auth {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	gap: 32px;
+	&_title {
+		@extend %h1;
+		color: $black2;
+	}
 }
-.auth-form{
-  max-width: 720px;
-  width: 100%;
-  padding: 52px 124px;
-  background: white;
-  box-shadow: $box-shadow;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  &_title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: $gray;
-    .title{
-      @extend %h3;
-    }
-    .step{
-      @extend %text;
-    }
-  }
-  &_block{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 16px;
-  }
-  &_footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &__link{
-    @extend %text;
-    color: $base-yellow;
-    cursor: pointer;
-    &:hover{
-      text-decoration: underline;
-    }
-  }
-  &__refresh-pass{
-    @extend %text;
-    color: $input-text;
-    cursor: pointer;
-    &:hover{
-      text-decoration: underline;
-    }
-  }
-  &__refresh-mute{
-    @extend %text_mobile;
-    color: $input-text;
-  }
-  &__refresh-title {
-    @extend %caption;
-    color: $input-text;
-  }
+.auth-form {
+	max-width: 720px;
+	width: 100%;
+	padding: 52px 124px;
+	background: white;
+	box-shadow: $box-shadow;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 24px;
+	&_title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		color: $gray;
+		.title {
+			@extend %h3;
+		}
+		.step {
+			@extend %text;
+		}
+	}
+	&_block {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 16px;
+	}
+	&_footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__link {
+		@extend %text;
+		color: $base-yellow;
+		cursor: pointer;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	&__refresh-pass {
+		@extend %text;
+		color: $input-text;
+		cursor: pointer;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	&__refresh-mute {
+		@extend %text_mobile;
+		color: $input-text;
+	}
+	&__refresh-title {
+		@extend %caption;
+		color: $input-text;
+	}
 }

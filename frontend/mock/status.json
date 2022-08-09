@@ -1,0 +1,14 @@
+[
+    {
+    "all": 999,
+    "in_sale": 32,
+    "ready": 85,
+    "error":11,
+    "bad_descr": 19,
+    "no_foto": 7,
+    "out_sale": 15,
+    "archive": 32,
+    "drafts": 6
+    }
+   
+]

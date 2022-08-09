@@ -7,6 +7,7 @@ import Carousel from 'UI/carousel/carousel';
 import ListCharacteristic from 'components/list_characteristic/list_characteristic';
 import DatailedCharacteristic from 'components/common/datailed_characteristic/datailed_characteristic';
 import PriseTag from 'UI/price_tag/prise_tag';
+import Paginations from 'UI/pagination/pagination';
 
 const CardPage = ({ card, cards }) => {
 	const { getTextGenerator, getDefaultTextGenerator } = useAppContext();
@@ -14,8 +15,6 @@ const CardPage = ({ card, cards }) => {
 	const myRef = useRef(null);
 	const scrollToRef = () =>
 		myRef.current && myRef.current.scrollIntoView({ behavior: 'smooth' });
-	console.log(cards);
-
 	const containerGrid = useRef(null);
 
 	const [padding, setPadding] = useState(false);
@@ -35,6 +34,7 @@ const CardPage = ({ card, cards }) => {
 		if (typeof document === 'object') {
 			document?.querySelector('#__next').addEventListener('wheel', onWheel);
 		}
+
 		return () => document?.querySelector('#__next').addEventListener('wheel', onWheel);
 	}, []);
 
@@ -66,6 +66,28 @@ const CardPage = ({ card, cards }) => {
 								вытеснить традиционное производство, нанотехнологии представлены в
 								исключительно положительном свете.
 							</p>
+							<div className={classes.block__characteristic__dnl}>
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										fillRule="evenodd"
+										clipRule="evenodd"
+										d="M6.46967 8.46967C6.76256 8.17678 7.23744 8.17678 7.53033 8.46967L11.25 12.1893L11.25 5C11.25 4.58579 11.5858 4.25 12 4.25C12.4142 4.25 12.75 4.58579 12.75 5L12.75 12.1893L16.4697 8.46967C16.7626 8.17678 17.2374 8.17678 17.5303 8.46967C17.8232 8.76256 17.8232 9.23744 17.5303 9.53033L12.5303 14.5303C12.2374 14.8232 11.7626 14.8232 11.4697 14.5303L6.46967 9.53033C6.17678 9.23744 6.17678 8.76256 6.46967 8.46967Z"
+										fill="#7E7E7E"
+									/>
+									<path
+										fillRule="evenodd"
+										clipRule="evenodd"
+										d="M5 15.25C5.41421 15.25 5.75 15.5858 5.75 16V17C5.75 17.6904 6.30964 18.25 7 18.25L17 18.25C17.6904 18.25 18.25 17.6904 18.25 17V16C18.25 15.5858 18.5858 15.25 19 15.25C19.4142 15.25 19.75 15.5858 19.75 16V17C19.75 18.5188 18.5188 19.75 17 19.75L7 19.75C5.48122 19.75 4.25 18.5188 4.25 17V16C4.25 15.5858 4.58579 15.25 5 15.25Z"
+										fill="#7E7E7E"
+									/>
+								</svg>
+								<span>Сертификат соответствия</span>
+							</div>
 						</div>
 						<div className={classes.block__characteristic}>
 							<h2 className={classes.block__characteristic_title}>Состав</h2>
@@ -122,9 +144,57 @@ const CardPage = ({ card, cards }) => {
 									</li>
 								</ul>
 							</div>
-							<div className={classes.card__button_long}>
-								Заказать индивидуальный рецепт
+							<div className={classes.block__characteristic__dnl}>
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										fillRule="evenodd"
+										clipRule="evenodd"
+										d="M6.46967 8.46967C6.76256 8.17678 7.23744 8.17678 7.53033 8.46967L11.25 12.1893L11.25 5C11.25 4.58579 11.5858 4.25 12 4.25C12.4142 4.25 12.75 4.58579 12.75 5L12.75 12.1893L16.4697 8.46967C16.7626 8.17678 17.2374 8.17678 17.5303 8.46967C17.8232 8.76256 17.8232 9.23744 17.5303 9.53033L12.5303 14.5303C12.2374 14.8232 11.7626 14.8232 11.4697 14.5303L6.46967 9.53033C6.17678 9.23744 6.17678 8.76256 6.46967 8.46967Z"
+										fill="#7E7E7E"
+									/>
+									<path
+										fillRule="evenodd"
+										clipRule="evenodd"
+										d="M5 15.25C5.41421 15.25 5.75 15.5858 5.75 16V17C5.75 17.6904 6.30964 18.25 7 18.25L17 18.25C17.6904 18.25 18.25 17.6904 18.25 17V16C18.25 15.5858 18.5858 15.25 19 15.25C19.4142 15.25 19.75 15.5858 19.75 16V17C19.75 18.5188 18.5188 19.75 17 19.75L7 19.75C5.48122 19.75 4.25 18.5188 4.25 17V16C4.25 15.5858 4.58579 15.25 5 15.25Z"
+										fill="#7E7E7E"
+									/>
+								</svg>
+								<span className={classes.block__characteristic_text}>
+									Сертификат соответствия
+								</span>
 							</div>
+							<div className={classes.block__characteristic__dnl}>
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										fillRule="evenodd"
+										clipRule="evenodd"
+										d="M6.46967 8.46967C6.76256 8.17678 7.23744 8.17678 7.53033 8.46967L11.25 12.1893L11.25 5C11.25 4.58579 11.5858 4.25 12 4.25C12.4142 4.25 12.75 4.58579 12.75 5L12.75 12.1893L16.4697 8.46967C16.7626 8.17678 17.2374 8.17678 17.5303 8.46967C17.8232 8.76256 17.8232 9.23744 17.5303 9.53033L12.5303 14.5303C12.2374 14.8232 11.7626 14.8232 11.4697 14.5303L6.46967 9.53033C6.17678 9.23744 6.17678 8.76256 6.46967 8.46967Z"
+										fill="#7E7E7E"
+									/>
+									<path
+										fillRule="evenodd"
+										clipRule="evenodd"
+										d="M5 15.25C5.41421 15.25 5.75 15.5858 5.75 16V17C5.75 17.6904 6.30964 18.25 7 18.25L17 18.25C17.6904 18.25 18.25 17.6904 18.25 17V16C18.25 15.5858 18.5858 15.25 19 15.25C19.4142 15.25 19.75 15.5858 19.75 16V17C19.75 18.5188 18.5188 19.75 17 19.75L7 19.75C5.48122 19.75 4.25 18.5188 4.25 17V16C4.25 15.5858 4.58579 15.25 5 15.25Z"
+										fill="#7E7E7E"
+									/>
+								</svg>
+								<span className={classes.block__characteristic_text}>
+									Сертификат соответствия
+								</span>
+							</div>
+							<button className={classes.card__button_long}>
+								Заказать индивидуальный рецепт
+							</button>
 						</div>
 
 						<div className={classes.detailed__characteristic}>
@@ -141,15 +211,16 @@ const CardPage = ({ card, cards }) => {
 					<div
 						style={{
 							...(padding && {
-								paddingTop: 223,
+								paddingTop: 53,
 								transition: 'padding linear 200ms',
 							}),
 						}}
 						className={classes.main__grid__right}>
-						<PriseTag price={card.price} />
+						<PriseTag cards={cards} />
 					</div>
 				</div>
 			</div>
+			<Paginations />
 			{/*<Recomend cards={cards} />*/}
 		</Layout>
 	);
