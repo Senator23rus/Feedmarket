@@ -9,6 +9,7 @@ import ChipsButton from 'UI/chipsButton';
 import Checkbox from 'UI/checkbox';
 import Card from 'UI/cards/pc/card';
 import cards from 'mock/n_cards.json';
+import SliderLine from 'UI/sliderLine';
 
 const Index = () => {
 	const { getTextGenerator, getDefaultTextGenerator } = useAppContext();
@@ -29,6 +30,8 @@ const Index = () => {
 			{ id: 7, name: 'IezeN', active: false },
 		],
 	});
+
+	const [priceFilter, setPriceFilter] = useState([0, 99999]);
 
 	const [chips, setChips] = useState([]);
 
@@ -169,6 +172,14 @@ const Index = () => {
 									</Checkbox>
 								))}
 							</div>
+						</div>
+						<div className="filter-block">
+							<SliderLine
+								values={priceFilter}
+								setValue={setPriceFilter}
+								max={priceFilter[1]}
+								min={priceFilter[0]}
+							/>
 						</div>
 					</div>
 					<div className="catalog-page__wrapper-content catalog-page-wrap">
