@@ -4,16 +4,15 @@ import Input from '../Input/input';
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * @param {import("@mui/material/Slider").SliderInput} props
- * @property {[number, number]} values
- * @property {Function} setValue
- * @property {number} max
- * @property {number} min
- * @property {[string, string]} [names]
- * @returns {JSX.Element}
+ * @param {import("@mui/material/Slider").SliderInput & {
+ *     values:number[],
+ *     setValue:Function,
+ *     max:number,
+ *     min:number,
+ *     [names]:string[],
+ * }} props
  * @constructor
  */
-
 const SliderLine = ({ values, setValue, names, max, min }) => {
 	let [slider, setSlider] = useState(values);
 	let interval = useRef();
@@ -55,12 +54,14 @@ const SliderLine = ({ values, setValue, names, max, min }) => {
 	useEffect(() => {
 		firstInputValidation(setSlider, values[0]);
 		secondInputValidation(setSlider, values[1]);
+		//eslint-disable-next-line
 	}, [values]);
 
 	useEffect(() => {
 		width.current = Math.round(
 			16 / (elem.current.getBoundingClientRect().width / (max - min))
 		);
+		//eslint-disable-next-line
 	}, [elem.current, max, min]);
 
 	const firstInputHandler = e => {
