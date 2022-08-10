@@ -1,0 +1,16 @@
+@import "styles/variables";
+
+.paymentMethod {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 52px;
+
+  .title__wrapper {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      @extend %h2;
+      color: #414141;
+    }
+  }
+}
