@@ -1,0 +1,19 @@
+@import "styles/variables";
+
+.wrapper {
+  border: 2px solid $base-green;
+  border-radius: 8px;
+  display: block;
+  padding: 12px 10px;
+  @extend %small_text_bold;
+  color: $base-green;
+  transition: all 0.1s linear;
+
+  &:hover {
+    background: $base-green-35;
+  }
+
+  &:active {
+    background: $ToggleButton;
+  }
+}
