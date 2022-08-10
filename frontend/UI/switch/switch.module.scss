@@ -7,16 +7,16 @@
   overflow: visible;
 
   &:not(.disabled):hover .thumb {
-    box-shadow: 0 0 0 8px rgba(16, 150, 72, 0.3);
+    box-shadow: $SwitcherShadow;
   }
 
   & input:not(.disabled):focus+.thumb {
-    box-shadow: 0 0 0 8px rgba(16, 150, 72, 0.3);
+    box-shadow: $SwitcherShadow;
   }
   &:not(.disabled):active .thumb {
     width: 28px !important;
     height: 28px !important;
-    box-shadow: 0 0 0 8px rgba(16, 150, 72, 0.3) !important;
+    box-shadow: $SwitcherShadow !important;
   }
 
   &:not(.disabled):active .switchBase {
@@ -28,13 +28,13 @@
   &:not(.disabled) input:not(:checked)+.thumb {
     width: 16px;
     height: 16px;
-    background: #414141;
+    background: $black;
   }
 
   & input:not(:checked)+.thumb {
     width: 16px;
     height: 16px;
-    background-color: #7E7E7E;
+    background-color: $disabled-text;
     &.icon {
       width: 24px;
       height: 24px;
@@ -45,16 +45,16 @@
   }
 
   &:not(.disabled):hover input:not(:checked):focus+.thumb {
-    box-shadow: 0 0 0 12px rgba(16, 150, 72, 0.3);
+    box-shadow: $SwitcherShadowBig;
   }
 
   &:not(.disabled):hover input:not(:checked)+.thumb {
-    box-shadow: 0 0 0 12px rgba(16, 150, 72, 0.3);
+    box-shadow: $SwitcherShadowBig;
   }
 
   .thumb {
     //position: relative;
-    background-color: #F2FAF5;
+    background-color: $inputs;
     //top: -5px;
     //right: 5px;
     width: 24px;
@@ -77,16 +77,16 @@
     background: none;
     opacity: 1;
     border-radius: 35px;
-    border: 2px solid #414141;
+    border: 2px solid $black;
 
     &.disabledFalseTrack {
-      background: #414141 !important;
+      background: $black !important;
       opacity: 0.12 !important;
     }
 
     &.disabledTrueTrack {
       background: #B0B0B0 !important;
-      border: 2px solid #7E7E7E !important;
+      border: 2px solid $disabled-text !important;
       opacity: 1 !important;
     }
   }
