@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const images = [
-	{ id: 1, src: '/card/brown_card.svg' },
-	{ id: 2, src: '/card/green_card.svg' },
-	{ id: 3, src: '/card/pink_card.svg' },
-	{ id: 4, src: '/card/yellow_card.svg' },
+	{ id: 1, src: '/card/PreMix-Pigs.jpg' },
+	{ id: 2, src: '/card/PreMix-Layers.jpg' },
+	{ id: 3, src: '/card/PreMix-Poultry.jpg' },
+	{ id: 4, src: '/card/PreMix-Ruminant.jpg' },
 ];
 
 const Carousel = () => {
@@ -22,8 +22,9 @@ const Carousel = () => {
 	};
 	const prevImage = () => {
 		const active = state.active - 1;
+		console.log(state.images[-1]);
 		if (active < 0) {
-			setState(prevState => ({ ...prevState, active: prevState.images.length - 1 }));
+			setState(prevState => ({ ...prevState, active: prevState.images - 1 }));
 		} else {
 			setState(prevState => ({ ...prevState, active }));
 		}
@@ -62,7 +63,7 @@ const Carousel = () => {
 				{state.images.map((_, index) => (
 					<div
 						style={{
-							border: index === state.active ? '1px solid red' : '0px',
+							border: index === state.active ? '1px solid red' : '',
 							cursor: 'pointer',
 						}}
 						key={_.id}
@@ -71,6 +72,30 @@ const Carousel = () => {
 						<Image src={_.src} width={45} height={64} alt={'img_product'} />
 					</div>
 				))}
+				{/*<div className={classes.carousel__bottom__img}>*/}
+				{/*	<Image*/}
+				{/*		src={'/card/PreMix-layers.jpg'}*/}
+				{/*		width={45}*/}
+				{/*		height={64}*/}
+				{/*		alt={'img_product'}*/}
+				{/*	/>*/}
+				{/*</div>*/}
+				{/*<div className={classes.carousel__bottom__img}>*/}
+				{/*	<Image*/}
+				{/*		src={'/card/PreMix-Poultry.jpg'}*/}
+				{/*		width={45}*/}
+				{/*		height={64}*/}
+				{/*		alt={'img_product'}*/}
+				{/*	/>*/}
+				{/*</div>*/}
+				{/*<div className={classes.carousel__bottom__img}>*/}
+				{/*	<Image*/}
+				{/*		src={'/card/PreMix-Ruminant.jpg'}*/}
+				{/*		width={45}*/}
+				{/*		height={64}*/}
+				{/*		alt={'img_product'}*/}
+				{/*	/>*/}
+				{/*</div>*/}
 				<div className={classes.carousel__bottom__chevron_right} onClick={nextImage}>
 					<svg
 						width="16"

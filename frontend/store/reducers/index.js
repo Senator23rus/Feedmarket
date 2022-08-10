@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { catalogReducer } from 'store/reducers/catalog-reducer';
-import { baseReducer } from 'store/slices/base-slice';
+import WelcomePageSlice from "store/slices/welcomePageSlice";
 
 const reducers = combineReducers({
 	catalog: catalogReducer,
-	base: baseReducer,
+	welcomePage: WelcomePageSlice,
 });
 export default reducers;

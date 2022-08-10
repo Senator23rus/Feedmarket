@@ -145,7 +145,7 @@ const NavBar = () => {
 								</svg>
 								<span>Корзина</span>
 							</CustomLink>
-							<CustomLink href={'/login'} className="link">
+							<CustomLink href={'/auth'} className="link">
 								<svg
 									width="28"
 									height="26"

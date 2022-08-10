@@ -1,27 +1,23 @@
-import classes from 'styles/pages/welcome-page.module.scss';
-import Layout from 'components/common/layouts';
-import Button from 'UI/button';
+import classes from '../../styles/pages/welcome-page.module.scss';
+import Layout from '../../components/common/layouts';
+import Button from '../../UI/button';
 import { Grid } from '@mui/material';
-import image1 from 'public/welcomePage/character_1.svg';
-import image2 from 'public/welcomePage/character_2.svg';
-import image3 from 'public/welcomePage/character_3.svg';
-import stepsFon from 'public/welcomePage/staps_img.jpg';
-import helpAtTheStartFon from 'public/welcomePage/help_at_the_start_img.jpg';
-import checkboxImg from 'public/welcomePage/checkbox.svg';
-import footerFon from 'public/welcomePage/footer_img.jpg';
+import image1 from '../../public/welcomePage/character_1.svg';
+import image2 from '../../public/welcomePage/character_2.svg';
+import image3 from '../../public/welcomePage/character_3.svg';
+import stepsFon from '../../public/welcomePage/staps_img.jpg';
+import helpAtTheStartFon from '../../public/welcomePage/help_at_the_start_img.jpg';
+import checkboxImg from '../../public/welcomePage/checkbox.svg';
+import footerFon from '../../public/welcomePage/footer_img.jpg';
 import Image from 'next/image';
 import classNames from 'classnames';
 import Link from 'next/link';
-import CardCarousel from 'UI/CardCarousel';
-import chevronLeft from 'public/welcomePage/chevrone_left.svg';
-import chevronRight from 'public/welcomePage/chevron_right.svg';
-import CommentCard from 'components/pages/welcomePage/commentCard';
+import CardCarousel from '../../UI/CardCarousel';
+import chevronLeft from '../../public/welcomePage/chevrone_left.svg';
+import chevronRight from '../../public/welcomePage/chevron_right.svg';
+import CommentCard from '../../components/pages/welcomePage/commentCard';
 import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import cardComment from 'mock/welcomePageCards.json';
-import {useAsyncAction} from "hooks/useAsyncActions";
-import {useAction} from "hooks/useActions";
-
+import cardComment from '../../mock/welcomePageCards.json';
 
 /**
  *
@@ -31,13 +27,7 @@ import {useAction} from "hooks/useActions";
  * @constructor
  */
 
-const WelcomePage = () => {
-
-	let cards = useSelector(store => store.welcomePage);
-
-	let { welcomePageAsyncAction, WelcomePageAddCommentAction } = useAsyncAction();
-	let { clear } = useAction();
-
+const WelcomePage = ({ cards, addCards, clear }) => {
 	useEffect(() => {
 		clear();
 	}, []);
@@ -49,7 +39,6 @@ const WelcomePage = () => {
 
 	return (
 		<Layout>
-			<div></div>
 			<div className={classes.hidden}>
 				<div className={classes.container}>
 					<section className={classes.welcome}>
@@ -350,9 +339,13 @@ const WelcomePage = () => {
 							rightBtn={rb}
 							mountPoint={mp}
 							mountPointWrapper={mpw}
-							addData={async () => {
-								await WelcomePageAddCommentAction(cardComment);
-							}}>
+							addData={async () =>
+								await new Promise(resolve =>
+									setTimeout(() => {
+										resolve(addCards(cardComment));
+									}, 2000)
+								)
+							}>
 							<div className={classes.comments__wrapper}>
 								<h2 className={classNames(classes.sectionTitle, classes.comments__title)}>
 									Партнеры о маркетплейсе
@@ -424,4 +417,3 @@ const WelcomePage = () => {
 };
 
 export default WelcomePage;
-
