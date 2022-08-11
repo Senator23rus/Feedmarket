@@ -51,6 +51,7 @@ const Input = props => {
 								// fontSize: props.size === 'small' ? '1em' : '0.75em',
 								fontWeight: 400,
 								color: '#999999',
+								width: '100%',
 							},
 							'& label.Mui-focused': {
 								fontFamily: 'Roboto,sans-serif',
