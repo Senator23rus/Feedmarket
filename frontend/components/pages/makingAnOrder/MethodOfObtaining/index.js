@@ -1,6 +1,6 @@
 import classes from 'components/pages/makingAnOrder/MethodOfObtaining/MethodOfObtaining.module.scss';
 import SectionWrapper from "components/pages/makingAnOrder/sectionWrapper";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
 import MyToggleButton from "components/pages/makingAnOrder/toggleButton";
 import Image from 'next/image';
@@ -8,8 +8,17 @@ import pin from 'public/makingAnOrderPage/Pin.svg';
 import user from 'public/makingAnOrderPage/user.svg';
 import settings from 'public/makingAnOrderPage/settings.svg';
 
-const MethodOfObtaining = () => {
+const MethodOfObtaining = ({setPaymentParameters}) => {
     let [value, setValue] = useState('1');
+    let [deliveryPoint, setDeliveryPoint] = useState('Россия, Краснодар, Центральный округ, ' +
+        'микрорайон центральный, Красная улица, 23/5');
+    let [userName, setUseName] = useState('Константинопольский Константин');
+    let [userNumberPhone, setUserNumberPhone] = useState('+7 (123) 456-78-90');
+
+    useEffect(() => {
+        setPaymentParameters(prevState => {return {...prevState, methodOfObtaining: value,
+            deliveryPoint, userName, userPhoneNumber: userNumberPhone}})
+    }, [value, deliveryPoint, userName, userNumberPhone])
 
     let style = {
         '&.MuiToggleButton-root.Mui-selected': {
@@ -62,7 +71,7 @@ const MethodOfObtaining = () => {
                    </div>
                     <div className={classes.condition__text}>
                         <h3 className={classes.condition__title}>Пункт выдачи</h3>
-                        <p className={classes.condition__subtitile}>Россия, Краснодар, Центральный округ, микрорайон центральный, Красная улица, 23/5</p>
+                        <p className={classes.condition__subtitile}>{deliveryPoint}</p>
                         <p className={classes.condition__metaData}>Срок хранения: 66 дней</p>
                     </div>
                     <button className={classes.condition__button}>
@@ -75,8 +84,8 @@ const MethodOfObtaining = () => {
                         <Image src={user}/>
                     </div>
                     <div className={classes.condition__text}>
-                        <h3 className={classes.condition__title}>Константинопольский Константин</h3>
-                        <p className={classes.condition__subtitile}>+7 (123) 456-78-90</p>
+                        <h3 className={classes.condition__title}>{userName}</h3>
+                        <p className={classes.condition__subtitile}>{userNumberPhone}</p>
                     </div>
                     <button className={classes.condition__button}>
                         <Image src={settings}/>

@@ -1,12 +1,16 @@
 import classes from './paymentMethod.module.scss';
 import PayButton from "components/pages/makingAnOrder/paymentMethod/payButton";
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SectionWrapper from "components/pages/makingAnOrder/sectionWrapper";
 import MyToggleButton from "components/pages/makingAnOrder/toggleButton";
 
-const PaymentMethod = ({card}) => {
+const PaymentMethod = ({card, setPaymentParameters}) => {
     let [value, setValue] = useState('cash');
+
+    useEffect(() => {
+        setPaymentParameters(prevState => {return {...prevState, paymentMethod: value}});
+    }, [value])
 
     let style = {
         // '&.MuiToggleButton-root': {color: '#999999'},
