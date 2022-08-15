@@ -16,9 +16,7 @@ const Payment = ({ isValidation }) => {
 	};
 
 	const scrollHandler = e => {
-		let a = getBodyScrollTop(wrap.current).top;
-		console.log(a, e.deltaY);
-		if (a - e.deltaY <= 200) {
+		if (getBodyScrollTop(wrap.current).top + Math.abs(e.deltaY) <= 208) {
 			setIsScroll(true);
 			wrap.current.children[0].style.setProperty(
 				'width',

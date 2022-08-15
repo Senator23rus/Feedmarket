@@ -78,7 +78,7 @@ const PaymentMethod = ({card, setPaymentParameters}) => {
                           return (
                               <ToggleButton classes={{
                                   root: classes.root
-                              }} sx={style} value={index}>
+                              }} sx={style} value={index} key={index}>
                                   <PayButton isImage action={item.name} >
                                       <span className="cardNum">{item.cardNum}</span>
                                   </PayButton>
