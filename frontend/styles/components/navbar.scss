@@ -1,78 +1,140 @@
-@import '../variables';
-.nav-wrapper {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	max-width: $container_width;
-	@media screen and (max-width: 1464px) {
-		padding: 0 15px;
-	}
-	&__links {
-		display: flex;
-		align-items: stretch;
-		align-self: stretch;
-		gap: 32px;
-		.link {
-			@extend %menu;
-			color: $white;
-			display: flex;
-			align-items: center;
-			transition: all ease-in-out 0.1s;
-			&:hover {
-				border-top: 4px solid $white;
-			}
-		}
-		.link_active {
-			color: $green_link;
-		}
-	}
-	&__logo {
-		@extend .col-2;
-		align-self: center !important;
-	}
-	&__category {
-		@extend .col-3;
-		align-self: center !important;
-	}
-	&__search {
-		@extend .col-7;
-		align-self: center !important;
-	}
-	&__other {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		gap: 5vw;
-		.btn {
-			@extend %small_text_bold;
-			text-align: center;
-			width: auto;
-			padding: 12px 10px;
-			white-space: nowrap;
-			height: 40px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			cursor: pointer;
-			background: $base-yellow;
-			border-radius: 8px;
-		}
-	}
-	&__settings {
-		display: flex;
-		align-items: flex-end;
-		gap: 24.5px;
-		.link {
-			@extend %text_mobile;
-			gap: 4px;
-			color: $white;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-end;
-			align-items: center;
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-	}
+@import "../variables";
+.nav-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: $container_width;
+  @media screen and (max-width: 1464px){
+    padding: 0 15px;
+  }
+  &__links{
+    display: flex;
+    align-items: stretch;
+    align-self: stretch;
+    gap: 32px;
+    .link{
+      @extend %menu;
+      color: $white;
+      display: flex;
+      align-items: center;
+      transition: all ease-in-out 0.1s;
+      &:hover{
+        border-top: 4px solid $white;
+      }
+    }
+    .link_active{
+      color: $green_link;
+    }
+  }
+  &__logo{
+    @extend .col-2;
+    align-self: center !important;
+  }
+  &__category{
+    @extend .col-3;
+    align-self: center !important;
+  }
+  &__search{
+    @extend .col-7;
+    align-self: center !important;
+  }
+  &__other{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5vw;
+    .btn{
+      @extend %small_text_bold;
+      text-align: center;
+      width: auto;
+      padding: 12px 10px;
+      white-space: nowrap;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background: $base-yellow;
+      border-radius: 8px;
+    }
+  }
+  &__settings{
+    display: flex;
+    align-items: flex-end;
+    gap: 24.5px;
+    .link{
+      @extend %text_mobile;
+      gap: 4px;
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      &::after{
+        content: '';
+        position: absolute;
+        background: transparent;
+        transform: scale(1);
+        width: 43px;
+        height: 43px;
+        top: calc(50% - (43px / 2));
+        left: calc(50% - (43px / 2));
+        border-radius: 50%;
+        opacity: 0;
+        transition: all linear .2s;
+
+      }
+      &:hover{
+        text-decoration: underline;
+        &::after{
+          content: '';
+          position: absolute;
+          background: $base-yellow;
+          width: 43px;
+          height: 43px;
+          transform: scale(1);
+          top: calc(50% - (43px / 2));
+          left: calc(50% - (43px / 2));
+          border-radius: 50%;
+          opacity: 0.5;
+          transition: all linear .2s;
+        }
+      }
+
+    }
+  }
+
+}
+.drop {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 324px;
+  width: 100%;
+
+}
+.dropdown-absolute{
+  position: absolute;
+  opacity: 0;
+  max-height: 0;
+  background: white;
+  padding: 0;
+  transition: all .2s linear;
+  overflow: hidden;
+  z-index: 999;
+  box-shadow: $box-shadow;
+  border-radius: 8px;
+  &-true{
+    opacity: 1;
+    padding: 16px;
+    max-height: 500px;
+    transition: all .2s linear;
+  }
+  &-false{
+    opacity: 0;
+    padding: 0;
+    max-height: 500px;
+    transition: all .2s linear;
+  }
 }
