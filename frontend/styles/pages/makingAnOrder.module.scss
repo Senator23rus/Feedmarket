@@ -11,6 +11,7 @@
 }
 
 .section {
+  width: 100%;
   max-width: 968px  ;
 }
 
@@ -20,7 +21,7 @@
   gap: 24px;
 
   .payment {
-    position: relative;
+    //position: relative;
     flex: 1 1;
   }
 }

@@ -1,7 +1,8 @@
 @import "styles/variables";
 
 .fixsed {
-  position: fixed;
+  position: absolute;
+  top: 208px;
 }
 
 .btn {
