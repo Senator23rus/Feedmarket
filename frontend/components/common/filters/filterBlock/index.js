@@ -83,8 +83,6 @@ const FilterBlock = ({state, changeBrand, filterName, title, isСollapsible, isS
                         </Checkbox>
                     </div>
                 }
-
-                // return item
             }));
             lengthCalc(count > 5 ? 5 : count);
         } else {
@@ -94,15 +92,6 @@ const FilterBlock = ({state, changeBrand, filterName, title, isСollapsible, isS
         heightHandler();
         setSearch(e.target.value);
     }
-
-    // useEffect(() => {
-    //     if (isLoadState.current) {
-    //         let a = JSON.parse(JSON.stringify(state))
-    //         setContent(a.map((_, index) => {
-    //             return cloneElement(content[index], {...content[index].props, checked: _.active})
-    //         }))
-    //     }
-    // }, [state])
 
     useEffect(() => {
         if (isLoad.current) {
