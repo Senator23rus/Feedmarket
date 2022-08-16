@@ -23,6 +23,7 @@ const Switcher = ({ icon, defaultChecked, disabled,...other}) => {
         }} sx={{
             '.MuiTouchRipple-child': {background: 'rgba(16, 150, 72, 0.3)'},
             '.MuiSwitch-switchBase:not(.Mui-checked)': icon ? {} : {top: '-1px', left: '-1px', right: '19px'},
+            "MuiTouchRipple-root span": {background: 'none'},
             '.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track':
                 {opacity: 1, background: '#0D9545', border: 'none'}
         }}/>

@@ -13,7 +13,7 @@ import { useEffect, useRef, useState } from 'react';
  * }} props
  * @constructor
  */
-const SliderLine = ({ values, setValue, names, max, min }) => {
+const SliderLine = ({ values, setValue, names, max, min , ...other}) => {
 	let [slider, setSlider] = useState(values);
 	let interval = useRef();
 	let elem = useRef();
@@ -77,7 +77,7 @@ const SliderLine = ({ values, setValue, names, max, min }) => {
 	};
 
 	const secondInputHandler = e => {
-		let val = e.target.value;
+		let val = e.target.value.replace(/[a-zа-яё]/g, '');
 		clearTimeout(interval.current);
 		if (val === '') {
 			setValue(prevState => [prevState[0], max]);
@@ -100,6 +100,7 @@ const SliderLine = ({ values, setValue, names, max, min }) => {
 	return (
 		<>
 			<Slider
+				{...other}
 				value={slider}
 				onChange={sliderHandler}
 				valueLabelDisplay="off"
