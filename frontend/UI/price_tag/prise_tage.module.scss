@@ -11,7 +11,7 @@
 	background: #ffffff;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 16px;
-	padding: 52px 32px;
+	padding: 52px 32px 45px 32px;
 	&__text {
 		@extend %h1;
 		color: $black;
@@ -104,6 +104,8 @@
 			border: 2px solid $base-green;
 			border-radius: 8px;
 			cursor: pointer;
+			position: relative;
+			top: -19px;
 		}
 		&__rating {
 			padding-left: 6px;
