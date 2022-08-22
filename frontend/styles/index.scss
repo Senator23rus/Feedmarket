@@ -10,20 +10,20 @@
   grid-template-columns: 1fr;
   grid-template-rows: 204px 1fr;
   &__navbar{
-    box-shadow: $box-shadow;
-    position: sticky;
-    background: white;
-    top: 0;
-    height: 204px;
-    max-width: $max-width;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 76px 128px;
-    justify-content: center;
-    align-items: stretch;
-    width: 100%;
-    margin: 0 auto;
-    z-index: 999;
+    box-shadow: $box-shadow !important;
+    position: sticky !important;
+    background: white !important;
+    top: 0 !important;
+    max-width: $max-width !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 76px 128px !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    z-index: 999 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     &-top{
       width: 100%;
       background: $base-green;
@@ -64,4 +64,12 @@
       padding: 0 16px;
     }
   }
+}
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

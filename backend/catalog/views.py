@@ -2,7 +2,7 @@ from django.shortcuts import render
 from drf_yasg import openapi
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.views import get_schema_view
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
@@ -54,7 +54,7 @@ class GoodAPICreate(generics.CreateAPIView):
     """Добавление новых Товаров если Авторизирован"""
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
-    # parser_classes = (MultiPartParser, FormParser)
+    parser_classes = (MultiPartParser, FormParser)
     permission_classes = (IsAuthenticated,)
 
 

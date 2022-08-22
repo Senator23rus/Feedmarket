@@ -7,5 +7,6 @@ drf-yasg
 Pillow
 psycopg2-binary==2.8
 django-stubs
+django-cors-headers
 
 

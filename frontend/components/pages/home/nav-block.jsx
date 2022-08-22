@@ -9,7 +9,7 @@ const NavBlock = () => {
 				<Image
 					src={'/nav-block/bird.png'}
 					layout={'fill'}
-					objectFit={'fill'}
+					objectFit={'contain'}
 					alt={'poetry'}
 				/>
 				<div className={'title'}>
@@ -44,7 +44,7 @@ const NavBlock = () => {
 				<Image
 					src={'/nav-block/pig.png'}
 					layout={'fill'}
-					objectFit={'fill'}
+					objectFit={'contain'}
 					alt={'pig'}
 				/>
 				<div className={'title'}>
@@ -72,11 +72,11 @@ const NavBlock = () => {
 				</div>
 				<div className="placeholder">Свиноводство</div>
 			</div>
-			<div className={'home-nav-block_item'}>
+			<div className="home-nav-block_item">
 				<Image
 					src={'/nav-block/krs.png'}
 					layout={'fill'}
-					objectFit={'fill'}
+					objectFit={'contain'}
 					alt={'cattle'}
 				/>
 				<div className={'title'}>

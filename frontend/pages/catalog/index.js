@@ -9,10 +9,15 @@ import ChipsButton from 'UI/chipsButton';
 import Checkbox from 'UI/checkbox';
 import Card from 'UI/cards/pc/card';
 import cards from 'mock/n_cards.json';
+import SliderLine from 'UI/sliderLine';
 
 const Index = () => {
 	const { getTextGenerator, getDefaultTextGenerator } = useAppContext();
 	const { query } = useRouter();
+
+	const { test } = useSelector(state => state.base);
+
+	console.log(test);
 
 	const [filters, setFilters] = useState({
 		types: [],
@@ -25,6 +30,8 @@ const Index = () => {
 			{ id: 7, name: 'IezeN', active: false },
 		],
 	});
+
+	const [priceFilter, setPriceFilter] = useState([0, 99999]);
 
 	const [chips, setChips] = useState([]);
 
@@ -166,6 +173,14 @@ const Index = () => {
 								))}
 							</div>
 						</div>
+						<div className="filter-block">
+							<SliderLine
+								values={priceFilter}
+								setValue={setPriceFilter}
+								max={priceFilter[1]}
+								min={priceFilter[0]}
+							/>
+						</div>
 					</div>
 					<div className="catalog-page__wrapper-content catalog-page-wrap">
 						<div className="catalog-page-wrap__wrapper-cards">
@@ -184,7 +199,10 @@ const Index = () => {
 													{_.name}
 												</ChipsButton>
 											))}
-											<ChipsButton onDelete={()=>{}} onClick={clearAllFilters} active={false}>
+											<ChipsButton
+												onDelete={() => {}}
+												onClick={clearAllFilters}
+												active={false}>
 												Очистить
 											</ChipsButton>
 										</>
@@ -220,9 +238,8 @@ const Index = () => {
 	);
 };
 
-export async function getServerSideProps({query,params}) {
-
-	console.log('query',query)
+export async function getServerSideProps({ query, params }) {
+	console.log('query', query);
 
 	return {
 		props: {},

@@ -45,7 +45,28 @@
     justify-content: space-between;
     align-items: center;
   }
-}
-.some{
-  display: flex;align-items: flex-start;
+  &__link{
+    @extend %text;
+    color: $base-yellow;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  &__refresh-pass{
+    @extend %text;
+    color: $input-text;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  &__refresh-mute{
+    @extend %text_mobile;
+    color: $input-text;
+  }
+  &__refresh-title {
+    @extend %caption;
+    color: $input-text;
+  }
 }

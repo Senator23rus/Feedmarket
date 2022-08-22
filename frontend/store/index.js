@@ -1,44 +1,108 @@
+import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 import { configureStore } from '@reduxjs/toolkit';
 import reducers from 'store/reducers';
 import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+const SET_CLIENT_STATE = 'SET_CLIENT_STATE';
+// const storeEnhancers =
+// 	(typeof window != 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+// 	compose;
+//
+const makeStore = ({ isServer }) => {
+	// const oldState = loadState();
+	// const reducer = (state, action) => {
+	// 	if (action.type === HYDRATE) {
+	// 		return {
+	// 			...state, // use previous state
+	// 			...action.payload, // apply delta from hydration
+	// 		};
+	// 	} else {
+	// 		return reducers(state, action);
+	// 	}
+	// };
+	const persistConfig = {
+		key: 'nextjs',
+		whitelist: ['catalog', 'user', 'base'],
+		storage,
+	};
+	const rootReducer = persistReducer(persistConfig, reducers);
+	if (isServer) {
+		return configureStore({
+			reducer: rootReducer,
+			// middleware: getDefaultMiddleware =>
+			// 	getDefaultMiddleware({
+			// 		serializableCheck: {
+			// 			ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			// 		},
+			// 	}),
+		});
+	} else {
+		const middleware = [thunk];
 
-const rootReducer = reducers;
+		const store = configureStore({
+			reducer: rootReducer,
+			middleware,
+			// : getDefaultMiddleware =>
+			// 			getDefaultMiddleware({
+			// 				serializableCheck: {
+			// 					ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			// 				},
+			// 			}),
+		});
 
-const logger = createLogger();
+		// Argument type
+		// {enhancers: (next: StoreEnhancerStoreCreator) =>
+		// 	StoreEnhancerStoreCreator<{dispatch: ThunkDispatch<any, undefined, AnyAction>}, {}>,
+		// 	reducer: Reducer<EmptyObject & PersistPartial, AnyAction>}
+		// 	is not assignable to parameter type
+		// 	ConfigureStoreOptions<any, AnyAction, [ThunkMiddlewareFor<any>]>
 
-const middleware = [thunk];
-if (process.env.NODE_ENV !== 'production') {
-	console.log(process.env.NODE_ENV);
-	middleware.push(logger);
-}
+		// store.subscribe(() => {
+		// 	saveState(store.getState());
+		// });
 
-const saveState = state => {
-	try {
-		const serialisedState = JSON.stringify(state);
-		window.localStorage.setItem('app_state', serialisedState);
-	} catch (err) {}
-};
-
-const loadState = () => {
-	try {
-		const serialisedState = window.localStorage.getItem('app_state');
-		if (!serialisedState) return undefined;
-		return JSON.parse(serialisedState);
-	} catch (err) {
-		return undefined;
+		return store;
 	}
 };
+//
+// export const wrapper = createWrapper(makeStore);
+//
+// export const setClientState = clientState => ({
+// 	type: SET_CLIENT_STATE,
+// 	payload: clientState,
+// });
 
-const oldState = loadState();
+// import { configureStore } from '@reduxjs/toolkit';
+// import reducers from 'store/reducers';
+// import thunk from 'redux-thunk';
+// import { createLogger } from 'redux-logger';
+// import { createWrapper } from 'next-redux-wrapper';
+//
+// const rootReducer = reducers;
+//
+// function saveState(state) {
+// 	try {
+// 		const serialisedState = JSON.stringify(state);
+// 		window.localStorage.setItem('app_state', serialisedState);
+// 	} catch (err) {}
+// }
+//
+// function loadState() {
+// 	try {
+// 		const serialisedState = window.localStorage.getItem('app_state');
+// 		if (!serialisedState) return undefined;
+// 		return JSON.parse(serialisedState);
+// 	} catch (err) {
+// 		return undefined;
+// 	}
+// }
 
-export const store = configureStore({
-	reducer: rootReducer,
-	...(oldState && { preloadedState: oldState }),
-	middleware,
-	devTools: process.env.NODE_ENV !== 'production',
-});
+// export const store = configureStore({
+// 	reducer: rootReducer,
+// 	...(oldState && { preloadedState: oldState }),
+// 	middleware,
+// 	devTools: process.env.NODE_ENV !== 'production',
+// });
 
-store.subscribe(() => {
-	saveState(store.getState());
-});
+export const wrapper = createWrapper(makeStore);

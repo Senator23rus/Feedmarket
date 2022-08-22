@@ -1,0 +1,11 @@
+.mountPointWrapper {
+  position: relative;
+
+  .mountPoint {
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    transition: all 0.2s linear;
+    gap: 24px;
+  }
+}
