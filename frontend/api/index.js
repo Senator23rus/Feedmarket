@@ -104,8 +104,8 @@ class Api {
 
 	async login(auth) {
 		const response = await this.loggedInServer(auth);
-		this.setToken(response.data.access);
-		return response.data.access;
+		this.setToken(await response.data.access);
+		return await response.data.access;
 	}
 
 	async logout() {
