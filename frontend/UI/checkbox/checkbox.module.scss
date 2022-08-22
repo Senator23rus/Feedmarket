@@ -39,6 +39,11 @@
   transition: all 0.2s linear;
 }
 
+.view.big:before {
+  width: 24px;
+  height: 24px;
+}
+
 /* стили при наведении курсора на checkbox */
 .wrapper:hover .customCheckbox:not(:disabled) + .view:before {
   border-color: $RadioAndCheckboxGreen;

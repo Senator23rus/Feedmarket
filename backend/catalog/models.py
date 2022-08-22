@@ -19,13 +19,6 @@ class UserProfile(models.Model):
 class Good(models.Model):
     name = models.CharField(max_length=200, help_text="Введите название Товара", verbose_name="Название Товара", default=0)
 
-    industry = models.ForeignKey('Industry', on_delete=models.CASCADE, help_text="Выберите Отрасль",
-                                 verbose_name="Отрасль", null=True)
-
-    code_of_good = models.CharField(max_length=20, help_text="Введите код Товара", verbose_name="Код Товара",
-                                    null=True, blank=True)
-    input_percentage = models.CharField(max_length=50, help_text="Введите процент ввода", verbose_name="Процент ввода",
-                                    null=True, blank=True)
     image = models.ImageField(help_text="Добавьте картинку продукта", verbose_name="Картинка", default=0)
 
     product = models.ForeignKey('Product', on_delete=models.CASCADE, help_text="Выберете продукт",
@@ -38,12 +31,9 @@ class Good(models.Model):
                                 default=0)
     summary = models.TextField(max_length=1000, help_text="Введите описание товара",
                                verbose_name="Описание товара", null=True, blank=True)
-    file_summary = models.FileField(upload_to='uploads/%Y/%m/%d/', help_text="Добавьте файл к описанию",
-                                verbose_name="Файл описания товара", null=True, blank=True)
     blending = models.TextField(max_length=1000, help_text="Введите описание по смешиванию",
                                 verbose_name="Описание по смешиванию", null=True, blank=True)
-    file_blending = models.FileField(upload_to='uploads/%Y/%m/%d/', help_text="Добавьте файл к рецепту смешивания",
-                                    verbose_name="Файл рецепта смешивания", null=True, blank=True)
+
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
     class Meta:
@@ -138,15 +128,15 @@ class Animal(models.Model):
                                          verbose_name="Минимальный Возраст в днях", null=True, blank=True)
     animal_day_max = models.IntegerField(help_text="Введите максимальный Возраст в днях",
                                          verbose_name="Максимальный Возраст в днях", null=True, blank=True)
-    animal_week_min = models.IntegerField(help_text="Введите минимальный Возраст в неделях",
-                                         verbose_name="Минимальный Возраст в неделях", null=True, blank=True)
-    animal_week_max = models.IntegerField(help_text="Введите максимальный Возраст в неделях",
-                                         verbose_name="Максимальный Возраст в неделях", null=True, blank=True)
+    animal_month_min = models.IntegerField(help_text="Введите минимальный Возраст в месяцах",
+                                         verbose_name="Минимальный Возраст в месяцах", null=True, blank=True)
+    animal_month_max = models.IntegerField(help_text="Введите максимальный Возраст в месяцах",
+                                         verbose_name="Максимальный Возраст в месяцах", null=True, blank=True)
 
 
-    weight_min = models.DecimalField(max_digits=6, decimal_places=3, help_text="Выберите вес Животного (от)",
+    weight_min = models.DecimalField(max_digits=5, decimal_places=2, help_text="Выберите вес Животного (от)",
                                  verbose_name="Минимальный вес Животного", null=True)
-    weight_max = models.DecimalField(max_digits=6, decimal_places=3, help_text="Выберите вес Животного (до)",
+    weight_max = models.DecimalField(max_digits=5, decimal_places=2, help_text="Выберите вес Животного (до)",
                                      verbose_name="Максимальный вес Животного", null=True)
     objects = models.Manager()
 

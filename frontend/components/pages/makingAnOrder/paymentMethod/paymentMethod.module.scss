@@ -1,0 +1,36 @@
+@import "styles/variables";
+
+.paymentMethod {
+  margin-bottom: 16px;
+
+  .title__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    .title {
+      @extend %h2;
+      color: #414141;
+    }
+  }
+
+  .button__wrapper {
+    //display: grid;
+    //grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 12px;
+  }
+}
+.root {
+  padding: 0;
+  border: none;
+  //max-height: 64px;
+  color: #999999;
+
+  .cardName {
+    @extend %small_text_bold;
+  }
+
+  svg {
+    fill: black;
+  }
+}

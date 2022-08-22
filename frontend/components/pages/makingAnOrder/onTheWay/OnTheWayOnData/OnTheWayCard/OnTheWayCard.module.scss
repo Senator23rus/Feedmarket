@@ -1,0 +1,71 @@
+@import "styles/variables";
+
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px 16px;
+  background: #FFFFFF;
+  border-radius: 12px;
+
+  .img {
+    width: 100%;
+    max-width: 85px;
+    position: relative;
+    height: 120px;
+    margin-right: 20px;
+  }
+
+  .text {
+    margin-right: 59px;
+    p:first-child {
+      @extend %h4_lineHeightSmall;
+      color: $black;
+      max-width: 565px;
+      margin-bottom: 8px;
+    }
+    p {
+      @extend %text_mobile_semibold;
+      color: $chips-background;
+      font-size: 0.60em;
+
+      span {
+        @extend %text_mobile;
+        color: $input-text;
+        font-size: 1em;
+      }
+    }
+  }
+
+  .specifications {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+    p:first-child {
+      @extend %text_mobile;
+      color: $disabled-text;
+      font-size: 0.65em;
+    }
+    p {
+      display: flex;
+      align-items: center;
+      @extend %text_mobile_semibold;
+      color: $disabled-text;
+      //font-size: 0.60em;
+
+      span {
+        display: block;
+        font-size: 12px;
+      }
+
+      span:last-child {
+        @extend %text_bold;
+        color: $black;
+        line-height: 0;
+        margin-left: 4px;
+        font-size: 16px;
+      }
+    }
+  }
+}
