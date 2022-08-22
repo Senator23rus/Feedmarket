@@ -17,7 +17,7 @@ import Ratings from 'components/pages/my_store/ratings/ratings';
 import Reviews from 'components/pages/my_store/reviews/reviews';
 import Warehouses from 'components/pages/my_store/warehouses/warehouses';
 import { useState } from 'react';
-import CustomLink from "UI/custom-link";
+import CustomLink from 'UI/custom-link';
 
 const List = () => {
 	return cards.cards.map(card => <StoreProduct card={card} key={card.id} />);
@@ -51,7 +51,9 @@ const MyStore = () => {
 				<CustomLink href={'/test_my_store'}>
 					<Button size={'xs'} factor={'green'}>
 						<div className={classes.product__btn_wrapper}>
-							<div className={classes.product__btn_text}>Добавить товар</div>
+							<CustomLink href={'/test_page_store'}>
+								<div className={classes.product__btn_text}>Добавить товар</div>
+							</CustomLink>
 							<svg
 								className={classes.product__btn_plus}
 								width="20"
