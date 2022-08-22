@@ -18,6 +18,7 @@
       display: flex;
       align-items: center;
       transition: all ease-in-out 0.1s;
+      cursor: pointer;
       &:hover{
         border-top: 4px solid $white;
       }
@@ -68,6 +69,7 @@
       color: $white;
       display: flex;
       flex-direction: column;
+      cursor: pointer;
       justify-content: flex-end;
       align-items: center;
       position: relative;
@@ -110,31 +112,57 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-width: 324px;
-  width: 100%;
-
+  max-width: calc(324px - 32px);
+  min-width: calc(300px - 32px);
+  &__title{
+    display: flex;
+    justify-content: center;align-items: center;
+    text-align: center;
+  }
+  &__links{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    .item{
+      @extend %text;
+      color: $black;
+      cursor: pointer;
+    }
+    .separator{
+      height: 2px;
+      width: 100%;
+      background: $LineBackground;
+    }
+  }
+  &__footer{
+    @extend %small_text_underline;
+    color: $base-yellow;
+    cursor: pointer;
+    margin-top: 54px;
+  }
 }
 .dropdown-absolute{
   position: absolute;
   opacity: 0;
   max-height: 0;
   background: white;
-  padding: 0;
+  padding: 16px;
   transition: all .2s linear;
+  transition-property: opacity,box-shadow;
   overflow: hidden;
   z-index: 999;
   box-shadow: $box-shadow;
   border-radius: 8px;
   &-true{
     opacity: 1;
-    padding: 16px;
     max-height: 500px;
     transition: all .2s linear;
+    transition-property: opacity,box-shadow;
   }
   &-false{
     opacity: 0;
-    padding: 0;
     max-height: 500px;
     transition: all .2s linear;
+    transition-property: opacity,box-shadow;
   }
 }

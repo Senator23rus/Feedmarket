@@ -1,10 +1,57 @@
 import CustomLink from 'UI/custom-link';
 import Image from 'next/image';
 import Input from 'UI/Input/input';
-import { ArrowDropDown } from '@mui/icons-material';
-import { useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from 'hooks/use-outside-click';
 import Dropdown from 'UI/dropdown';
+import { useSelector } from 'react-redux';
+import { AppContext } from 'pages/_app';
+import NoSsr from 'components/common/no-ssr';
+import { useAction } from 'hooks/useActions';
+
+const Menu = () => {
+	const { isAuth: authFromRedux } = useSelector(
+		/**@param {StateApp} state*/ state => state.user
+	);
+	const [isAuth, setAuth] = useState(false);
+	const { logOut } = useAction();
+	useEffect(() => {
+		setAuth(authFromRedux);
+	}, [authFromRedux]);
+	return (
+		<div className={'drop'}>
+			{isAuth ? (
+				<>
+					<div className={'drop__links'}>
+						<span>Мой магазин</span>
+						<div className="separator" />
+						<span>Личный кабинет</span>
+						<div className="separator" />
+						<span>Избранное</span>
+						<div className="separator" />
+						<span>Сообщения</span>
+						<div className="separator" />
+						<span>Уведомления</span>
+					</div>
+					<div onClick={logOut} className={'drop__footer'}>
+						Выход
+					</div>
+				</>
+			) : (
+				<>
+					<p className={'drop__title'}>
+						Войдите, чтобы делать покупки и пользоваться персональными предложениями
+					</p>
+					<div className={'drop__links'}>
+						<CustomLink href={'/login'}>Войти</CustomLink>
+						<div className="separator" />
+						<CustomLink href={'/register'}>Зарегистрироваться</CustomLink>
+					</div>
+				</>
+			)}
+		</div>
+	);
+};
 
 /**
  * @description Компонент навигации по сайту, содержит несуществующую страницу которая выводит на дефолтную 404 страницу,
@@ -78,6 +125,18 @@ const NavBar = () => {
 			},
 		},
 	};
+
+	const { isAuth: authFromRedux } = useSelector(
+		/**@param {StateApp} state*/ state => state.user
+	);
+
+	const [isAuth, setAuth] = useState(false);
+
+	useEffect(() => {
+		setAuth(authFromRedux);
+	}, [authFromRedux]);
+
+	console.log('navbar is auth', isAuth);
 
 	const [dropdown, setDropdown] = useState(false);
 
@@ -155,7 +214,7 @@ const NavBar = () => {
 								</svg>
 								<span>Корзина</span>
 							</CustomLink>
-							<Dropdown menu={<div className={'drop'}>asdasdasd</div>}>
+							<Dropdown menu={<Menu />}>
 								<div className="link">
 									<svg
 										width="28"
@@ -170,7 +229,7 @@ const NavBar = () => {
 											fill="white"
 										/>
 									</svg>
-									<span>Войти</span>
+									<span>{isAuth ? 'Профиль' : 'Войти'}</span>
 								</div>
 							</Dropdown>
 						</div>
@@ -205,5 +264,4 @@ const NavBar = () => {
 		</>
 	);
 };
-
 export default NavBar;
