@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setCookie, getCookie, removeCookies } from 'cookies-next';
 
 const codeMessage = {
 	202: 'Запрос вошёл в фоновую очередь (асинхронная задача)',
@@ -17,12 +18,11 @@ const codeMessage = {
 class Api {
 	constructor() {
 		/**
-		 *
 		 * @type {import('axios').AxiosInstance}
 		 */
 		this.client = axios.create();
 		this.refreshRequest = null;
-		// this.access = nookies.get('access') || null;
+		this.access = getCookie('access') || null;
 
 		/* базовый URL для локальной разработки */
 		this.client.defaults.baseURL = 'http://127.0.0.1:8000/';
@@ -44,7 +44,7 @@ class Api {
 				if (this.access) {
 					newConfig.headers.Authorization = `Bearer ${this.access}`;
 				}
-				newConfig.headers['Access-Control-Allow-Origin'] = '*';
+				// newConfig.headers['Access-Control-Allow-Origin'] = '*';
 				return newConfig;
 			},
 			e => {
@@ -95,11 +95,11 @@ class Api {
 
 	setToken(token) {
 		this.access = token;
-		// nookies.set('access', token, { expires: new Date(Date.now() + 828e+7) });
+		setCookie('access', token, { expires: new Date(Date.now() + 828e7) });
 	}
 
 	async loggedInServer(auth) {
-		return await this.client.post('auth/jwt/create/', { ...auth });
+		return await this.client.post('auth/jwt/create', { ...auth });
 	}
 
 	async login(auth) {
@@ -110,10 +110,19 @@ class Api {
 
 	async logout() {
 		this.access = null;
-		// nookies.remove('access');
+		removeCookies('access');
 	}
 	async getIndustries() {
 		return await this.client.get('/api/v1/industry_list/');
+	}
+	async getAnimals() {
+		return await this.client.get('/api/v1/animal_list_create/');
+	}
+	async goodCreate(data) {
+		return await this.client.post('/api/v1/good_create/', { ...data });
+	}
+	async getProducts() {
+		return await this.client.get('/api/v1/product_list_create/');
 	}
 	async getGoodList() {
 		return await this.client.get('/api/v1/good_list/');

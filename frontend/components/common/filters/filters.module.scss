@@ -1,0 +1,16 @@
+@import "styles/variables";
+
+.activeLink {
+  background: rgba(16, 150, 72, 0.3);
+}
+
+.saleWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  p {
+    @extend %h4;
+    color: $black;
+  }
+}

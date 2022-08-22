@@ -1,0 +1,32 @@
+@import "styles/variables";
+
+.filterBlock {
+  overflow: hidden;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #DFE6EE;
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #F2FAF5;
+  }
+
+  &.search {
+    overflow-y: scroll;
+  }
+}
+
+.button {
+  @extend %text_underline;
+  color: $base-green;
+  text-align: left;
+}
+
+.hide {
+  display: none;
+}

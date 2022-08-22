@@ -1,173 +1,174 @@
+
 /* text */
 
-%h1 {
-	margin: 2px 0;
-	font-family: 'Gilroy', sans-serif;
-	font-size: 3rem;
-	line-height: 3.25rem;
+%h1{
+  margin: 2px 0;
+  font-family: 'Gilroy',sans-serif;
+  font-size: 3rem;
+  line-height: 3.25rem;
 }
-%h2 {
-	font-family: 'Gilroy', sans-serif;
-	font-size: 2rem;
-	line-height: 2.5rem;
+%h2{
+  font-family: 'Gilroy',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
 }
 %h3 {
-	font-family: 'Gilroy', sans-serif;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 1.25rem;
-	line-height: 1.5rem;
+  font-family: 'Gilroy', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 }
 %h4 {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	letter-spacing: 1px;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
 }
 %caption {
-	font-family: 'Gilroy', sans-serif;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 0.75rem;
-	line-height: 1rem;
+  font-family: 'Gilroy',sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %caption2 {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 600;
-	font-size: 0.75rem;
-	line-height: 1rem;
-	letter-spacing: 1.21333px;
-	text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 1.21333px;
+  text-transform: uppercase;
 }
 %text {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 1rem;
-	line-height: 1.5rem;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 %text_bold {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 1rem;
-	line-height: 1.5rem;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 %text_underline {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	text-decoration-line: underline;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-decoration-line: underline;
 }
 %text_mobile {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 0.75rem;
-	line-height: 1rem;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %small_text_underline {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 0.75rem;
-	line-height: 1rem;
-	text-decoration-line: underline;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-decoration-line: underline;
 }
 %small_text_bold {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 0.75rem;
-	line-height: 1rem;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %text_mobile_semibold {
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 600;
-	font-size: 0.75rem;
-	line-height: 1rem;
+  font-family: 'Roboto',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 %menu {
-	font-family: 'Gilroy', sans-serif;
-	font-style: normal;
-	font-weight: 500;
-	font-size: 1.25rem;
-	line-height: 1.75rem;
-	letter-spacing: 1px;
-	color: #414141;
+  font-family: 'Gilroy',sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  letter-spacing: 1px;
+  color: #414141;
 }
-%btn_base {
-	border-radius: 0.5rem;
-	padding: 1rem;
+%btn_base{
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 %ad {
-	display: block;
-	border-radius: 1rem;
-	overflow: hidden;
+    display: block;
+    border-radius: 1rem;
+    overflow: hidden;
 }
 /* colors */
 
-$base-green: #0d9545;
-$base-green-35: rgba(16, 150, 72, 0.3);
-$yellow: #dcc600;
-$base-yellow: #ff7a00;
-$box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25);
+$base-green: #0D9545;
+$base-green-35: rgba(16, 150, 72, 0.3);;
+$yellow:#DCC600;
+$base-yellow:#FF7A00;
+$box-shadow:0px 4px 12px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25);
 
-$RadioAndCheckboxGreen: #0d9545;
-$RadioAndCheckboxGrey: #bfc5d2;
-$RadioAndCheckboxLightGrey: #dfe6ee;
+$RadioAndCheckboxGreen: #0D9545;
+$RadioAndCheckboxGrey: #BFC5D2;
+$RadioAndCheckboxLightGrey: #DFE6EE;
 $RadioAndCheckboxWhite: white;
 
-$black: #414141;
-$white: #f2faf5;
-$disabled-text: #7e7e7e;
-$disabled-background: #b0b0b0;
-$disabled-chips: #b0b0b0;
-$input-text: #999999;
-$gray: #9fa1a5;
-$inputs: #f2faf5;
-$main-slider-background: linear-gradient(
-	360deg,
-	rgba(0, 0, 0, 0.7) 2.02%,
-	rgba(0, 0, 0, 0) 61.73%
-);
-$landing-page-background: #dfe6ee;
-$black2: #484c52;
-$green-btn: #0d9545;
-$green_link: #005624;
-$mute: #787e87;
+$black:#414141;
+$white:#F2FAF5;
+$disabled-text:#7E7E7E;
+$disabled-background:#B0B0B0;
+$disabled-chips:#B0B0B0;
+$input-text:#999999;
+$gray:#9FA1A5;
+$inputs:#F2FAF5;
+$main-slider-background:linear-gradient(360deg, rgba(0, 0, 0, 0.7) 2.02%, rgba(0, 0, 0, 0) 61.73%);;
+$landing-page-background: #DFE6EE;
+$black2: #484C52;
+$green-btn:#0D9545;
+$green_link:#005624;
+$mute:#787E87;
 
-$chips-background: #c8c8c8;
+$chips-background:#C8C8C8;
 
-$RadioAndCheckboxGreen: #0d9545;
-$RadioAndCheckboxGrey: #bfc5d2;
-$RadioAndCheckboxLightGrey: #dfe6ee;
+$RadioAndCheckboxGreen: #0D9545;
+$RadioAndCheckboxGrey: #BFC5D2;
+$RadioAndCheckboxLightGrey: #DFE6EE;
 $RadioAndCheckboxAndSelectWhite: white;
-$SelectLightGrey: #f2faf5;
-$SelectLightGrey2: #c8c8c8;
-$SelectLightGrey3: #b0b0b0;
-$SelectLightGrey4: #7e7e7e;
+$SelectLightGrey: #F2FAF5;
+$SelectLightGrey2: #C8C8C8;
+$SelectLightGrey3: #B0B0B0;
+$SelectLightGrey4: #7E7E7E;
 $SelectLightGrey5: #999999;
+
+$SwitcherShadow: 0 0 0 8px rgba(16, 150, 72, 0.3);
+$SwitcherShadowBig: 0 0 0 12px rgba(16, 150, 72, 0.3);
+
 
 $ChevronBackground: rgba(179, 182, 188, 0.25);
 
-$LineBackground: #edeef3;
+$LineBackground: #EDEEF3;
 
 /* effects */
 
 /* other */
 
 $container-width: 1464px;
-$max-width: 1920px;
-@for $i from 1 through 12 {
-	.col-#{$i} {
-		grid-column: span $i !important;
-		align-self: end;
-	}
+$max-width:1920px;
+@for $i from 1 through 12{
+  .col-#{$i}{
+    grid-column: span $i !important;
+    align-self: end;
+  }
 }

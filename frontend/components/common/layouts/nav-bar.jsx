@@ -1,6 +1,10 @@
 import CustomLink from 'UI/custom-link';
 import Image from 'next/image';
 import Input from 'UI/Input/input';
+import { ArrowDropDown } from '@mui/icons-material';
+import { useRef, useState } from 'react';
+import { useOutsideClick } from 'hooks/use-outside-click';
+import Dropdown from 'UI/dropdown';
 
 /**
  * @description Компонент навигации по сайту, содержит несуществующую страницу которая выводит на дефолтную 404 страницу,
@@ -75,6 +79,12 @@ const NavBar = () => {
 		},
 	};
 
+	const [dropdown, setDropdown] = useState(false);
+
+	const dropRef = useRef();
+
+	useOutsideClick(dropRef, () => setDropdown(false));
+
 	return (
 		<>
 			<div className="app__navbar-top">
@@ -145,22 +155,24 @@ const NavBar = () => {
 								</svg>
 								<span>Корзина</span>
 							</CustomLink>
-							<CustomLink href={'/login'} className="link">
-								<svg
-									width="28"
-									height="26"
-									viewBox="0 0 28 26"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										fillRule="evenodd"
-										clipRule="evenodd"
-										d="M13.9994 3.33329C11.422 3.33329 9.33269 5.42263 9.33269 7.99996C9.33269 10.5773 11.422 12.6666 13.9994 12.6666C16.5767 12.6666 18.666 10.5773 18.666 7.99996C18.666 5.42263 16.5767 3.33329 13.9994 3.33329ZM6.66602 7.99996C6.66602 3.94987 9.94926 0.666626 13.9994 0.666626C18.0494 0.666626 21.3327 3.94987 21.3327 7.99996C21.3327 12.05 18.0494 15.3333 13.9994 15.3333C9.94926 15.3333 6.66602 12.05 6.66602 7.99996ZM13.9994 20.6666C9.74442 20.6666 5.85712 22.5186 2.96948 25.5813C2.46433 26.1171 1.62047 26.1419 1.08468 25.6368C0.548893 25.1316 0.524062 24.2877 1.02922 23.752C4.37036 20.2082 8.93966 18 13.9994 18C19.059 18 23.6283 20.2082 26.9695 23.752C27.4746 24.2877 27.4498 25.1316 26.914 25.6368C26.3782 26.1419 25.5344 26.1171 25.0292 25.5813C22.1416 22.5186 18.2543 20.6666 13.9994 20.6666Z"
-										fill="white"
-									/>
-								</svg>
-								<span>Войти</span>
-							</CustomLink>
+							<Dropdown menu={<div className={'drop'}>asdasdasd</div>}>
+								<div className="link">
+									<svg
+										width="28"
+										height="26"
+										viewBox="0 0 28 26"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											fillRule="evenodd"
+											clipRule="evenodd"
+											d="M13.9994 3.33329C11.422 3.33329 9.33269 5.42263 9.33269 7.99996C9.33269 10.5773 11.422 12.6666 13.9994 12.6666C16.5767 12.6666 18.666 10.5773 18.666 7.99996C18.666 5.42263 16.5767 3.33329 13.9994 3.33329ZM6.66602 7.99996C6.66602 3.94987 9.94926 0.666626 13.9994 0.666626C18.0494 0.666626 21.3327 3.94987 21.3327 7.99996C21.3327 12.05 18.0494 15.3333 13.9994 15.3333C9.94926 15.3333 6.66602 12.05 6.66602 7.99996ZM13.9994 20.6666C9.74442 20.6666 5.85712 22.5186 2.96948 25.5813C2.46433 26.1171 1.62047 26.1419 1.08468 25.6368C0.548893 25.1316 0.524062 24.2877 1.02922 23.752C4.37036 20.2082 8.93966 18 13.9994 18C19.059 18 23.6283 20.2082 26.9695 23.752C27.4746 24.2877 27.4498 25.1316 26.914 25.6368C26.3782 26.1419 25.5344 26.1171 25.0292 25.5813C22.1416 22.5186 18.2543 20.6666 13.9994 20.6666Z"
+											fill="white"
+										/>
+									</svg>
+									<span>Войти</span>
+								</div>
+							</Dropdown>
 						</div>
 					</div>
 				</div>
@@ -182,6 +194,12 @@ const NavBar = () => {
 							label={'поиск'}
 						/>
 					</div>
+				</div>
+			</div>
+
+			<div className={`dropdown-absolute dropdown-absolute-${dropdown}`}>
+				<div className="title">
+					Войдите, чтобы делать покупки и пользоваться персональными предложениями
 				</div>
 			</div>
 		</>

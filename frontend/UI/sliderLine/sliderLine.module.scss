@@ -1,0 +1,55 @@
+@import "styles/variables";
+
+.wrap {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+ .input {
+   max-width: 100px;
+   display: flex;
+   justify-content: center;
+ }
+
+  .feature {
+    @extend %text_mobile;
+    color: $input-text;
+  }
+}
+
+.track {
+  background: $base-green;
+  border: none;
+}
+
+.rail {
+  background: white;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid $base-green;
+  background: $base-yellow;
+  box-shadow: $box-shadow;
+
+  &.active {
+    box-shadow: 0 0 0 12px $base-green-35 !important;
+  }
+
+  &.focusVisible {
+    box-shadow: 0 0 0 8px $base-green-35 ;
+  }
+}
+
+.disabled {
+  //background: BLUE;
+}
+
+.dragging {
+  //background: BLUE;
+}
