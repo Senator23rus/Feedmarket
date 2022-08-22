@@ -47,7 +47,7 @@ const Payment = ({ isValidation }) => {
 						<a className={classes.link}> Условиями обработки персональных данных</a>
 					</CustomLink>
 					, а также с{' '}
-					<CustomLink href={'/legalInformation/'}>
+					<CustomLink href={'/legalInformation/privacyPolicy'}>
 						<a className={classes.link}>Условиями продажи</a>
 					</CustomLink>
 				</p>
