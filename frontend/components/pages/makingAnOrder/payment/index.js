@@ -1,43 +1,12 @@
 import classes from './payment.module.scss';
 import SectionWrapper from 'components/pages/makingAnOrder/sectionWrapper';
 import CustomLink from 'UI/custom-link';
-import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
 
 const Payment = ({ isValidation }) => {
-	let [isScroll, setIsScroll] = useState(false);
-	let wrap = useRef();
-
-	const getBodyScrollTop = el => {
-		var rect = el.getBoundingClientRect(),
-			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-			scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-		return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
-	};
-
-	const scrollHandler = e => {
-		if (getBodyScrollTop(wrap.current).top + Math.abs(e.deltaY) <= 208) {
-			setIsScroll(true);
-			wrap.current.children[0].style.setProperty(
-				'width',
-				wrap.current.clientWidth + 'px'
-			);
-		} else {
-			setIsScroll(false);
-		}
-	};
-
-	useEffect(() => {
-		document.addEventListener('wheel', scrollHandler);
-
-		return () => {
-			document.removeEventListener('wheel', scrollHandler);
-		};
-	}, []);
 
 	return (
-		<div ref={wrap}>
-			<SectionWrapper className={!isScroll || classes.fixsed}>
+		<div className={classes.fixsed}>
+			<SectionWrapper>
 				<button className={classes.btn} disabled={!isValidation}>
 					Оплатить
 				</button>
