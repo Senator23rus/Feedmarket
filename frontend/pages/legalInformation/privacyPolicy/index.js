@@ -783,7 +783,7 @@ const PrivacyPolicy = () => {
 						<span className={classes.block}>ОГРН 1177746566140</span>
 						<span className={classes.block}>ИНН/КПП 9701078611/773101001</span>
 						<span className={classes.block}>р/счет 40702810610000508370</span>
-						<span className={classes.block}>в АО "ТИНЬКОФФ БАНК"</span>
+						<span className={classes.block}>в АО &ldquo;ТИНЬКОФФ БАНК&rdquo;</span>
 						<span className={classes.block}>Корр. счет: 30101810145250000974</span>
 						<span className={classes.block}>БИК 044525974</span>
 					</p>
