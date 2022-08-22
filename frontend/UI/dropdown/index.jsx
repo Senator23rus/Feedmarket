@@ -4,7 +4,10 @@ import { createPortal } from 'react-dom';
 import NoSsr from 'components/common/no-ssr';
 
 const Menu = ({ show, menu }) => {
-	return createPortal(menu, document.body);
+	if (typeof document !== 'undefined') {
+		return createPortal(menu, document.body);
+	}
+	return menu;
 };
 
 /**
@@ -16,14 +19,18 @@ const Menu = ({ show, menu }) => {
  */
 const DropDown = ({ children, menu }) => {
 	const [show, setShow] = useState(false);
-	const [target, setTarget] = useState();
+	const [target, setTarget] = useState(
+		/**
+		 * @type {HTMLElement | undefined}
+		 */
+		undefined
+	);
 	const [position, setPosition] = useState({
 		left: 0,
 		top: 0,
 	});
 	const [animate, setAnimate] = useState(false);
 	/**
-	 *
 	 * @type {React.MutableRefObject<HTMLDivElement|undefined>}
 	 */
 	const dropRef = useRef();
@@ -39,50 +46,76 @@ const DropDown = ({ children, menu }) => {
 			setShow(false);
 		}, 200);
 	});
-	useEffect(() => {
+	const calculate = target => {
 		if (show && animate && dropRef.current && target) {
 			const bottomChildren = target.offsetTop + target.getBoundingClientRect().height;
 
-			let centerChildren = target.offsetLeft + target.getBoundingClientRect().width / 2;
-			const widthDropdown = dropRef.current.getBoundingClientRect().width;
-			let leftDropDown;
-			const rightDropdown = dropRef.current.getBoundingClientRect().right;
-			console.log(rightDropdown);
-			console.log(document.body.getBoundingClientRect().right);
-			if (rightDropdown >= document.body.getBoundingClientRect().right) {
-				leftDropDown = document.body.getBoundingClientRect().right - (widthDropdown + 42);
-			} else {
-				leftDropDown = centerChildren - (widthDropdown + 16) / 2;
-			}
+			let centerChildren =
+				target.offsetLeft +
+				target.offsetParent.offsetLeft +
+				target.getBoundingClientRect().width / 2;
 
-			console.log(centerChildren);
+			const widthDropdown = dropRef.current.getBoundingClientRect().width;
+
+			let leftDropDown;
+
+			if (
+				centerChildren + widthDropdown / 2 >
+				document.body.getBoundingClientRect().right
+			) {
+				leftDropDown =
+					document.body.getBoundingClientRect().right -
+					(dropRef.current.getBoundingClientRect().width + 10);
+			} else {
+				leftDropDown = centerChildren - widthDropdown / 2;
+			}
 			setPosition(prevState => ({
 				...prevState,
 				top: bottomChildren + 10,
 				left: leftDropDown,
 			}));
 		}
+	};
+	useEffect(() => {
+		calculate(target);
 	}, [target, show, animate]);
 
 	useEffect(() => {
 		setRenderChildren(cloneElement(children, { onClick: click }));
 	}, [children]);
 
+	useEffect(() => {
+		window?.addEventListener('resize', () => calculate(target));
+		document?.body.firstChild.addEventListener('scroll', () => {
+			setAnimate(false);
+			setTimeout(() => {
+				setShow(false);
+			}, 200);
+		});
+		return () => {
+			window?.removeEventListener('resize', () => calculate(target));
+			document?.body.firstChild.removeEventListener('scroll', () => {
+				setAnimate(false);
+				setTimeout(() => {
+					setShow(false);
+				}, 200);
+			});
+		};
+	}, [target]);
+
 	return (
 		<>
 			{renderChildren}
-			<NoSsr>
-				<Menu
-					menu={
-						<div
-							ref={dropRef}
-							style={position}
-							className={`dropdown-absolute dropdown-absolute-${animate}`}>
-							{menu}
-						</div>
-					}
-				/>
-			</NoSsr>
+			<Menu
+				menu={
+					<div
+						ref={dropRef}
+						style={position}
+						className={`dropdown-absolute dropdown-absolute-${animate}`}>
+						{menu}
+					</div>
+				}
+			/>
 		</>
 	);
 

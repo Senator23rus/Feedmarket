@@ -27,6 +27,14 @@
   line-height: 1.5rem;
   letter-spacing: 1px;
 }
+%h4_lineHeightSmall {
+	font-family: 'Gilroy', sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 0.80em;
+	line-height: 1.25em;
+	//letter-spacing: 1px;
+}
 %caption {
   font-family: 'Gilroy',sans-serif;
   font-style: normal;
@@ -159,6 +167,11 @@ $SwitcherShadowBig: 0 0 0 12px rgba(16, 150, 72, 0.3);
 $ChevronBackground: rgba(179, 182, 188, 0.25);
 
 $LineBackground: #EDEEF3;
+
+$ToggleButton: rgba(16, 150, 72, 0.6);
+
+$greenButtonHover: rgba(16, 150, 72, 0.8);
+$greenButtonActive: #006E2D;
 
 /* effects */
 

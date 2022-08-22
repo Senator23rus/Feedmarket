@@ -1,0 +1,19 @@
+@import "styles/variables";
+
+.title {
+  @extend %h2;
+  color: $black;
+  margin-bottom: 4px;
+}
+
+.info {
+  @extend %caption2;
+  color: $input-text;
+  margin-bottom: 16px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

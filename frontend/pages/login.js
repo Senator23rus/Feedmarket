@@ -38,7 +38,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (!isLoading && isAuth && token) {
-			router.back();
+			router.push('/');
 		}
 	}, [isAuth, token, isLoading, router]);
 
@@ -49,10 +49,10 @@ const Login = () => {
 				<div className="auth-form_block">
 					<Input
 						name={'username'}
+						variant={'outlined'}
 						onChange={changeData}
+						placeholder={'Логин'}
 						value={auth.username}
-						label={'Имя'}
-						size={'small'}
 					/>
 				</div>
 				<div className="auth-form_block">

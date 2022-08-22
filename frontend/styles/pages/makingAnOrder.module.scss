@@ -1,0 +1,27 @@
+@import "../variables";
+
+.title {
+  @extend %h1;
+  color: #414141;
+  margin-top: 72px;
+}
+
+.breadCrumbs {
+  margin-bottom: 52px;
+}
+
+.section {
+  width: 100%;
+  max-width: 968px  ;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+
+  .payment {
+    //position: relative;
+    flex: 1 1;
+  }
+}

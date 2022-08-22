@@ -1,10 +1,53 @@
 import CustomLink from 'UI/custom-link';
 import Image from 'next/image';
 import Input from 'UI/Input/input';
-import { ArrowDropDown } from '@mui/icons-material';
-import { useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useOutsideClick } from 'hooks/use-outside-click';
 import Dropdown from 'UI/dropdown';
+import { useSelector } from 'react-redux';
+import { AppContext } from 'pages/_app';
+import NoSsr from 'components/common/no-ssr';
+import { useAction } from 'hooks/useActions';
+
+const Menu = () => {
+	const [isAuth, setAuth] = useState(true);
+	const { logOut } = useAction();
+	return (
+		<div className={'drop'}>
+			{isAuth ? (
+				<>
+					<div className={'drop__links'}>
+						<CustomLink href={'/test_my_store'}>
+							<span>Мой магазин</span>
+						</CustomLink>
+						{/*<div className="separator" />*/}
+						{/*<span>Личный кабинет</span>*/}
+						{/*<div className="separator" />*/}
+						{/*<span>Избранное</span>*/}
+						{/*<div className="separator" />*/}
+						{/*<span>Сообщения</span>*/}
+						{/*<div className="separator" />*/}
+						{/*<span>Уведомления</span>*/}
+					</div>
+					<div onClick={logOut} className={'drop__footer'}>
+						Выход
+					</div>
+				</>
+			) : (
+				<>
+					<p className={'drop__title'}>
+						Войдите, чтобы делать покупки и пользоваться персональными предложениями
+					</p>
+					<div className={'drop__links'}>
+						<CustomLink href={'/login'}>Войти</CustomLink>
+						<div className="separator" />
+						<CustomLink href={'/register'}>Зарегистрироваться</CustomLink>
+					</div>
+				</>
+			)}
+		</div>
+	);
+};
 
 /**
  * @description Компонент навигации по сайту, содержит несуществующую страницу которая выводит на дефолтную 404 страницу,
@@ -79,6 +122,10 @@ const NavBar = () => {
 		},
 	};
 
+
+	const [isAuth, setAuth] = useState(true);
+
+
 	const [dropdown, setDropdown] = useState(false);
 
 	const dropRef = useRef();
@@ -117,7 +164,9 @@ const NavBar = () => {
 					</div>
 					<div className="nav-wrapper__other">
 						<div className="btn">
-							<div>Продавайте на FEED MARKET</div>
+							<CustomLink href={'/WelcomePage'}>
+								<div>Продавайте на FEED MARKET</div>
+							</CustomLink>
 						</div>
 
 						<div className="nav-wrapper__settings">
@@ -138,7 +187,7 @@ const NavBar = () => {
 
 								<span>Заказы</span>
 							</CustomLink>
-							<CustomLink href={'/bug'} className="link">
+							<CustomLink href={'/test_basket'} className="link">
 								{/*TODO: Сделать ховер эффекты нв ссылки и показать количество заказов, данные взять из редакса*/}
 								<svg
 									width="29"
@@ -155,7 +204,7 @@ const NavBar = () => {
 								</svg>
 								<span>Корзина</span>
 							</CustomLink>
-							<Dropdown menu={<div className={'drop'}>asdasdasd</div>}>
+							<Dropdown menu={<Menu />}>
 								<div className="link">
 									<svg
 										width="28"
@@ -170,7 +219,7 @@ const NavBar = () => {
 											fill="white"
 										/>
 									</svg>
-									<span>Войти</span>
+									<span>{isAuth ? 'Профиль' : 'Войти'}</span>
 								</div>
 							</Dropdown>
 						</div>
@@ -205,5 +254,4 @@ const NavBar = () => {
 		</>
 	);
 };
-
 export default NavBar;

@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 8px 14px 4px;
+  //width: 140px;
+
+  .image {
+    margin-bottom: 2px;
+    fill: #dcc600;
+
+    &.active {
+      fill: yellow;
+    }
+  }
+
+  .cardName {
+    color: inherit;
+  }
+
+  .action {
+    color: inherit;
+  }
+}

@@ -1,22 +1,28 @@
-import classes from '../styles/pages/welcome-page.module.scss';
-import Layout from '../components/common/layouts';
-import Button from '../UI/button';
+import classes from 'styles/pages/welcome-page.module.scss';
+import Layout from 'components/common/layouts';
+import Button from 'UI/button';
 import { Grid } from '@mui/material';
-import image1 from '../public/welcomePage/character_1.svg';
-import image2 from '../public/welcomePage/character_2.svg';
-import image3 from '../public/welcomePage/character_3.svg';
-import stepsFon from '../public/welcomePage/staps_img.jpg';
-import helpAtTheStartFon from '../public/welcomePage/help_at_the_start_img.jpg';
-import checkboxImg from '../public/welcomePage/checkbox.svg';
-import footerFon from '../public/welcomePage/footer_img.jpg';
+import image1 from 'public/welcomePage/character_1.svg';
+import image2 from 'public/welcomePage/character_2.svg';
+import image3 from 'public/welcomePage/character_3.svg';
+import stepsFon from 'public/welcomePage/staps_img.jpg';
+import helpAtTheStartFon from 'public/welcomePage/help_at_the_start_img.jpg';
+import checkboxImg from 'public/welcomePage/checkbox.svg';
+import footerFon from 'public/welcomePage/footer_img.jpg';
 import Image from 'next/image';
 import classNames from 'classnames';
 import Link from 'next/link';
-import CardCarousel from '../UI/CardCarousel';
-import chevronLeft from '../public/welcomePage/chevrone_left.svg';
-import chevronRight from '../public/welcomePage/chevron_right.svg';
-import CommentCard from '../components/pages/welcomePage/commentCard';
-import { useRef } from 'react';
+import CardCarousel from 'UI/CardCarousel';
+import chevronLeft from 'public/welcomePage/chevrone_left.svg';
+import chevronRight from 'public/welcomePage/chevron_right.svg';
+import CommentCard from 'components/pages/welcomePage/commentCard';
+import { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import cardComment from 'mock/welcomePageCards.json';
+import {useAsyncAction} from "hooks/useAsyncActions";
+import {useAction} from "hooks/useActions";
+import CustomLink from "UI/custom-link";
+
 
 /**
  *
@@ -26,81 +32,17 @@ import { useRef } from 'react';
  * @constructor
  */
 
-const cards = [
-	{
-		commentText:
-			'Классно быть партнером Feed Market. Я развиваю компанию во всех направлениях: от продаж своих товаров на маркетплейсе до ведения своих пунктов выдачи и помощи другим предпринимателям в выходе на площадку Feed Market и другие маркетплейсы.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-	{
-		commentText: 'Feed Market приносит нам большую часть оборота с маркетплейсов.',
-		userName: 'Юзернейм Юзернеймович',
-		userDescription:
-			'Генеральный директор ООО «Компания нейм», селлер в категориях «Категория нейм», «Категория нейм 2»',
-		userImage: '/../public/welcomePage/Ellipse 632.png',
-	},
-];
-
 const WelcomePage = () => {
+
+	let cards = useSelector(store => store.welcomePage);
+
+	let { welcomePageAsyncAction, WelcomePageAddCommentAction } = useAsyncAction();
+	let { clear } = useAction();
+
+	useEffect(() => {
+		clear();
+	}, []);
+
 	let mp = useRef();
 	let mpw = useRef();
 	let lb = useRef();
@@ -108,6 +50,7 @@ const WelcomePage = () => {
 
 	return (
 		<Layout>
+			<div></div>
 			<div className={classes.hidden}>
 				<div className={classes.container}>
 					<section className={classes.welcome}>
@@ -231,9 +174,11 @@ const WelcomePage = () => {
 						</div>
 
 						<div className={classes.steps__buttonWrapper}>
-							<Button size={'l'} factor={'yellow'}>
-								Начать продавать
-							</Button>
+							<CustomLink href={'/auth'}>
+								<Button size={'l'} factor={'yellow'}>
+									Начать продавать
+								</Button>
+							</CustomLink>
 						</div>
 					</section>
 
@@ -396,19 +341,23 @@ const WelcomePage = () => {
 						</div>
 
 						<div className={classes.steps__buttonWrapper}>
-							<Button size={'l'} factor={'yellow'}>
-								Начать продавать
-							</Button>
+							<CustomLink href={'/auth'}>
+								<Button size={'l'} factor={'yellow'}>
+									Начать продавать
+								</Button>
+							</CustomLink>
 						</div>
 					</section>
 
 					<section className={classes.comments}>
-						{/*<Carousel cards={cards} />*/}
 						<CardCarousel
 							leftBtn={lb}
 							rightBtn={rb}
 							mountPoint={mp}
-							mountPointWrapper={mpw}>
+							mountPointWrapper={mpw}
+							addData={async () => {
+								await WelcomePageAddCommentAction(cardComment);
+							}}>
 							<div className={classes.comments__wrapper}>
 								<h2 className={classNames(classes.sectionTitle, classes.comments__title)}>
 									Партнеры о маркетплейсе
@@ -480,3 +429,4 @@ const WelcomePage = () => {
 };
 
 export default WelcomePage;
+

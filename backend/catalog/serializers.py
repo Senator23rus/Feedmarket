@@ -10,11 +10,10 @@ class GoodSerializer(serializers.ModelSerializer):
 
 
 class IndustrySerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source="__str__")
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Industry
-        fields = ('id', 'name',)
-
+        fields = '__all__'
 
 
 class ProductSerializer(serializers.ModelSerializer):

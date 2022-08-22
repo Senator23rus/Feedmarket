@@ -15,10 +15,6 @@ const Index = () => {
 	const { getTextGenerator, getDefaultTextGenerator } = useAppContext();
 	const { query } = useRouter();
 
-	const { test } = useSelector(state => state.base);
-
-	console.log(test);
-
 	const [filters, setFilters] = useState({
 		types: [],
 		brand: [
@@ -199,10 +195,7 @@ const Index = () => {
 													{_.name}
 												</ChipsButton>
 											))}
-											<ChipsButton
-												onDelete={() => {}}
-												onClick={clearAllFilters}
-												active={false}>
+											<ChipsButton onDelete={()=>{}} onClick={clearAllFilters} active={false}>
 												Очистить
 											</ChipsButton>
 										</>
@@ -238,8 +231,9 @@ const Index = () => {
 	);
 };
 
-export async function getServerSideProps({ query, params }) {
-	console.log('query', query);
+export async function getServerSideProps({query,params}) {
+
+	console.log('query',query)
 
 	return {
 		props: {},

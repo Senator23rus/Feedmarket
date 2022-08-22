@@ -1,6 +1,7 @@
 import classes from 'components/pages/home/recomend/recomend.module.scss';
 import Button from 'UI/button';
 import Card from 'UI/cards/pc/card';
+import CustomLink from "UI/custom-link";
 
 /**
  * @description -Заголовок с кнопкой
@@ -13,9 +14,11 @@ const Recomend = ({ ad, cards }) => {
 		<div className={classes.recomend}>
 			<div className={classes.recomend__header}>
 				<h1 className={classes.recomend__title}>FEED MARKET рекомендует</h1>
-				<Button factor="yellow" size="s" className={classes.recomend__btn}>
-					Перейти в рекомендации
-				</Button>
+				<CustomLink href={'/catalog'}>
+					<Button factor="yellow" size="s" className={classes.recomend__btn}>
+						Перейти в рекомендации
+					</Button>
+				</CustomLink>
 			</div>
 			<div className={classes.recomend__content}>
 				{/*{ad && <div className={classes.recomend__content_ad}>*/}
@@ -26,6 +29,12 @@ const Recomend = ({ ad, cards }) => {
 						if (i < 4) {
 							return (
 								<Card
+									sale={card.sale}
+									choice={card.choice}
+									countLike={card.comments}
+									favorites={card.favorites}
+									rating={card.rating}
+									novelty={card.novelty}
 									key={i}
 									reference={`/catalog/${card.id}`}
 									img={card.image}

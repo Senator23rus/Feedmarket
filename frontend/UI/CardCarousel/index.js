@@ -1,5 +1,6 @@
 import classes from './cardCarousel.module.scss';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useFetching } from 'hooks/useFetching';
 
 /**
  * @description Компонент универсальной карусели для карточек
@@ -10,6 +11,7 @@ import { useEffect, useRef } from 'react';
  * @property {string} props.mountPointWrapper - Ссылка оболочку для точки монтирования
  * @property {string} props.leftBtn - Ссылка на кнопку прокрутки карусели налево
  * @property {string} props.rightBtn - Ссылка на кнопку прокрутки карусели направо
+ * @property {string} props.addData - Функция добавления данных при окончании прокрутки карусели
  * @returns {JSX.Element}
  * @constructor
  */
@@ -21,6 +23,7 @@ const CardCarousel = ({
 	rightBtn,
 	children,
 	gap = 24,
+	addData,
 	...other
 }) => {
 	let mountPointWidth = useRef(0);
@@ -30,7 +33,46 @@ const CardCarousel = ({
 		actualSituation: 0,
 	});
 
+	const [startPending, setStartPending] = useState(false);
+
+	let [fetch, isLoad, error] = useFetching(addData);
+
+	const addDataFunc = () => {
+		if (!isLoad && !error) {
+			console.log('ok');
+			fetch();
+		}
+		mountPointWidth.current =
+			mountPoint.current.lastChild.getBoundingClientRect().width *
+				mountPoint.current.children.length +
+			gap * (mountPoint.current.children.length - 1);
+	};
+
+	useEffect(() => {
+		if (startPending) {
+			addDataFunc();
+			setStartPending(false);
+		}
+	}, [startPending]);
+
+	useEffect(() => {
+		mountPointWidth.current =
+			mountPoint.current.lastChild.getBoundingClientRect().width *
+				mountPoint.current.children.length +
+			gap * (mountPoint.current.children.length - 1);
+	}, [children]);
+
 	const chevronLeftHandler = e => {
+		if (
+			Math.abs(
+				Math.abs(+mountPoint.current.offsetLeft) +
+					mountPointWrapper.current.clientWidth * 2 -
+					mountPointWidth.current
+			) <= mountPointWrapper.current.clientWidth
+		) {
+			setStartPending(true);
+		}
+
 		if (
 			Math.abs(+mountPoint.current.offsetLeft) + mountPointWrapper.current.clientWidth <
 			mountPointWidth.current - mountPointWrapper.current.clientWidth
@@ -66,6 +108,13 @@ const CardCarousel = ({
 
 	const scrollHandler = e => {
 		if (
+			Math.abs(
+				Math.abs(mountPoint.current.offsetLeft) + e.deltaY * 5 - mountPointWidth.current
+			) <= mountPointWrapper.current.clientWidth
+		) {
+			setStartPending(true);
+		}
+		if (
 			Math.abs(mountPoint.current.offsetLeft) + e.deltaY * 5 >
 			mountPointWidth.current - mountPointWrapper.current.clientWidth
 		) {
@@ -94,6 +143,17 @@ const CardCarousel = ({
 
 	const mouseMoveHandler = e => {
 		if (isMouseDown.current) {
+			if (
+				Math.abs(
+					Math.abs(
+						mouseStartPoint.current.actualSituation +
+							e.pageX -
+							mouseStartPoint.current.startPoint
+					) - mountPointWidth.current
+				) <= mountPointWrapper.current.clientWidth
+			) {
+				setStartPending(true);
+			}
 			if (
 				Math.abs(
 					mouseStartPoint.current.actualSituation +

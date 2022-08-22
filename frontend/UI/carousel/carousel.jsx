@@ -3,10 +3,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const images = [
-	{ id: 1, src: '/card/brown_card.svg' },
-	{ id: 2, src: '/card/green_card.svg' },
-	{ id: 3, src: '/card/pink_card.svg' },
-	{ id: 4, src: '/card/PreMix-Pigs_1.jpg' },
+	{ id: 1, src: '/card/PreMix-Pigs.jpg' },
+	{ id: 2, src: '/card/PreMix-Layers.jpg' },
+	{ id: 3, src: '/card/PreMix-Poultry.jpg' },
+	{ id: 4, src: '/card/PreMix-Ruminant.jpg' },
 ];
 
 const Carousel = () => {

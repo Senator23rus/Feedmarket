@@ -1,0 +1,93 @@
+@import "styles/variables";
+
+.fixsed {
+  position: absolute;
+  top: 208px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  background: #0D9545;
+  border-radius: 8px;
+  padding: 20px;
+  color: #fff;
+  @extend %h3;
+  transition: all 0.1s linear;
+
+  &:hover {
+    background: $greenButtonHover;
+  }
+
+  &:active {
+    background: $greenButtonActive;
+  }
+
+  &:disabled {
+    background: $disabled-background;
+    border: 2px solid $disabled-text;
+    color: $disabled-text;
+  }
+}
+
+.agreements {
+  @extend %caption;
+  color: $input-text;
+  margin-top: 16px;
+
+  .link {
+    color: #FF7A00;
+    text-decoration: underline;
+  }
+}
+
+.line {
+  display: block;
+  width: 100%;
+  border-top: 1px dashed #999999;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.body {
+  h3 {
+    @extend %h3;
+    color: $black;
+  }
+
+  p {
+    @extend %text_mobile;
+    color: $input-text;
+  }
+
+  .paymentLine {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      @extend %text;
+      color: $black;
+
+      &.price {
+        @extend %text_bold;
+      }
+
+      &.sale {
+        @extend %text_bold;
+        color: $base-yellow;
+      }
+
+      &.shippingСost {
+        @extend %text_bold;
+        color: $base-green;
+      }
+    }
+  }
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+  @extend %h3;
+  color: $black;
+}
