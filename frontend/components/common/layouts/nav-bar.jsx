@@ -122,9 +122,7 @@ const NavBar = () => {
 		},
 	};
 
-
 	const [isAuth, setAuth] = useState(true);
-
 
 	const [dropdown, setDropdown] = useState(false);
 
@@ -246,11 +244,11 @@ const NavBar = () => {
 				</div>
 			</div>
 
-			<div className={`dropdown-absolute dropdown-absolute-${dropdown}`}>
-				<div className="title">
-					Войдите, чтобы делать покупки и пользоваться персональными предложениями
-				</div>
-			</div>
+			{/*<div className={`dropdown-absolute dropdown-absolute-${dropdown}`}>*/}
+			{/*	<div className="title">*/}
+			{/*		Войдите, чтобы делать покупки и пользоваться персональными предложениями*/}
+			{/*	</div>*/}
+			{/*</div>*/}
 		</>
 	);
 };

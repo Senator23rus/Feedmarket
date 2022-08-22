@@ -27,7 +27,7 @@ const DropDown = ({ children, menu }) => {
 	);
 	const [position, setPosition] = useState({
 		left: 0,
-		top: 0,
+		top: 100,
 	});
 	const [animate, setAnimate] = useState(false);
 	/**
