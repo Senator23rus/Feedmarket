@@ -4,6 +4,7 @@ import Button from 'UI/button';
 import Input from 'UI/Input/input';
 import { useSelector } from 'react-redux';
 import ChipsButton from 'UI/chipsButton';
+import CustomLink from "UI/custom-link";
 
 const TestPageStore = () => {
 	const categoriesFromStore = useSelector(
@@ -259,12 +260,16 @@ const TestPageStore = () => {
 							</div>
 						</div>
 						<div className="store-product-page__btns">
-							<Button factor={'ghost'} size={'s'}>
-								Сохранить и выйти
-							</Button>
-							<Button factor={'green'} size={'s'}>
-								Продолжить
-							</Button>
+							<CustomLink href={'/'}>
+								<Button factor={'ghost'} size={'s'}>
+									Сохранить и выйти
+								</Button>
+							</CustomLink>
+							<CustomLink href={'/'}>
+								<Button factor={'green'} size={'s'}>
+									Продолжить
+								</Button>
+							</CustomLink>
 						</div>
 					</>
 				)}

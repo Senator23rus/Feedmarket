@@ -43,11 +43,11 @@ const Payment = ({ isValidation }) => {
 				</button>
 				<p className={classes.agreements}>
 					Нажимая на кнопку, вы соглашаетесь с
-					<CustomLink href={'/'}>
+					<CustomLink href={'/legalInformation/privacyPolicy'}>
 						<a className={classes.link}> Условиями обработки персональных данных</a>
 					</CustomLink>
 					, а также с{' '}
-					<CustomLink href={'/'}>
+					<CustomLink href={'/legalInformation/'}>
 						<a className={classes.link}>Условиями продажи</a>
 					</CustomLink>
 				</p>

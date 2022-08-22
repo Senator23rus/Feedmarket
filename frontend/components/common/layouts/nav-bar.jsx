@@ -10,28 +10,24 @@ import NoSsr from 'components/common/no-ssr';
 import { useAction } from 'hooks/useActions';
 
 const Menu = () => {
-	const { isAuth: authFromRedux } = useSelector(
-		/**@param {StateApp} state*/ state => state.user
-	);
-	const [isAuth, setAuth] = useState(false);
+	const [isAuth, setAuth] = useState(true);
 	const { logOut } = useAction();
-	useEffect(() => {
-		setAuth(authFromRedux);
-	}, [authFromRedux]);
 	return (
 		<div className={'drop'}>
 			{isAuth ? (
 				<>
 					<div className={'drop__links'}>
-						<span>Мой магазин</span>
-						<div className="separator" />
-						<span>Личный кабинет</span>
-						<div className="separator" />
-						<span>Избранное</span>
-						<div className="separator" />
-						<span>Сообщения</span>
-						<div className="separator" />
-						<span>Уведомления</span>
+						<CustomLink href={'/test_my_store'}>
+							<span>Мой магазин</span>
+						</CustomLink>
+						{/*<div className="separator" />*/}
+						{/*<span>Личный кабинет</span>*/}
+						{/*<div className="separator" />*/}
+						{/*<span>Избранное</span>*/}
+						{/*<div className="separator" />*/}
+						{/*<span>Сообщения</span>*/}
+						{/*<div className="separator" />*/}
+						{/*<span>Уведомления</span>*/}
 					</div>
 					<div onClick={logOut} className={'drop__footer'}>
 						Выход
@@ -126,17 +122,9 @@ const NavBar = () => {
 		},
 	};
 
-	const { isAuth: authFromRedux } = useSelector(
-		/**@param {StateApp} state*/ state => state.user
-	);
 
-	const [isAuth, setAuth] = useState(false);
+	const [isAuth, setAuth] = useState(true);
 
-	useEffect(() => {
-		setAuth(authFromRedux);
-	}, [authFromRedux]);
-
-	console.log('navbar is auth', isAuth);
 
 	const [dropdown, setDropdown] = useState(false);
 
@@ -176,7 +164,9 @@ const NavBar = () => {
 					</div>
 					<div className="nav-wrapper__other">
 						<div className="btn">
-							<div>Продавайте на FEED MARKET</div>
+							<CustomLink href={'/WelcomePage'}>
+								<div>Продавайте на FEED MARKET</div>
+							</CustomLink>
 						</div>
 
 						<div className="nav-wrapper__settings">
@@ -197,7 +187,7 @@ const NavBar = () => {
 
 								<span>Заказы</span>
 							</CustomLink>
-							<CustomLink href={'/bug'} className="link">
+							<CustomLink href={'/test_basket'} className="link">
 								{/*TODO: Сделать ховер эффекты нв ссылки и показать количество заказов, данные взять из редакса*/}
 								<svg
 									width="29"

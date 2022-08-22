@@ -1,5 +1,6 @@
 import classes from './ordering.module.scss';
 import Button from "../../../UI/button";
+import CustomLink from "UI/custom-link";
 
 const declOfOrder = (count)=>{
 	const arr = ['товар',"товара","товаров"]
@@ -20,9 +21,11 @@ const declOfOrder = (count)=>{
 const Ordering = ({amount, sum, weight}) => {
 	return (
 		<div className={classes.ordering__wrap}>
-			<Button style={{width:'100%',marginBottom:16, height: 64, fontSize: 19}} size={'s'} factor={'green'}>
-				Перейти к оформлению
-			</Button>
+			<CustomLink href={'/makingAnOrder'}>
+				<Button style={{width:'100%',marginBottom:16, height: 64, fontSize: 19}} size={'s'} factor={'green'}>
+					Перейти к оформлению
+				</Button>
+			</CustomLink>
 			<p className={classes.ordering__text}>
 				Доступные способы и время доставки можно выбрать на следующем этапе оформления
 				заказа

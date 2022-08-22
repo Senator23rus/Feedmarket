@@ -199,6 +199,8 @@ $margin: (($max-width - $container-width) / 2);
 			@extend %text;
 			margin-bottom: 40px;
 			color: $SelectLightGrey5;
+			font-size: 16px;
+			line-height: 24px;
 
 			span {
 				display: block;
@@ -215,6 +217,7 @@ $margin: (($max-width - $container-width) / 2);
 
 		& ul {
 			margin-bottom: 40px;
+
 			&.item1 {
 				margin-bottom: 120px;
 			}
@@ -228,6 +231,8 @@ $margin: (($max-width - $container-width) / 2);
 				list-style: none;
 				margin-bottom: 16px;
 				color: $SelectLightGrey5;
+				font-size: 16px;
+				line-height: 24px;
 
 				&.item1 {
 					margin-bottom: 64px;

@@ -21,6 +21,7 @@ import { useSelector } from 'react-redux';
 import cardComment from 'mock/welcomePageCards.json';
 import {useAsyncAction} from "hooks/useAsyncActions";
 import {useAction} from "hooks/useActions";
+import CustomLink from "UI/custom-link";
 
 
 /**
@@ -173,9 +174,11 @@ const WelcomePage = () => {
 						</div>
 
 						<div className={classes.steps__buttonWrapper}>
-							<Button size={'l'} factor={'yellow'}>
-								Начать продавать
-							</Button>
+							<CustomLink href={'/auth'}>
+								<Button size={'l'} factor={'yellow'}>
+									Начать продавать
+								</Button>
+							</CustomLink>
 						</div>
 					</section>
 
@@ -338,9 +341,11 @@ const WelcomePage = () => {
 						</div>
 
 						<div className={classes.steps__buttonWrapper}>
-							<Button size={'l'} factor={'yellow'}>
-								Начать продавать
-							</Button>
+							<CustomLink href={'/auth'}>
+								<Button size={'l'} factor={'yellow'}>
+									Начать продавать
+								</Button>
+							</CustomLink>
 						</div>
 					</section>
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import classes from './prise_tage.module.scss';
+import CustomLink from "UI/custom-link";
 
 const PriseTag = () => {
 	const [quantity, setQuantity] = useState(1);
@@ -33,7 +34,9 @@ const PriseTag = () => {
 				</button>
 			) : (
 				<div className={classes.card__button_inner}>
-					<div className={classes.card__button_transition}>Перейти к оформлению</div>
+					<CustomLink href={'/makingAnOrder'}>
+						<div className={classes.card__button_transition}>Перейти к оформлению</div>
+					</CustomLink>
 					<div className={classes.card__button_amount}>
 						<svg
 							className={classes.card__button_decr}
