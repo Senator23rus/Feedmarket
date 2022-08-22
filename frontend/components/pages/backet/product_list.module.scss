@@ -1,0 +1,102 @@
+@import '../../../styles/variables.scss';
+
+.main{
+  &__product{
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 16px;
+    max-width: 968px;
+    min-height: 160px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    margin-bottom: 4px;
+  }
+  &__img{
+    min-width: 85px;
+  }
+  &__text{
+    &__wrapper{
+      padding: 0 20px 0 17px;
+    }
+    &__title{
+      @extend %h4;
+      color: $black;
+      letter-spacing: normal;
+      line-height: 20px;
+    }
+    &__subtitle{
+      display: flex;
+      width: 100%;
+      max-width: 510px;
+      justify-content: space-between;
+      margin: 0 0 10px 0;
+    }
+    &__key{
+      @extend %text_mobile_semibold;
+      color: $chips-background;
+    }
+    &__value{
+      @extend %text_mobile;
+      color: $input-text;
+    }
+    &__fvrt{
+      @extend %small_text_underline;
+      color: $base-yellow;
+    }
+  }
+  &__left{
+    &__amount{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100px;
+      max-height: 40px;
+      padding: 14px;
+      background-color: $inputs;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      & svg {
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+    &__number{
+      color: $base-green;
+    }
+    &__close{
+      display: flex;
+      align-items: flex-start;
+      justify-content: end;
+      width: 100%;
+      height: 100%;
+      max-width: 82px;
+      & svg {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+  }
+  &__price{
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+    justify-content: space-between;
+    @extend %text_mobile_semibold;
+    color: $disabled-text;
+    &__kg{
+      @extend %text_mobile;
+      color: $disabled-text;
+    }
+    &__coast{
+      @extend %text_bold;
+      color: $black;
+    }
+  }
+
+
+}
+ 

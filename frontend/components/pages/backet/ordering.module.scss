@@ -1,0 +1,79 @@
+@import '../../../styles/variables.scss';
+
+.ordering{
+  &__wrap{
+    min-height: 460px;
+    max-width: 472px;
+    background-color: #ffffff;
+    padding: 52px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+  }
+  &__btn{
+    width: 100%;
+    background-color: $base-green;
+    @extend %h3;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 20px 0;
+    margin-bottom: 16px;
+  }
+  &__text{
+    @extend %caption;
+    color: $input-text;
+    margin-bottom: 16px;
+  }
+  &__dotted{
+    border-bottom: 1px dashed #999999;
+    position: relative;
+    left: -52px;
+    width: calc(100% + 104px);
+    &__bottom{
+    border-bottom: 1px dashed #999999;
+    margin: 24px 0;
+    }
+  }
+  &__title{
+    @extend %h3;
+    color: $black;
+    &__wrap{
+      margin: 24px 0;
+    }
+  }
+  &__subtitle{
+    @extend %text_mobile;
+    color: $input-text;
+    &_dote{
+      width: 4px;
+      height: 4px;
+      margin: 0 10px;
+      display: inline-block;
+      vertical-align: middle;
+      background-color: $input-text;
+      border-radius: 50%;
+      @extend %text_mobile;
+    }
+  }
+  &__products{
+    @extend %text;
+    color: $black;
+        &__wrap{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+    &__total_cost{
+      @extend %h3;
+      color: $black;
+    }
+    &__coast{
+      @extend %text_bold;
+      color: $black;
+    }
+    &__sale{
+      @extend %text_bold;
+      color: $base-yellow;
+    }
+  }
+}

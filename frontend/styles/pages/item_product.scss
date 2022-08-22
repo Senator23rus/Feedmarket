@@ -1,6 +1,6 @@
 @import '../variables';
 .card-page {
-	padding-top: 72px;
+	padding-top: 68px;
 	padding-bottom: 100px;
 	display: flex;
 	flex-direction: column;
@@ -8,7 +8,7 @@
 	&__card {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 4px;
 		.title {
 			@extend %h1;
 			color: $black;

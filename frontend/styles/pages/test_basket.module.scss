@@ -1,0 +1,18 @@
+@import '../variables.scss';
+@import './my_store_test.module.scss';
+@import './Details_product.module.scss';
+
+
+.basket{
+  &__title{
+    @extend %h1;
+    color: $black;
+  }
+}
+
+
+
+
+.product__wrapper {
+  margin: 52px 0 24px 17px;
+}
